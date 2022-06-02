@@ -1,4 +1,4 @@
-public class Member extends Users {
+public abstract class Member extends Users {
     
 
     public Member(){}
@@ -11,5 +11,7 @@ public class Member extends Users {
     }
     public void viewInfo(){}
     public void payFine(){}
+    public abstract void borrowBook();
+    public abstract void returnBook();
     
 }

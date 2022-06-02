@@ -8,4 +8,5 @@ public class Admin extends Users{
     public void EditBook(){}
     public void DeleteBook(){}
     public void viewInfo(){}
+    public void searchBook(){}
 }
