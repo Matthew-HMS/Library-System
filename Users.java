@@ -1,4 +1,4 @@
-public class Users {
+public abstract class Users {
     private String name;
     private String password;
     private String account;//ID
@@ -53,15 +53,8 @@ public class Users {
         return identity;
     }
 
-    public void searchBook(){}
-    public void borrowBook(){}
-    public void returnBook(){}
-    public void viewInfo(){}
-    public void payFine(){}
-    public void addBook(){}
-    public void EditBook(){}
-    public void DeleteBook(){}
-
+    public void searchBook(){};
+    public abstract void viewInfo();
 
     
 }

@@ -18,16 +18,16 @@ public class Register {//can't repeat account
         String phone = s.nextLine();
         System.out.print("Your identity : ");
         String identity = s.nextLine();
-        if (account == "" || password == "" || name == "" || email == "" || phone == "" || identity == ""){
+        if (account.equals("") || password.equals("") || name.equals("") || email.equals("") || phone.equals("") || identity.equals("")){
             System.out.println("Register failed! You didn't input all information required.");
             return null;
         }
-        if (!identity.equals("Admin") && !identity.equals("Student") && !identity.equals("Teacher") && !identity.equals("Staff")){
-            System.out.println("Register failed! Your identity is not correct.");
+        else if (!identity.equals("Admin") && !identity.equals("Student") && !identity.equals("Teacher") && !identity.equals("Staff")){
+            System.out.println("Register failed! Your identity is incorrect.");
             return null;
         }
         else {
-            Users user = new Users(account, password, name, email, phone, identity);
+            Users user = new Student(account, password, name, email, phone, identity);
             System.out.println("You have successfully registered!");
             for(int i = 0; i < users.length; i++){
                 if(users[i] == null){
@@ -62,7 +62,7 @@ public class Register {//can't repeat account
             
         }
         System.out.println("No such account!");
-        return 0;
+        return -1;
     }
     public String toString(){
         String output = "";
