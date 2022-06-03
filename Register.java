@@ -2,10 +2,10 @@ import java.util.*;
 
 public class Register {//can't repeat account
     
-    private Users users [] = new Users[30];
+    //private Users users [] = new Users[30];
     Scanner s = new Scanner(System.in);
 
-    public Users register(){
+    public Users register(ArrayList<Users> users){
         System.out.print("Your national ID : ");
         String account = s.nextLine();
         System.out.print("Your account password : ");
@@ -27,50 +27,41 @@ public class Register {//can't repeat account
             return null;
         }
         else {
+            for (int i = 0; i < users.size(); i++){
+                if (account.equals(users.get(i).getAccount())){
+                    System.out.println("Register failed! This account has been used.");
+                    return null;
+                }
+                
+            }
             Users user = new Student(account, password, name, email, phone, identity);
             System.out.println("You have successfully registered!");
-            for(int i = 0; i < users.length; i++){
-                if(users[i] == null){
-                    users[i] = user;
-                    break;
-                }
-            }
             return user;
         }
+        
     }
     
-    public int login(){
+    public int login(ArrayList<Users> users){
         
         System.out.println("Please input your account number : ");
         String account = s.nextLine();
-        for(int i = 0; i < users.length; i++){
-            if(users[i] != null){
-                if(users[i].getAccount().equals(account)){
-                    System.out.println("Please input your password : ");
-                    String password = s.nextLine();
-                    if(users[i].getPassword().equals(password)){
-                        System.out.println("Login successfully!");
-                        return i;
-                    }
-                    else{
-                        System.out.println("Wrong password!");
-                        return -1;
-                    }
+        for(int i = 0; i < users.size(); i++){
+            if(users.get(i).getAccount().equals(account)){
+                System.out.println("Please input your password : ");
+                String password = s.nextLine();
+                if(users.get(i).getPassword().equals(password)){
+                    System.out.println("Login successfully!");
+                    return i;
                 }
-                
+                else{
+                    System.out.println("Wrong password!");
+                    return -1;
+                }
             }
             
         }
         System.out.println("No such account!");
         return -1;
     }
-    public String toString(){
-        String output = "";
-        for(int i = 0; i < users.length; i++){
-            if(users[i] != null){
-                output += users[i].toString() + "\n";
-            }
-        }
-        return output;
-    }
+    
 }

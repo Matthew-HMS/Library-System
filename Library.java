@@ -9,6 +9,7 @@ public class Library {
         int input = 0;
         Users user = new Student();
         Register r = new Register();
+        Book b = new Book();
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
             do{
@@ -16,10 +17,10 @@ public class Library {
                 input = s.nextInt();
                 switch(input){
                     case 1:
-                        check = r.login();
+                        check = r.login(users);
                         break;
                     case 2:
-                        user = r.register();
+                        user = r.register(users);
                         if (user != null){
                             users.add(user);
                         }
