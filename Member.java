@@ -29,7 +29,7 @@ public abstract class Member extends Users {
         	name = s.nextLine();
         	for(int i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 0){
-                	System.out.print("確認借閱?\n請輸入yes: (若輸入任意其他字串則取消)");
+                	System.out.print("確認借閱?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
                 	input = s.nextLine();
                 	if (input.equals("yes")) { booklist.get(i).setHasLended(1);}
                 	System.out.println("書本借閱成功!");
@@ -53,7 +53,7 @@ public abstract class Member extends Users {
         	for(int i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 0)
         		{
-                	System.out.print("確認借閱?\n請輸入yes: (若輸入任意其他字串則取消)");
+                	System.out.print("確認借閱?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
                 	input = s.nextLine();
                 	if (input.equals("yes")) {
                 		booklist.get(i).setHasLended(1);
@@ -77,7 +77,7 @@ public abstract class Member extends Users {
     	id = s.nextInt();
     	for(int i = 0; i < booklist.size() ; i++){
     		if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 1){
-            	System.out.print("確認歸還?\n請輸入yes: (若輸入任意其他字串則取消)");
+            	System.out.print("確認歸還?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
             	input = s.nextLine();
             	if (input.equals("yes")) {
             		booklist.get(i).setHasLended(0);
