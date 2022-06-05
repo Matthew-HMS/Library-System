@@ -70,8 +70,9 @@ public class Admin extends Users{
     				input = 6;
     				break;
     				
-    		}}while(input == 6);
-    	}}
+    		}}while(input == 6);}
+		else {System.out.println("書本修改失敗! 未找到此書");}
+	}
     }
 
     public void deleteBook(ArrayList<Book> booklist){
@@ -85,10 +86,13 @@ public class Admin extends Users{
 			switch(input){
 			case "yes":
 				booklist.remove(i);
+				System.out.println("書本刪除成功!");
 				break;
 			default:
+				System.out.println("取消刪除書本!");
 				break;
 			}}
+		else {System.out.println("書本刪除失敗! 未找到此書");}
     	}
     }
 
