@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class Member extends Users {
+public class Member extends Users {
     Scanner s = new Scanner(System.in);
 
     public Member(){}
@@ -14,9 +14,10 @@ public abstract class Member extends Users {
     public void viewInfo(){}
     public void payFine(){}
     public void borrowBook(ArrayList<Book> booklist) {
-    	System.out.print("請選擇使用書名或ID借閱 :\n輸入\n1.書名\n2.ID");
-    	int searchway = s.nextInt();
-    	int id;
+    	System.out.print("請選擇使用書名或ID借閱\n輸入\n1.書名\n2.ID\n請輸入:");
+    	String searchwayS = s.nextLine();
+    	int searchway = Integer.parseInt(searchwayS);
+    	String id = "";
     	String name = "";
     	String input = "" ;
     	switch (searchway) {
@@ -27,7 +28,7 @@ public abstract class Member extends Users {
         	name = s.nextLine();
         	for(int i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 0){
-                	System.out.print("確認借閱?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
+                	System.out.print("確認借閱?\n請輸入yes: (若輸入任意其他字串則取消)");
                 	input = s.nextLine();
                 	if (input.equals("yes")) { booklist.get(i).setHasLended(1);}
                 	System.out.println("書本借閱成功!");
@@ -47,47 +48,50 @@ public abstract class Member extends Users {
 
     	case 2:
         	System.out.print("請輸入ID :");
-        	id = s.nextInt();
+        	id = s.nextLine();
+        	int count2 = 0;
         	for(int i = 0; i < booklist.size() ; i++){
-        		if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 0)
-        		{
-                	System.out.print("確認借閱?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
+        		if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 0){
+                	System.out.print("確認借閱?\n請輸入yes: (若輸入任意其他字串則取消)");
                 	input = s.nextLine();
                 	if (input.equals("yes")) {
                 		booklist.get(i).setHasLended(1);
                     	System.out.println("書本借閱成功!");
+            			count2 = 1;
                 	}
+        			break;
         		}
         		
-        		else if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 1) {System.out.print("無法借閱，此書已被借出");}
+        		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 1) {System.out.print("無法借閱，此書已被借出");count2 = 1;break;}
         		
-        		else if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 2) {System.out.print("無法借閱，此書已被預訂");}
-        		
-        		else {System.out.print("無法借閱，無法找到此書");}
+        		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 2) {System.out.print("無法借閱，此書已被預訂");count2 = 1;break;}	
         	}
+    		if(count2 == 0) {System.out.print("無法借閱，無法找到此書");}
     		break;
     	}
     }
     public void returnBook(ArrayList<Book> booklist) {
-    	int id;
+    	String id = "";
     	String input = "";
     	System.out.print("請輸入ID :");
-    	id = s.nextInt();
+    	id = s.nextLine();
+    	int count = 0;
     	for(int i = 0; i < booklist.size() ; i++){
-    		if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 1){
-            	System.out.print("確認歸還?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
+    		if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 1){
+            	System.out.print("確認歸還?\n請輸入yes: (若輸入任意其他字串則取消)");
             	input = s.nextLine();
             	if (input.equals("yes")) {
             		booklist.get(i).setHasLended(0);
                 	System.out.println("書本歸還成功!");
+                	count = 1;
             	}
     		}
     		
-    		else if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 0) {System.out.print("無法歸還，此書未被借出");}
+    		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 0) {System.out.print("無法歸還，此書未被借出");}
     		
-    		else if(booklist.get(i).getId() == id && booklist.get(i).getHasLended() == 2) {System.out.print("已取消預定");}
+    		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 2) {System.out.print("已取消預定");}
     		
-    		else {System.out.print("無法歸還，無法找到此書");}
+    		if(count == 0) {System.out.print("無法歸還，無法找到此書");}
     	}
     	
     }
