@@ -1,5 +1,5 @@
 public class Book {
-	private int id;
+	private String id;
 	private String name;  // 書名，不能重复
 	private String type;
 	private String author;
@@ -8,7 +8,7 @@ public class Book {
 	private String address; // 
 	
 	public Book(){}
-	public Book(int id, String name, String type, String author, String pub, int hasLended,String address) {
+	public Book(String id, String name, String type, String author, String pub, int hasLended,String address) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -25,8 +25,8 @@ public class Book {
 	public String getAddress() {return address;}
 	public void setAddress(String address) {this.address = address;}
 	
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public String getId() {return id;}
+	public void setId(String id) {this.id = id;}
 	
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
