@@ -44,8 +44,8 @@ public class Book {
 	public void setHasLended(int hasLended) {this.hasLended = hasLended;}
 	
 	public String toString() {
-		return "Books [id:" + id + " 名稱:" + name + " type:" + type + " author:" + author
-				+ " pub:" + pub + " hasLended:" + hasLended + " address:" + address + "]";
+		return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub + " 借閱狀態:" + hasLended + " 館藏區:" + address + "]";
 	}
 	
 }
