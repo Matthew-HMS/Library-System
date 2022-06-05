@@ -1,9 +1,11 @@
+
 import java.util.*;
 
-public class Register {//can't repeat account
+public class Register {
     
-    //private Users users [] = new Users[30];
     Scanner s = new Scanner(System.in);
+    Random r = new Random();
+    //SendMail mail = new SendMail();
 
     public Users register(ArrayList<Users> users){
         System.out.print("Your national ID : ");
@@ -34,9 +36,43 @@ public class Register {//can't repeat account
                 }
                 
             }
+            /*
+            boolean confirm = false;
+            int [] code = new int[6];
+            for(int i = 0; i < 6; i++){
+                code[i] = r.nextInt(10);
+            }
+            String codeString = "";
+            for(int i = 0; i < 6; i++){
+                codeString += code[i];
+            }
+            String text = "<h2>This is your verification code: </h2>" + "<h1>" + codeString + "</h1>";
+            mail.send(email,"Welcome to Central Library" ,text);
+            System.out.println("Your verification code has been sent to your email.");
+            System.out.print("Please input your verification code : ");
+            String input = s.nextLine();
+            if (input.equals(codeString)){
+                confirm = true;
+            }
+             
+            if (confirm){
+                Users user = new Student(account, password, name, email, phone, identity);
+                System.out.println("You have successfully registered! You will receive an email notification.");
+                text = "<h1>Welomce,  " + name + " </h1><br><h2> This email notice you that you have succesfully registered in Central Library. </h2><br><h2>Your Registration information :</h2><br>Identity : "+ identity +"<br>Account number : " + account + "<br>Email : "+ email + "<br>Phone number : "+ phone  + "<br><br><br>Click <a href=\"https://www.lib.ncu.edu.tw/\">here</a> for more information about Central Library.<br> Click <a href=\"mailto:matthew.in.ncu@g.ncu.edu.tw\">here</a> if you want to contact us." ;
+                //mail.send(email, "Your account has been activated", text);
+                return user;
+            }
+            else{
+                System.out.println("Register failed! Your verification code is incorrect.");
+                return null;
+            }
+            */
             Users user = new Student(account, password, name, email, phone, identity);
-            System.out.println("You have successfully registered!");
+            System.out.println("You have successfully registered! You will receive an email notification.");
+            //text = "<h1>Welomce,  " + name + " </h1><br><h2> This email notice you that you have succesfully registered in Central Library. </h2><br><h2>Your Registration information :</h2><br>Identity : "+ identity +"<br>Account number : " + account + "<br>Email : "+ email + "<br>Phone number : "+ phone  + "<br><br><br>Click <a href=\"https://www.lib.ncu.edu.tw/\">here</a> for more information about Central Library.<br> Click <a href=\"mailto:matthew.in.ncu@g.ncu.edu.tw\">here</a> if you want to contact us." ;
+            //mail.send(email, "Your account has been activated", text);
             return user;
+
         }
         
     }
