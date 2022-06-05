@@ -10,8 +10,7 @@ public class Library {
         int input = 0;
         Users user = new Student();
         Register r = new Register();
-        Book b = new Book();
-        Admin a = new Admin();
+        
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
             do{
@@ -50,13 +49,13 @@ public class Library {
                 do{
                     switch(input){
                         case 1:
-                            admin.addBook();
+                            admin.addBook(booklist);
                             break;
                         case 2:
-                            admin.EditBook();
+                            admin.editBook(booklist);
                             break;
                         case 3:
-                            admin.DeleteBook();
+                            admin.deleteBook(booklist);
                             break;
                         case 4:
                             admin.searchBook();
@@ -100,10 +99,10 @@ public class Library {
                 do{
                     switch(input){
                         case 1:
-                            member.borrowBook();
+                            member.borrowBook(booklist);
                             break;
                         case 2:
-                            member.returnBook();
+                            member.returnBook(booklist);
                             break;
                         case 3:
                             member.searchBook();
