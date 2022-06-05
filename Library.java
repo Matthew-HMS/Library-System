@@ -5,11 +5,13 @@ public class Library {
         System.out.println("歡迎來到央央圖書館借還書系統");
 
         ArrayList<Users> users = new ArrayList<Users>();//array to store users
+        ArrayList<Book> booklist = new ArrayList<Book>();//array to store book
         Scanner s = new Scanner(System.in);
         int input = 0;
         Users user = new Student();
         Register r = new Register();
         Book b = new Book();
+        Admin a = new Admin();
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
             do{
