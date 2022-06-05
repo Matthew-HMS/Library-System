@@ -23,12 +23,12 @@ public class Admin extends Users{
         int hasLended = 0;
         
         System.out.print("請輸入存放區域 : ");
-        String address = s.nextLine();//添加書本到陣列中
+        String address = s.nextLine();
         
         Book book = new Book(id, name, type, author, pub, hasLended, address);
         booklist.add(book);
         System.out.println("書本加入成功!");
-    }
+    }//添加書本到陣列中
         
     public void editBook(ArrayList<Book> booklist) {
     	System.out.print("請輸入欲更改資料之書本ID :");
@@ -80,7 +80,7 @@ public class Admin extends Users{
     	String input = "";
     	for (int i = 0 ; i < booklist.size() ; i++) {
     		if(booklist.get(i).getId() == id) {
-			System.out.print("確認刪除?\n請輸入yes: (若輸入任意其他字串則取消)");
+			System.out.print("確認刪除?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
 			input = s.nextLine();
 			switch(input){
 			case "yes":
