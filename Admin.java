@@ -40,10 +40,12 @@ public class Admin extends Users{
     	System.out.print("請輸入欲更改資料之書本ID :");
         String id = s.nextLine();
     	int input = 0;
+    	int count = 0;
     	for (int i = 0; i < booklist.size(); i++) {
     		if(booklist.get(i).getId().equals(id)) {
+    			count = 1;
     			while(input != 6) {
-    				System.out.print("要更改什麼? 輸入:\n1.ID\n2.書名\n3.分類\n4.借閱狀態\n5.圖書館存放區域\n6.離開 ");
+    				System.out.print("要更改什麼?\n1.ID\n2.書名\n3.分類\n4.借閱狀態\n5.圖書館存放區域\n6.離開\n請輸入: ");
     				String inputS = s.nextLine();
     				input = Integer.parseInt(inputS);
     				switch(input){
@@ -76,8 +78,11 @@ public class Admin extends Users{
     					System.out.print("請輸入借閱狀態\n0.在架上\n1.已借出\n2.已預定 : ");
     					String hasLendedS = s.nextLine();
     					int hasLended = Integer.parseInt(hasLendedS);
+    					if(hasLended >=0 &&hasLended <=2) {
     					booklist.get(i).setHasLended(hasLended);
     					System.out.println("修改借閱狀態完成!");
+    					}
+    					else {System.out.println("輸入錯誤 修改借閱狀態失敗!");}
     					break;
         
     				case 5:
@@ -90,21 +95,23 @@ public class Admin extends Users{
     					input = 6;
     					System.out.println("離開修改系統!");
     					break;
-    				
-    				}break;
-    			}break;
+    				}
+    			}
+    			break;
     		}
-		else {System.out.println("書本修改失敗! 未找到此書");}
     	}
+    	if( count == 0){System.out.println("書本修改失敗! 未找到此書");}
     }
 
     public void deleteBook(ArrayList<Book> booklist){
        	System.out.print("請輸入欲刪除之書本ID :");
         String id = s.nextLine();
     	String input = "";
+    	int count = 0;
     	for (int i = 0 ; i < booklist.size() ; i++) {
     		if(booklist.get(i).getId().equals(id)) {
-    			System.out.print("確認刪除?\n請輸入\"yes\": (若輸入任意其他字串則取消)");
+    			count = 1;
+    			System.out.print("確認刪除?\n請輸入\"yes\"(若輸入任意其他字串則取消) :");
     			input = s.nextLine();
     			switch(input){
 				case "yes":
@@ -116,8 +123,8 @@ public class Admin extends Users{
 					break;
     			}break;
 			}
-			else {System.out.println("書本刪除失敗! 未找到此書"); break;}
     	}
+    	if (count == 0){System.out.println("書本刪除失敗! 未找到此書");}
     }
 
     public void viewInfo(){
