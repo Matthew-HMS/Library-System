@@ -10,6 +10,12 @@ public class Library {
         int input = 0;
         Users user = new Student();
         Register r = new Register();
+
+        users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
+        users.add(new Student("B123","0000","Owner","student@gmail.com","0912345678","Student"));
+        booklist.add(new Book("001","little prince","funny","jk rowling","crown pub",0,"A"));
+        booklist.add(new Book("002","little prince 2","funny","jk rowling","crown pub",0,"B"));
+        booklist.add(new Book("003","Little Red Riding Hood","scary","no idea","test pub",0,"A"));
         
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
@@ -27,7 +33,7 @@ public class Library {
                         }
                         break;
                     case 3:
-                        user.searchBook();
+                        user.searchBook(booklist);
                         break;
                     case 4:
                         System.out.println("感謝您的使用");
@@ -58,7 +64,7 @@ public class Library {
                             admin.deleteBook(booklist);
                             break;
                         case 4:
-                            admin.searchBook();
+                            admin.searchBook(booklist);
                             break;
                         case 5:
                             admin.viewInfo();
@@ -104,7 +110,7 @@ public class Library {
                             member.returnBook(booklist);
                             break;
                         case 3:
-                            member.searchBook();
+                            member.searchBook(booklist);
                             break;
                         case 4:
                             member.viewInfo();
