@@ -24,7 +24,7 @@ public class Member extends Users {
     	
     	case 1:
         	System.out.print("請輸入欲借閱之書名 : ");
-        	int count = 0;
+        	int count = 0; boolean hasborrowed = false;
         	name = s.nextLine();
         	for(int i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 0){
@@ -32,7 +32,7 @@ public class Member extends Users {
                 	input = s.nextLine();
                 	if (input.equals("yes")) { booklist.get(i).setHasLended(1);}
                 	System.out.println("書本借閱成功!");
-                	count++;
+                	count++; hasborrowed = true;
                 	break;
         		}
         		
@@ -40,10 +40,9 @@ public class Member extends Users {
         			count ++;
         			continue;
         		}
-        		
-        		else if(i == booklist.size()-1 && count > 0) { System.out.println("無法借閱，此書已全數被借出或預定");}
         	}
-        	if(count == 0){ System.out.print("無法借閱，無法找到此書");}
+        	if(count == 0){System.out.print("無法借閱，無法找到此書");}
+        	else if(count != 0 && hasborrowed == false ) {System.out.println("無法借閱，此書已全數被借出或預定");}
     		break;
 
     	case 2:
@@ -52,13 +51,13 @@ public class Member extends Users {
         	int count2 = 0;
         	for(int i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 0){
-                	System.out.print("確認借閱?\n請輸入yes (若輸入任意其他字串則取消) : ");
-                	input = s.nextLine();
-                	if (input.equals("yes")) {
-                		booklist.get(i).setHasLended(1);
-                    	System.out.println("書本借閱成功!");
-            			count2 = 1;
-                	}
+                		System.out.print("確認借閱?\n請輸入yes (若輸入任意其他字串則取消) : ");
+                		input = s.nextLine();
+                		if (input.equals("yes")) {
+                			booklist.get(i).setHasLended(1);
+                    			System.out.println("書本借閱成功!");
+            				count2 = 1;
+                		}
         			break;
         		}
         		
@@ -85,14 +84,23 @@ public class Member extends Users {
     				if (input.equals("yes")) {
     					booklist.get(i).setHasLended(0);
     					System.out.println("書本歸還成功!");
-    					break;
     				}
+    				else {System.out.println("取消歸還書本!");}
+				break;
     			}
-				else if(booklist.get(i).getHasLended() == 0) {System.out.println("無法歸還，此書未被借出"); break;}
-				else if(booklist.get(i).getHasLended() == 2) {System.out.println("已取消預定!"); break;}
+			else if(booklist.get(i).getHasLended() == 0) {System.out.println("無法歸還，此書未被借出"); break;}
+			else if(booklist.get(i).getHasLended() == 2) {
+				System.out.print("確認取消預定?\n請輸入yes (若輸入任意其他字串則取消) : ");
+                		input = s.nextLine();
+                		if (input.equals("yes")) {
+				booklist.get(i).setHasLended(0);
+				System.out.println("已取消預定!");
+				}
+                		else {System.out.println("預定未取消!");}
+			break;
+			}
     		}
     	}
-		if(count == 0) {System.out.println("無法歸還，無法找到此書");}
+	if(count == 0) {System.out.println("無法歸還，無法找到此書");}
     }
-    
 }
