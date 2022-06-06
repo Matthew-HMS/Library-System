@@ -79,8 +79,8 @@ public class Admin extends Users{
     					String hasLendedS = s.nextLine();
     					int hasLended = Integer.parseInt(hasLendedS);
     					if(hasLended >=0 &&hasLended <=2) {
-    					booklist.get(i).setHasLended(hasLended);
-    					System.out.println("修改借閱狀態完成!");
+    						booklist.get(i).setHasLended(hasLended);
+    						System.out.println("修改借閱狀態完成!");
     					}
     					else {System.out.println("輸入錯誤 修改借閱狀態失敗!");}
     					break;
