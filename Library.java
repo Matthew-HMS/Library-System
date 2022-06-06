@@ -67,7 +67,7 @@ public class Library {
                             admin.searchBook(booklist);
                             break;
                         case 5:
-                            admin.viewInfo();
+                            admin.viewInfo();                        
                             break;
                         case 6:
                             check = -1;
@@ -100,7 +100,7 @@ public class Library {
                 }
                 
                 do{
-                    System.out.println("輸入\n1.借書\n2.還書\n3.查詢書籍\n4.查看個人資訊(借還記錄)\n5.登出\n6.離開");
+                    System.out.println("輸入\n1.借書\n2.還書\n3.查詢書籍\n4.查看個人資訊(借還記錄)\n5.更改個人資訊\n6.登出\n7.離開");
                     input = s.nextInt();
                     switch(input){
                         case 1:
@@ -116,9 +116,13 @@ public class Library {
                             member.viewInfo();
                             break;
                         case 5:
+                            member.editMember();
+                            break;
+
+                        case 6:
                             check = -1;
                             break;
-                        case 6:
+                        case 7:
                             System.out.println("感謝您的使用");
                             System.exit(0);
                             break;
