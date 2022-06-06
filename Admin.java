@@ -37,7 +37,7 @@ public class Admin extends Users{
     }//添加書本到陣列中
         
     public void editBook(ArrayList<Book> booklist) {
-    	System.out.print("請輸入欲更改資料之書本ID :");
+    	System.out.print("請輸入欲更改資料之書本ID : ");
         String id = s.nextLine();
     	int input = 0;
     	int count = 0;
@@ -45,7 +45,7 @@ public class Admin extends Users{
     		if(booklist.get(i).getId().equals(id)) {
     			count = 1;
     			while(input != 6) {
-    				System.out.print("要更改什麼?\n1.ID\n2.書名\n3.分類\n4.借閱狀態\n5.圖書館存放區域\n6.離開\n請輸入: ");
+    				System.out.print("要更改什麼?\n1.ID\n2.書名\n3.分類\n4.借閱狀態\n5.圖書館存放區域\n6.離開\n請輸入 : ");
     				String inputS = s.nextLine();
     				input = Integer.parseInt(inputS);
     				switch(input){
@@ -75,7 +75,7 @@ public class Admin extends Users{
     					break;
     				
     				case 4:
-    					System.out.print("請輸入借閱狀態\n0.在架上\n1.已借出\n2.已預定 : ");
+    					System.out.print("請輸入借閱狀態\n0.在架上\n1.已借出\n2.已預定\n請輸入 : ");
     					String hasLendedS = s.nextLine();
     					int hasLended = Integer.parseInt(hasLendedS);
     					if(hasLended >=0 &&hasLended <=2) {
@@ -104,14 +104,14 @@ public class Admin extends Users{
     }
 
     public void deleteBook(ArrayList<Book> booklist){
-       	System.out.print("請輸入欲刪除之書本ID :");
+       	System.out.print("請輸入欲刪除之書本ID : ");
         String id = s.nextLine();
     	String input = "";
     	int count = 0;
     	for (int i = 0 ; i < booklist.size() ; i++) {
     		if(booklist.get(i).getId().equals(id)) {
     			count = 1;
-    			System.out.print("確認刪除?\n請輸入\"yes\"(若輸入任意其他字串則取消) :");
+    			System.out.print("確認刪除?\n請輸入\"yes\"(若輸入任意其他字串則取消) : ");
     			input = s.nextLine();
     			switch(input){
 				case "yes":
