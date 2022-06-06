@@ -130,7 +130,8 @@ public class Admin extends Users{
     public void viewInfo(){
     }
 
-    public void searchBook(){
-    }
+    public void searchBook(){}
+	public void searchUser(ArrayList<Users> user){
+	}
 
 }
