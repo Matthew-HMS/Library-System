@@ -27,10 +27,7 @@ public class Library {
                         check = r.login(users);
                         break;
                     case 2:
-                        user = r.register(users);
-                        if (user != null){
-                            users.add(user);
-                        }
+                        r.register(users);
                         break;
                     case 3:
                         user.searchBook(booklist);
