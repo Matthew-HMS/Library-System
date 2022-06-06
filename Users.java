@@ -130,7 +130,72 @@ public abstract class Users {
 			}
 		} while (searchWay.equals("-1"));
     }
-    public abstract void viewInfo();
 
+	public void editMember(ArrayList<Users> users) {
+        Scanner s = new Scanner(System.in);
+    	System.out.print("請輸入欲更改Member姓名 :");
+        String name = s.nextLine();
+    	int input = 0;
+    	int count = 0;
+    	for (int i = 0; i < users.size(); i++) {
+    		if(users.get(i).getName().equals(name)) {
+    			count = 1;
+    			while(input != 6) {
+    				System.out.print("要更改什麼?\n1.account\n2.password\n3.name\n4.email\n5.phone\n6.離開\n請輸入: ");
+    				String inputs = s.nextLine();
+    				input = Integer.parseInt(inputs);
+    				switch(input){
+    				
+    				case 1:
+					
+    					System.out.print("請輸入帳號 : ");
+    					String account = s.nextLine();
+    					boolean accExist = false;
+    					for (int j = 0; j <users.size(); j++) {if (users.get(j).getAccount().equals(account)) {accExist = true;}}
+    					if(accExist == false) {
+    						users.get(i).setAccount(account);
+    						System.out.println("修改帳號完成!");
+    					}
+    					else {System.out.println("修改帳號失敗! 此帳號已存在");}
+    					break;							
+    				
+					case 2:
+    					System.out.println("請輸入密碼 : ");
+    					users.get(i).setPassword(s.nextLine());
+    					System.out.println("修改密碼完成!");
+    					break;
+    				
+					case 3:
+    					System.out.println("請輸入名稱 : ");
+    					users.get(i).setName(s.nextLine());
+    					System.out.println("修改名稱完成!");
+    					break;
+    				    				    			
+    				case 4:
+    					System.out.println("請輸入email : ");
+    					users.get(i).setEmail(s.nextLine());
+    					System.out.println("修改email完成!");
+    		
+    					break;
+        
+    				case 5:
+    					System.out.println("請輸電話 : ");
+    					users.get(i).setPhone(s.nextLine());
+    					System.out.println("修改電話完成!");
+    					break;
+    					
+    				default :
+    					input = 6;
+    					System.out.println("離開修改系統!");
+    					break;
+    				}
+    			}
+    			break;
+    		}
+    	}
+    	if( count == 0){System.out.println("會員修改失敗! 未找到此會員");}
+    }
+    public abstract void viewInfo();
+	
     
 }
