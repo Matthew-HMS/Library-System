@@ -186,7 +186,14 @@ public abstract class Users {
     	}
     	if( count == 0){System.out.println("會員修改失敗! 未找到此會員");}
     }
-    public abstract void viewInfo();
+    public void viewInfo(ArrayList<Users> users, int check){
+		System.out.println("使用者名稱:"+users.get(check).getName()+"\n"
+				+"身分:"+users.get(check).getIdentity()+"\n"
+				+"帳號:"+users.get(check).getAccount()+"\n"
+				+"密碼:"+users.get(check).getPassword()+"\n"
+				+"電話:"+users.get(check).getPhone()+"\n"
+				+"電子信箱:"+users.get(check).getEmail()+"\n");	
+	}
 	
     
 }
