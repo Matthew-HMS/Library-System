@@ -74,7 +74,7 @@ public class Library {
                             System.exit(0);
                             break;
                         case 8:
-                            admin.viewInfo();
+                            admin.viewInfo(users,check);
                             break;
                         default:
                             System.out.println("輸入錯誤");
@@ -113,7 +113,7 @@ public class Library {
                             member.searchBook(booklist);
                             break;
                         case 4:
-                            member.viewInfo();
+                            member.viewInfo(users,check);
                             break;
                         case 5:
                             user.editMember(users);
