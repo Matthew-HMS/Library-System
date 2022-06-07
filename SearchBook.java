@@ -8,67 +8,54 @@ public class SearchBook {
 
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("¬d¸ß®ÑÄy\n1.®ÑÄy¦WºÙ¬d¸ß\n2.®ÑÄyID¬d¸ß\n");
-		System.out.println("½Ğ¿é¤J¬d¸ß¤èªk:");
+		System.out.println("æŸ¥è©¢æ›¸ç±\n1.æ›¸ç±åç¨±æŸ¥è©¢\n2.æ›¸ç±IDæŸ¥è©¢\n");
+		System.out.println("è«‹è¼¸å…¥æŸ¥è©¢æ–¹æ³•:");
 		String searchWay = "";
 
 		do {
-			searchWay = scan.nextLine();// §ï¦¨String ¤ñ¸û¤£·|¥X¿ù
+			searchWay = scan.nextLine();// æ”¹æˆString æ¯”è¼ƒä¸æœƒå‡ºéŒ¯
 			if (searchWay.equals("1")) {
-				System.out.println("½Ğ¿é¤J¬d¸ß®ÑÄy¤§¦WºÙ:");
-				String bookName = scan.nextLine();
-				//int remainNum = 0;// ­pºâÁÙ³Ñ¤U´X¥»
+				System.out.println("è«‹è¼¸å…¥æŸ¥è©¢æ›¸ç±ä¹‹åç¨±:");
+				String bookName = scan.nextLine().toLowerCase();
+				//int remainNum = 0;// è¨ˆç®—é‚„å‰©ä¸‹å¹¾æœ¬
 				int count = 0;
-				// ¹Ï®ÑÀ]¦³³o¥»®Ñ
+				
 				for (int i = 0; i < booklist.size(); i++) {
-					
-						// ¥i¥H­É
+					//åœ–æ›¸é¤¨æœ‰é€™æœ¬æ›¸
+					if (booklist.get(i).getName().contains(bookName)) {
+						System.out.printf("æ›¸å:%s\tä½œè€…:%s\tå‡ºç‰ˆç¤¾:%s\tID:%s\tåœ–æ›¸åˆ†é¡:%s\tå­˜æ”¾å€åŸŸ:%s\n",
+								booklist.get(i).getName(), booklist.get(i).getAuthor(),
+								booklist.get(i).getPub(), booklist.get(i).getId(), booklist.get(i).getType(),
+								booklist.get(i).getAddress());// åˆ—å°å‡ºæ‰€æœ‰ç›¸åŒåç¨±ä¹‹æ›¸ç±
+					}
 						
-						
-							if (booklist.get(i).getName().contains(bookName)) {
-								//remainNum++;//
-								System.out.printf("®Ñ¦W:%s\t§@ªÌ:%s\t¥Xª©ªÀ:%s\tID:%s\t¹Ï®Ñ¤ÀÃş:%s\t¦s©ñ°Ï°ì:%s\n",
-										booklist.get(i).getName(), booklist.get(i).getAuthor(),
-										booklist.get(i).getPub(), booklist.get(i).getId(), booklist.get(i).getType(),
-										booklist.get(i).getAddress());// ¦C¦L¥X©Ò¦³¬Û¦P¦WºÙ¤§®ÑÄy
-							}
-						
-
-//						if (remainNum > 0) {
-//							System.out.printf("Á`¦@ÁÙ¦³%d¥i¥H­É", remainNum);
-//						} else {
-//							System.out.printf("¤Q¤À©êºp¡A¥»À]ªº%s³£³Q­É¥ú¤F", bookName);
-//						}
-
-					
-					// ¹Ï®ÑÀ]¨S¦³³o¥»®Ñ
+					// åœ–æ›¸é¤¨æ²’æœ‰é€™æœ¬æ›¸
 					else {
 						count++;
 						if (count == booklist.size()) {
-							System.out.println("¤Q¤À©êºp¡A¥»À]¨S¦³±z©Ò¬d¸ß¤§®ÑÄy");
+							System.out.println("ååˆ†æŠ±æ­‰ï¼Œæœ¬é¤¨æ²’æœ‰æ‚¨æ‰€æŸ¥è©¢ä¹‹æ›¸ç±");
 						}
 					}
 			
-					
 				} // for_i
-				System.out.println("¥H¤W¬O§Aªº·j´Mµ²ªG");//©ñ¦bfor¥~­±
+				System.out.println("ä»¥ä¸Šæ˜¯ä½ çš„æœå°‹çµæœ");//æ”¾åœ¨forå¤–é¢
 			} // end if_1
 
 			else if (searchWay.equals("2")) {
-				System.out.println("½Ğ¿é¤J¬d¸ß®ÑÄy¤§ID:");
+				System.out.println("è«‹è¼¸å…¥æŸ¥è©¢æ›¸ç±ä¹‹ID:");
 				String bookId = scan.nextLine();
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getId().equals(bookId)) {
-						// ¿é¥X®Ñ¥»¸ê®Æ
-						System.out.printf("®Ñ¦W:%s\t§@ªÌ:%s\t¥Xª©ªÀ:%s\tID:%s\t¹Ï®Ñ¤ÀÃş:%s\t¦s©ñ°Ï°ì:%s", booklist.get(i).getName(),
+						// è¼¸å‡ºæ›¸æœ¬è³‡æ–™
+						System.out.printf("æ›¸å:%s\tä½œè€…:%s\tå‡ºç‰ˆç¤¾:%s\tID:%s\tåœ–æ›¸åˆ†é¡:%s\tå­˜æ”¾å€åŸŸ:%s", booklist.get(i).getName(),
 								booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
-								booklist.get(i).getType(), booklist.get(i).getAddress());// ¦C¦L¥X©Ò¦³¬Û¦P¦WºÙ¤§®ÑÄy
+								booklist.get(i).getType(), booklist.get(i).getAddress());// åˆ—å°å‡ºæ‰€æœ‰ç›¸åŒåç¨±ä¹‹æ›¸ç±
 						break;
 					}
 				}
 			} 
 			else {
-				System.out.println("½Ğ¿é¤J¥¿½T¿ï¶µ");
+				System.out.println("è«‹è¼¸å…¥æ­£ç¢ºé¸é …");
 				searchWay = "-1";
 			}
 		} while (searchWay.equals("-1"));
