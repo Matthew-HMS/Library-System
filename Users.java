@@ -7,6 +7,7 @@ public abstract class Users {
     private String identity;//Admim or member
     private String email;
     private String phone;
+	private int fine;
 
     
     public Users(){}
@@ -17,7 +18,9 @@ public abstract class Users {
         setEmail(email);
         setPhone(phone);
         setIdentity(identity);
-    }
+		setFine(0);
+	}
+    
     public void setName(String name){
         this.name = name;
     }
@@ -54,6 +57,12 @@ public abstract class Users {
     public String getIdentity(){
         return identity;
     }
+	public void setFine(int fine){
+		this.fine = fine;
+	}
+	public int getFine(){
+		return fine;
+	}
 
     public void searchBook(ArrayList<Book> booklist){
         Scanner scan = new Scanner(System.in);
@@ -192,7 +201,18 @@ public abstract class Users {
 				+"帳號:"+users.get(check).getAccount()+"\n"
 				+"密碼:"+users.get(check).getPassword()+"\n"
 				+"電話:"+users.get(check).getPhone()+"\n"
-				+"電子信箱:"+users.get(check).getEmail()+"\n");	
+				+"電子信箱:"+users.get(check).getEmail()+"\n"
+				+"罰金:"+users.get(check).getFine()+" 元\n");	
+				
+	}
+	public void addFine(int dollars, ArrayList<Users> users, int check){
+		users.get(check).setFine(users.get(check).getFine()+dollars);
+		System.out.println("罰金:"+users.get(check).getFine()+" 元\n");
+	}
+
+	public void deleteUser(ArrayList<Users> users, int check) {
+		users.remove(check);
+		System.out.println("刪除成功!");
 	}
 	
     
