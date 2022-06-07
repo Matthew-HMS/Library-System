@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Book {
 	private String id;
 	private String name;  // 書名，不能重复
@@ -6,6 +8,9 @@ public class Book {
 	private String pub; // 出版社
 	private int hasLended; // 已借出數
 	private String address; // 
+	private LocalDate date;
+	private LocalDate returndate;
+	private LocalDate reserveduedate;
 	
 	public Book(){}
 	public Book(String id, String name, String type, String author, String pub, int hasLended,String address) {
@@ -43,9 +48,20 @@ public class Book {
 	public int getHasLended() {return hasLended;}
 	public void setHasLended(int hasLended) {this.hasLended = hasLended;}
 	
-	public String toString() {
-		return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub + " 借閱狀態:" + hasLended + " 館藏區:" + address + "]";
-	}
+	public LocalDate getDate() {return date;}
+	public void setBorrowDate(LocalDate d) {this.date = d;	this.returndate = d.plusWeeks(2L);}
+	public void setReserveDate(LocalDate d) {this.date = d;	this.reserveduedate = d.plusWeeks(1L);}
 	
+	public String toString() {
+		if (this.hasLended == 0) {
+				return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub + " 借閱狀態: 在架上 館藏區:" + address + "]";
+		}
+		else if(this.hasLended == 1) {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 須歸還日期:" + returndate + "]";
+		}
+		else {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已預訂 館藏區:" + address + " 開始預訂日期:" + date + " 預訂借閱期限:" + reserveduedate + "]";
+		}
+	}
 }
