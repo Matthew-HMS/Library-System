@@ -122,20 +122,21 @@ public abstract class Users {
 
 	public void editMember(ArrayList<Users> users) {
         Scanner s = new Scanner(System.in);
-    	System.out.print("請輸入欲更改Member姓名 :");
-        String name = s.nextLine();
+    	System.out.print("請輸入欲更改Member帳號 :");
+        String account = s.nextLine();
     	int input = 0;
     	int count = 0;
     	for (int i = 0; i < users.size(); i++) {
-    		if(users.get(i).getName().equals(name)) {
+    		if(users.get(i).getAccount().equals(account)) {
     			count = 1;
     			while(input != 6) {
-    				System.out.print("要更改什麼?\n1.account\n2.password\n3.name\n4.email\n5.phone\n6.離開\n請輸入: ");
+    				System.out.print("要更改什麼?\n1.password\n2.name\n3.email\n4.phone\n5.離開\n請輸入: ");
     				String inputs = s.nextLine();
     				input = Integer.parseInt(inputs);
     				switch(input){
     				
-    				case 1:
+    				/* 
+						case 1:
 					
     					System.out.print("請輸入帳號 : ");
     					String account = s.nextLine();
@@ -146,35 +147,36 @@ public abstract class Users {
     						System.out.println("修改帳號完成!");
     					}
     					else {System.out.println("修改帳號失敗! 此帳號已存在");}
-    					break;							
+    					break;
+						*/							
     				
-					case 2:
+					case 1:
     					System.out.println("請輸入密碼 : ");
     					users.get(i).setPassword(s.nextLine());
     					System.out.println("修改密碼完成!");
     					break;
     				
-					case 3:
+					case 2:
     					System.out.println("請輸入名稱 : ");
     					users.get(i).setName(s.nextLine());
     					System.out.println("修改名稱完成!");
     					break;
     				    				    			
-    				case 4:
+    				case 3:
     					System.out.println("請輸入email : ");
     					users.get(i).setEmail(s.nextLine());
     					System.out.println("修改email完成!");
     		
     					break;
         
-    				case 5:
+    				case 4:
     					System.out.println("請輸電話 : ");
     					users.get(i).setPhone(s.nextLine());
     					System.out.println("修改電話完成!");
     					break;
     					
     				default :
-    					input = 6;
+    					input = 5;
     					System.out.println("離開修改系統!");
     					break;
     				}
