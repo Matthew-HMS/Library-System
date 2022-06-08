@@ -12,7 +12,9 @@ public class Member extends Users {
     public String toString(){
         return getAccount() + " " + getName() + " " + getPhone();
     }
-    public void viewInfo(ArrayList<Users> users, int check){}
+    public void viewInfo(ArrayList<Users> users, int check){
+		super.viewInfo(users, check);
+	}
     public void payFine(){}
     public void borrowBook(ArrayList<Book> booklist) {
     	System.out.print("請選擇使用書名或ID借閱\n1.書名\n2.ID\n請輸入 :");
