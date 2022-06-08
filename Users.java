@@ -201,8 +201,7 @@ public abstract class Users {
 				+"帳號:"+users.get(check).getAccount()+"\n"
 				+"密碼:"+users.get(check).getPassword()+"\n"
 				+"電話:"+users.get(check).getPhone()+"\n"
-				+"電子信箱:"+users.get(check).getEmail()+"\n"
-				+"罰金:"+users.get(check).getFine()+" 元\n");	
+				+"電子信箱:"+users.get(check).getEmail()+"\n");	
 				
 	}
 	public void addFine(int dollars, ArrayList<Users> users, int check){
