@@ -48,7 +48,7 @@ public class Library {
                 System.out.println("您現在已登入為管理員");
                 Admin admin = new Admin();
                 do{
-                    System.out.println("輸入\n1.新增書籍\n2.修改書籍\n3.刪除書籍\n4.查詢書籍(借還記錄)\n5.查詢會員(借還記錄)\n6.登出\n7.離開\n8.查看個人資訊(修改資料)");
+                    System.out.println("輸入\n1.新增書籍\n2.修改書籍\n3.刪除書籍\n4.查詢書籍(借還記錄)\n5.查詢會員(借還記錄)\n6.登出\n7.離開\n8.查看、更改個人資訊");
                     input = s.nextInt();
                     switch(input){
                         case 1:
@@ -64,7 +64,7 @@ public class Library {
                             admin.searchBook(booklist);
                             break;
                         case 5:
-                            admin.searchUser(users);
+                            admin.searchMember(users);
                             break;
                         case 6:
                             check = -1;
@@ -100,7 +100,7 @@ public class Library {
                 }
                 
                 do{
-                    System.out.println("輸入\n1.借書\n2.還書\n3.查詢書籍\n4.查看個人資訊(借還記錄)\n5.更改個人資訊\n6.登出\n7.離開");
+                    System.out.println("輸入\n1.借書\n2.還書\n3.查詢書籍\n4.查看、更改個人資訊(借還記錄)\n5.登出\n6.離開");
                     input = s.nextInt();
                     switch(input){
                         case 1:
@@ -116,13 +116,9 @@ public class Library {
                             member.viewInfo(users,check);
                             break;
                         case 5:
-                            user.editMember(users);
-                        break;
-                            
-                        case 6:
                             check = -1;
                             break;
-                        case 7:
+                        case 6:
                             System.out.println("感謝您的使用");
                             System.exit(0);
                             break;

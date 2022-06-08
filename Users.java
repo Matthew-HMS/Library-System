@@ -9,6 +9,7 @@ public abstract class Users {
     private String phone;
 	private int fine;
 
+	Scanner scan = new Scanner(System.in);
     
     public Users(){}
     public Users(String account, String password, String name, String email, String phone, String identity){
@@ -65,7 +66,7 @@ public abstract class Users {
 	}
 
     public void searchBook(ArrayList<Book> booklist){
-        Scanner scan = new Scanner(System.in);
+        
 
 		System.out.println("查詢書籍\n1.書籍名稱查詢\n2.書籍ID查詢\n3.列出所有藏書\n4.返回");
 		System.out.println("請輸入查詢方法:");
@@ -152,7 +153,7 @@ public abstract class Users {
     	for (int i = 0; i < users.size(); i++) {
     		if(users.get(i).getAccount().equals(account)) {
     			count = 1;
-    			while(input != 6) {
+    			while(input != 5) {
     				System.out.print("要更改什麼?\n1.password\n2.name\n3.email\n4.phone\n5.離開\n請輸入: ");
     				String inputs = s.nextLine();
     				input = Integer.parseInt(inputs);
@@ -174,10 +175,16 @@ public abstract class Users {
 						*/							
     				
 					case 1:
-    					System.out.println("請輸入密碼 : ");
-    					users.get(i).setPassword(s.nextLine());
-    					System.out.println("修改密碼完成!");
-    					break;
+    					System.out.println("請輸入舊密碼 : ");
+						String oldPassword = s.nextLine();
+						if(users.get(i).getPassword().equals(oldPassword)) {
+							System.out.println("請輸入新密碼 : ");
+							users.get(i).setPassword(s.nextLine());
+    						System.out.println("修改密碼完成!");
+    						break;
+						}
+						else {System.out.println("修改密碼失敗! 舊密碼錯誤");break;}
+    					
     				
 					case 2:
     					System.out.println("請輸入名稱 : ");
@@ -215,7 +222,21 @@ public abstract class Users {
 				+"帳號:"+users.get(check).getAccount()+"\n"
 				+"密碼:"+users.get(check).getPassword()+"\n"
 				+"電話:"+users.get(check).getPhone()+"\n"
-				+"電子信箱:"+users.get(check).getEmail()+"\n");	
+				+"電子信箱:"+users.get(check).getEmail()+"\n"
+				+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));	
+		System.out.println("1.編輯資料\n2.離開");
+		String input = "";
+		input = scan.nextLine();
+		if(input.equals("1")){
+			editMember(users);
+			viewInfo(users, check);
+		}
+		else if(input.equals("2")){
+			System.out.println("離開查看個人資訊!");
+		}
+		else {
+			System.out.println("輸入錯誤!");
+		}
 				
 	}
 	public void addFine(int dollars, ArrayList<Users> users, int check){

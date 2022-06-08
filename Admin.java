@@ -131,7 +131,70 @@ public class Admin extends Users{
     }
 
     public void searchBook(){}
-	public void searchUser(ArrayList<Users> user){
+	public void searchMember(ArrayList<Users> users) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開");
+		System.out.println("請輸入查詢方法:");
+		String searchWay = scan.nextLine();
+		boolean exist = false;
+		do {
+			
+			if(searchWay.equals("1")) {
+				System.out.println("請輸入欲查詢會員的名字:");
+				String memberName = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getName().equals(memberName)) {
+						viewInfo(users, i);
+						exist = true;
+					}//if_name
+				}//for
+				if(!exist) {System.out.println("查無此會員!");}
+			}//if_search1
+			else if(searchWay.equals("2")) {
+				System.out.println("請輸入欲查詢會員的帳號:");
+				String memberAccount = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getAccount().equals(memberAccount)) {
+						viewInfo(users, i);
+						exist = true;
+					}//if_account
+				}//for
+				if(!exist) {System.out.println("查無此會員!");}
+			}
+			else if(searchWay.equals("3")) {
+				System.out.println("請輸入欲查詢會員的信箱:");
+				String memberEmail = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getEmail().equals(memberEmail)) {
+						viewInfo(users, i);
+						exist = true;
+					}//if_email
+				}//for
+				if(!exist) {System.out.println("查無此會員!");}
+			}
+			else if(searchWay.equals("4")) {
+				System.out.println("請輸入查詢會員的電話:");
+				String memberPhone = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getPhone().equals(memberPhone)) {
+						super.viewInfo(users, i);
+						exist = true;
+					}//if_phone
+				}//for
+				if(!exist) {System.out.println("查無此會員!");}
+			}
+			else if(searchWay.equals("5")) {
+				System.out.println("你已離開查詢會員功能");
+			}
+			else {
+				searchWay = "-1";
+				System.out.println("請輸入正確選項");
+			}
+		}while(searchWay.equals("-1"));
+		
+		
 	}
 
 }
