@@ -70,6 +70,7 @@ public abstract class Users {
 		System.out.println("查詢書籍\n1.書籍名稱查詢\n2.書籍ID查詢\n3.列出所有藏書\n4.返回");
 		System.out.println("請輸入查詢方法:");
 		String searchWay = "";
+		String status = "";
 
 		do {
 			searchWay = scan.nextLine();// 改成String 比較不會出錯
@@ -78,13 +79,18 @@ public abstract class Users {
 				String bookName = scan.nextLine().toLowerCase();
 				//int remainNum = 0;// 計算還剩下幾本
 				int count = 0;
+				
 				// 圖書館有這本書
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getName().contains(bookName)) {
-						System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\n",
+						if(booklist.get(i).getHasLended() == 0){status = "在架上";}
+						else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
+						else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
+						else{status = "未知狀態";}
+						System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n",
 								booklist.get(i).getName(), booklist.get(i).getAuthor(),
 								booklist.get(i).getPub(), booklist.get(i).getId(), booklist.get(i).getType(),
-								booklist.get(i).getAddress());// 列印出所有相同名稱之書籍
+								booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
 					}
 					// 圖書館沒有這本書
 					else {count++;}
@@ -104,18 +110,26 @@ public abstract class Users {
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getId().equals(bookId)) {
 						// 輸出書本資料
-						System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\n", booklist.get(i).getName(),
+						if(booklist.get(i).getHasLended() == 0){status = "在架上";}
+						else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
+						else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
+						else{status = "未知狀態";}
+						System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n", booklist.get(i).getName(),
 								booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
-								booklist.get(i).getType(), booklist.get(i).getAddress());// 列印出所有相同名稱之書籍
+								booklist.get(i).getType(), booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
 						break;
 					}
 				}
 			} 
             else if (searchWay.equals("3")) {
                 for (int i = 0; i < booklist.size(); i++) {
-                    System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\n", booklist.get(i).getName(),
+					if(booklist.get(i).getHasLended() == 0){status = "在架上";}
+					else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
+					else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
+					else{status = "未知狀態";}
+                    System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n", booklist.get(i).getName(),
                             booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
-                            booklist.get(i).getType(), booklist.get(i).getAddress());// 列印出所有相同名稱之書籍
+                            booklist.get(i).getType(), booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
                 }
             }
             else if (searchWay.equals("4")) {

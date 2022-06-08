@@ -14,7 +14,7 @@ public class Member extends Users {
     }
     public void viewInfo(ArrayList<Users> users, int check){
 		super.viewInfo(users, check);
-		System.out.println("罰金:"+users.get(check).getFine()+" 元\n");
+		System.out.println("應繳罰款 : "+users.get(check).getFine()+" 元\n");
 	}
     public void payFine(){}
     public void borrowBook(ArrayList<Book> booklist) {
