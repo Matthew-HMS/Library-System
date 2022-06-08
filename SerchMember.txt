@@ -1,0 +1,133 @@
+public class SearchMember {
+	public void searchMember(ArrayList<Users> users) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開");
+		System.out.println("請輸入查詢方法:");
+		String searchWay = scan.nextLine();
+		
+		do {
+			
+			if(searchWay.equals("1")) {
+				System.out.println("請輸入欲查詢會員的名字:");
+				String memberName = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getName().equals(memberName)) {
+						System.out.println("會員名稱:"+users.get(i).getName()+"\n"
+								+"身分:"+users.get(i).getIdentity()+"\n"
+								+"帳號:"+users.get(i).getAccount()+"\n"
+								+"密碼:"+users.get(i).getPassword()+"\n"
+								+"電話:"+users.get(i).getPhone()+"\n"
+								+"電子信箱:"+users.get(i).getEmail()+"\n"
+								+"罰金:"+users.get(i).getFine()+" 元\n");
+						
+						System.out.println("要修改個人資料嗎?\n1.更改\n2.離開");
+						String change = scan.nextLine();
+						int check = Integer.parseInt(change);
+						switch(check) {
+							case 1:
+								editMember(users);
+								
+							case 2:
+								System.out.println("你已離開查詢功能");
+								break;
+						}//switch
+						
+					}//if_name
+				}//for
+			}//if_search1
+			else if(searchWay.equals("2")) {
+				System.out.println("請輸入欲查詢會員的帳號:");
+				String memberAccount = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getAccount().equals(memberAccount)) {
+						System.out.println("會員名稱:"+users.get(i).getName()+"\n"
+								+"身分:"+users.get(i).getIdentity()+"\n"
+								+"帳號:"+users.get(i).getAccount()+"\n"
+								+"密碼:"+users.get(i).getPassword()+"\n"
+								+"電話:"+users.get(i).getPhone()+"\n"
+								+"電子信箱:"+users.get(i).getEmail()+"\n"
+								+"罰金:"+users.get(i).getFine()+" 元\n");
+						
+						System.out.println("要修改個人資料嗎?\n1.更改\n2.離開");
+						String change = scan.nextLine();
+						int check = Integer.parseInt(change);
+						switch(check) {
+							case 1:
+								editMember(users);
+								
+							case 2:
+								System.out.println("你已離開查詢功能");
+								break;
+						}//switch
+					}//if_account
+				}//for
+			}
+			else if(searchWay.equals("3")) {
+				System.out.println("請輸入欲查詢會員的信箱:");
+				String memberEmail = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getEmail().equals(memberEmail)) {
+						System.out.println("會員名稱:"+users.get(i).getName()+"\n"
+								+"身分:"+users.get(i).getIdentity()+"\n"
+								+"帳號:"+users.get(i).getAccount()+"\n"
+								+"密碼:"+users.get(i).getPassword()+"\n"
+								+"電話:"+users.get(i).getPhone()+"\n"
+								+"電子信箱:"+users.get(i).getEmail()+"\n"
+								+"罰金:"+users.get(i).getFine()+" 元\n");
+						
+						System.out.println("要修改個人資料嗎?\n1.更改\n2.離開");
+						String change = scan.nextLine();
+						int check = Integer.parseInt(change);
+						switch(check) {
+							case 1:
+								editMember(users);
+								
+							case 2:
+								System.out.println("你已離開查詢功能");
+								break;
+						}//switch
+					}//if_email
+				}//for
+			}
+			else if(searchWay.equals("4")) {
+				System.out.println("請輸入查詢會員的電話:");
+				String memberPhone = scan.nextLine();
+				for(int i = 0; i < users.size();i++) {
+					if(users.get(i).getPhone().equals(memberPhone)) {
+						System.out.println("會員名稱:"+users.get(i).getName()+"\n"
+								+"身分:"+users.get(i).getIdentity()+"\n"
+								+"帳號:"+users.get(i).getAccount()+"\n"
+								+"密碼:"+users.get(i).getPassword()+"\n"
+								+"電話:"+users.get(i).getPhone()+"\n"
+								+"電子信箱:"+users.get(i).getEmail()+"\n"
+								+"罰金:"+users.get(i).getFine()+" 元\n");
+						
+						System.out.println("要修改個人資料嗎?\n1.更改\n2.離開");
+						String change = scan.nextLine();
+						int check = Integer.parseInt(change);
+						switch(check) {
+							case 1:
+								editMember(users);
+								
+							case 2:
+								System.out.println("你已離開查詢功能");
+								break;
+						}//switch
+					}//if_phone
+				}//for
+				
+			}
+			else if(searchWay.equals("5")) {
+				System.out.println("你已離開查詢會員功能"));
+			}
+			else {
+				searchWay = "-1";
+				System.out.println("請輸入正確選項");
+			}
+		}while(searchWay.equals("-1"));
+		
+		
+	}
+}
