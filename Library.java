@@ -1,8 +1,8 @@
 import java.util.*;
+import javax.swing.*;
 
 public class Library {
     public static void main(String [] args){
-        System.out.println("歡迎來到央央圖書館借還書系統");
 
         ArrayList<Users> users = new ArrayList<Users>();//array to store users
         ArrayList<Book> booklist = new ArrayList<Book>();//array to store book
@@ -20,24 +20,24 @@ public class Library {
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
             do{
-                System.out.println("\n輸入\n1.登入\n2.註冊\n3.搜尋書籍\n4.離開");
-                input = s.nextInt();
+                String [] option = {"登入"," 註冊","查詢書籍","離開系統"};
+                input = JOptionPane.showOptionDialog(null, "歡迎來到央央圖書館借還書系統","Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[3]);
                 switch(input){
-                    case 1:
+                    case 0:
                         check = r.login(users);
                         break;
-                    case 2:
+                    case 1:
                         r.register(users);
                         break;
-                    case 3:
+                    case 2:
                         user.searchBook(booklist);
                         break;
-                    case 4:
-                        System.out.println("感謝您的使用");
-                        System.exit(0);
-                        break;
+                    case 3:
+                        int quit = JOptionPane.showConfirmDialog(null, "確定要離開嗎?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(quit == 0){JOptionPane.showMessageDialog(null, "感謝您的使用","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
+                        else{break;}
                     default:
-                        System.out.println("輸入錯誤");
+                        System.exit(0);
                         break;
         
         
@@ -129,7 +129,7 @@ public class Library {
                 }while(check != -1);
             }
     
-        }while(input != 4);
+        }while(input != 3);
     }
 }
 
