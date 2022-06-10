@@ -13,9 +13,16 @@ public class Library {
 
         users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
         users.add(new Student("B123","0000","Owner","student@gmail.com","0912345678","Student"));
-        booklist.add(new Book("001","little prince","funny","jk rowling","crown pub",0,"A"));
-        booklist.add(new Book("002","little prince 2","funny","jk rowling","crown pub",0,"B"));
-        booklist.add(new Book("003","Little Red Riding Hood","scary","no idea","test pub",0,"A"));
+        booklist.add(new Book("001","小王子","adventure","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"A"));
+        booklist.add(new Book("002","小王子2","funny","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"B"));
+        booklist.add(new Book("003","傲慢與偏見","	self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
+        booklist.add(new Book("004","水滸傳","classic","施耐庵","南海印刷",0,"A"));
+        booklist.add(new Book("005","哈利波特－消失的密室","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"C"));
+        booklist.add(new Book("006","哈利波特－神秘的魔法石","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"D"));
+        booklist.add(new Book("007","哈利波特－阿茲卡班的逃犯","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"B"));
+        booklist.add(new Book("008","魔戒","mystery","J·R·R·托爾金","聯經出版公司",0,"A"));
+        booklist.add(new Book("009","達文西密碼","scary","丹·布朗","時報出版",0,"B"));
+        booklist.add(new Book("010","福爾摩斯","detective","亞瑟．柯南．道爾","遠流",0,"A"));
         
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
