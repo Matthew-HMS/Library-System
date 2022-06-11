@@ -85,9 +85,9 @@ public class Member extends Users{
                 		user.borrowlist.add(borrowbook);
                 		user.borrowrecord.add(borrowbook);
                 		System.out.println("書本借閱成功!");
-                		count2 ++;
                 		}
-                	break;
+                	
+				count2 ++;break;
         		}
         		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 1) {System.out.println("無法借閱，此書已被借出");count2++;break;}
         	}
