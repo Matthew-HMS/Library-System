@@ -1,4 +1,7 @@
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
@@ -70,47 +73,42 @@ public abstract class Users {
 
     public void searchBook(ArrayList<Book> booklist) throws FileNotFoundException{
         
-
-		System.out.println("查詢書籍\n1.書籍名稱查詢\n2.書籍ID查詢\n3.列出所有藏書\n4.返回");
-		System.out.println("請輸入查詢方法:");
-		String searchWay = "";
+		String [] options = {"書籍名稱查詢","書籍ID查詢","作者名稱查詢","列出所有藏書","返回"};
+		int searchWay = JOptionPane.showOptionDialog(null, "請選擇查詢方法 :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
 		String status = "";
 
 		do {
-			searchWay = scan.nextLine();// 改成String 比較不會出錯
-			if (searchWay.equals("1")) {
-				System.out.println("請輸入查詢書籍之名稱:");
-				String bookName = scan.nextLine().toLowerCase();
+			if (searchWay == 0) {
+				String bookName = JOptionPane.showInputDialog(null, "請輸入查詢書籍之名稱 :", "Search Book", JOptionPane.QUESTION_MESSAGE);
+				bookName = bookName.toLowerCase();
 				//int remainNum = 0;// 計算還剩下幾本
 				int count = 0;
 				
 				// 圖書館有這本書
 				for (int i = 0; i < booklist.size(); i++) {
-					if (booklist.get(i).getName().contains(bookName)) {
+					if (booklist.get(i).getName().toLowerCase().contains(bookName)) {
 						if(booklist.get(i).getHasLended() == 0){status = "在架上";}
 						else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
 						else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
 						else{status = "未知狀態";}
-						System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n",
-								booklist.get(i).getName(), booklist.get(i).getAuthor(),
-								booklist.get(i).getPub(), booklist.get(i).getId(), booklist.get(i).getType(),
-								booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
+						JOptionPane.showMessageDialog(null,"書名 :" + booklist.get(i).getName() + "\t作者:" + booklist.get(i).getAuthor() +"\t出版社:" 
+							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\t圖書分類:" + booklist.get(i).getType() + "\t存放區域:" 
+							+ booklist.get(i).getAddress() + "\t書籍狀態:" + status + "\n");
 					}
 					// 圖書館沒有這本書
 					else {count++;}
 				} // for_i
 				
-               		 	if (count == booklist.size()) {
-                    		System.out.println("十分抱歉，本館沒有您所查詢之書籍");
-                		}
+               	if (count == booklist.size()) {
+                    JOptionPane.showMessageDialog(null, "十分抱歉，本館沒有您所查詢之書籍", "Search Book", JOptionPane.ERROR_MESSAGE);
+                }
 				else{
-                   		 System.out.println("以上是你的搜尋結果");
-               			}
+                   	JOptionPane.showMessageDialog(null, "以上是你的搜尋結果", "Search Book", JOptionPane.INFORMATION_MESSAGE);
+            	}
 			} // end if_1
 
-			else if (searchWay.equals("2")) {
-				System.out.println("請輸入查詢書籍之ID:");
-				String bookId = scan.nextLine();
+			else if (searchWay == 1) {
+				String bookId = JOptionPane.showInputDialog(null, "請輸入查詢書籍之ID :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getId().equals(bookId)) {
 						// 輸出書本資料
@@ -118,122 +116,118 @@ public abstract class Users {
 						else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
 						else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
 						else{status = "未知狀態";}
-						System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n", booklist.get(i).getName(),
-								booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
-								booklist.get(i).getType(), booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
+						JOptionPane.showMessageDialog(null,"書名 :" + booklist.get(i).getName() + "\t作者:" + booklist.get(i).getAuthor() +"\t出版社:" 
+							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\t圖書分類:" + booklist.get(i).getType() + "\t存放區域:" 
+							+ booklist.get(i).getAddress() + "\t書籍狀態:" + status + "\n");
 						break;
 					}
 				}
 			} 
-            else if (searchWay.equals("3")) {
+			else if (searchWay == 2) {
+				String author = JOptionPane.showInputDialog(null, "請輸入作者名稱查詢 :", "Search Book", JOptionPane.QUESTION_MESSAGE);
+				for (int i = 0; i < booklist.size(); i++) {
+					if (booklist.get(i).getName().equals(author)) {
+						// 輸出書本資料
+						if(booklist.get(i).getHasLended() == 0){status = "在架上";}
+						else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
+						else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
+						else{status = "未知狀態";}
+						JOptionPane.showMessageDialog(null,"書名 :" + booklist.get(i).getName() + "\t作者:" + booklist.get(i).getAuthor() +"\t出版社:" 
+							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\t圖書分類:" + booklist.get(i).getType() + "\t存放區域:" 
+							+ booklist.get(i).getAddress() + "\t書籍狀態:" + status + "\n");
+					}
+				}
+			}
+            else if (searchWay == 3) {
                 printBooklist(booklist);
             }
-            else if (searchWay.equals("4")) {
-                System.out.println("您已離開查詢書籍功能");
+            else if (searchWay == 4) {
+                JOptionPane.showMessageDialog(null, "您已離開查詢書籍功能", "Search Book", JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
 			else {
-				System.out.println("請輸入正確選項");
-				searchWay = "-1";
+				JOptionPane.showMessageDialog(null, "請輸入正確選項", "Search Book", JOptionPane.ERROR_MESSAGE);
+				searchWay = -1;
 			}
-		} while (searchWay.equals("-1"));
+		} while (searchWay == -1);
     }
 
 	public void editMember(ArrayList<Users> users) {
-        Scanner s = new Scanner(System.in);
-    	System.out.print("請輸入欲更改Member帳號 :");
-        String account = s.nextLine();
+        String account = JOptionPane.showInputDialog(null, "請輸入欲更改Member帳號 :", "Edit Member", JOptionPane.QUESTION_MESSAGE);
     	int input = 0;
     	int count = 0;
     	for (int i = 0; i < users.size(); i++) {
     		if(users.get(i).getAccount().equals(account)) {
     			count = 1;
-    			while(input != 5) {
-    				System.out.print("要更改什麼?\n1.password\n2.name\n3.email\n4.phone\n5.離開\n請輸入: ");
-    				String inputs = s.nextLine();
-    				input = Integer.parseInt(inputs);
-    				switch(input){
+    			while(input != 4) {
+					String [] option = {"Password","Name","Email","Phone","離開"};
+					input = JOptionPane.showOptionDialog(null, "要更改什麼?", "Edit Member", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[4]);
+    				switch(input){	
     				
-    				/* 
-						case 1:
-					
-    					System.out.print("請輸入帳號 : ");
-    					String account = s.nextLine();
-    					boolean accExist = false;
-    					for (int j = 0; j <users.size(); j++) {if (users.get(j).getAccount().equals(account)) {accExist = true;}}
-    					if(accExist == false) {
-    						users.get(i).setAccount(account);
-    						System.out.println("修改帳號完成!");
-    					}
-    					else {System.out.println("修改帳號失敗! 此帳號已存在");}
-    					break;
-						*/							
-    				
-					case 1:
-    					System.out.println("請輸入舊密碼 : ");
-						String oldPassword = s.nextLine();
+					case 0:
+    					
+						String oldPassword = JOptionPane.showInputDialog(null, "請輸入舊密碼 : ", "Edit Member", JOptionPane.QUESTION_MESSAGE);
 						if(users.get(i).getPassword().equals(oldPassword)) {
-							System.out.println("請輸入新密碼 : ");
-							users.get(i).setPassword(s.nextLine());
-    						System.out.println("修改密碼完成!");
+							users.get(i).setPassword(JOptionPane.showInputDialog(null, "請輸入新密碼 : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    						JOptionPane.showMessageDialog(null, "修改密碼完成!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     						break;
 						}
-						else {System.out.println("修改密碼失敗! 舊密碼錯誤");break;}
-    					
+						else {
+							JOptionPane.showMessageDialog(null, "修改密碼失敗! 舊密碼錯誤", "Edit Member", JOptionPane.ERROR_MESSAGE);
+							break;
+						}
     				
-					case 2:
-    					System.out.println("請輸入名稱 : ");
-    					users.get(i).setName(s.nextLine());
-    					System.out.println("修改名稱完成!");
+					case 1:
+    					users.get(i).setName(JOptionPane.showInputDialog(null, "請輸入名稱 : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "修改名稱完成!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				    				    			
-    				case 3:
-    					System.out.println("請輸入email : ");
-    					users.get(i).setEmail(s.nextLine());
-    					System.out.println("修改email完成!");
-    		
+    				case 2:
+    					users.get(i).setEmail(JOptionPane.showInputDialog(null, "請輸入email : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "修改email完成!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
         
-    				case 4:
-    					System.out.println("請輸電話 : ");
-    					users.get(i).setPhone(s.nextLine());
-    					System.out.println("修改電話完成!");
+    				case 3:
+    					users.get(i).setPhone(JOptionPane.showInputDialog(null, "請輸電話 : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "修改電話完成!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
     					
     				default :
-    					input = 5;
-    					System.out.println("離開修改系統!");
+    					input = 4;
+    					JOptionPane.showMessageDialog(null, "離開修改系統!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				}
     			}
     			break;
     		}
     	}
-    	if( count == 0){System.out.println("會員修改失敗! 未找到此會員");}
+    	if( count == 0){JOptionPane.showMessageDialog(null, "會員修改失敗! 未找到此會員");}
     }
     public void viewInfo(ArrayList<Users> users, int check){
-		System.out.println("使用者名稱:"+users.get(check).getName()+"\n"
-				+"身分:"+users.get(check).getIdentity()+"\n"
-				+"帳號:"+users.get(check).getAccount()+"\n"
-				+"密碼:"+users.get(check).getPassword()+"\n"
-				+"電話:"+users.get(check).getPhone()+"\n"
-				+"電子信箱:"+users.get(check).getEmail()+"\n"
-				+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));	
-		System.out.println("1.編輯資料\n2.離開");
-		String input = "";
-		input = scan.nextLine();
-		if(input.equals("1")){
+		String output = ("使用者名稱:"+users.get(check).getName()+"\n"
+		+"身分:"+users.get(check).getIdentity()+"\n"
+		+"帳號:"+users.get(check).getAccount()+"\n"
+		+"密碼:"+users.get(check).getPassword()+"\n"
+		+"電話:"+users.get(check).getPhone()+"\n"
+		+"電子信箱:"+users.get(check).getEmail()+"\n"
+		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));
+		
+		String [] option = {"編輯資料","離開"};
+		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
+
+		if(input == 0){
 			editMember(users);
 			viewInfo(users, check);
 		}
-		else if(input.equals("2")){
-			System.out.println("離開查看個人資訊!");
+		else if(input == 1){
+			JOptionPane.showMessageDialog(null, "離開查看個人資訊!", "User Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
-			System.out.println("輸入錯誤!");
+			System.exit(0);
 		}
 				
 	}
+	/* 
 	public void addFine(int dollars, ArrayList<Users> users, int check){
 		users.get(check).setFine(users.get(check).getFine()+dollars);
 		System.out.println("罰金:"+users.get(check).getFine()+" 元\n");
@@ -243,6 +237,7 @@ public abstract class Users {
 		users.remove(check);
 		System.out.println("刪除成功!");
 	}
+	*/
 	public void printBooklist(ArrayList<Book> booklist) throws FileNotFoundException {
 		String status = "";
 		String print = "%-30s\t %-30s\t %-20s %-15s %-20s %-10s %-10s\n";
