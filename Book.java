@@ -1,6 +1,15 @@
 import java.time.LocalDate;
 
-public class Book {
+public class Book implements Cloneable{
+	public Object clone() {
+		Book book = null;
+		try{
+			book = (Book)super.clone();
+		}catch(CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return book;
+	}
 	private String id;
 	private String name;  // 書名，不能重复
 	private String type;
