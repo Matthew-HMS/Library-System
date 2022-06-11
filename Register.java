@@ -6,7 +6,7 @@ public class Register {
     
     Scanner s = new Scanner(System.in);
     Random r = new Random();
-    //SendMail mail = new SendMail();
+    SendMail mail = new SendMail();
 
     public void register(ArrayList<Users> users){
         boolean repeat = true;
@@ -43,6 +43,13 @@ public class Register {
             else if(input == 2){identity = "Teacher";}
             else if(input == 3){identity = "Staff";}
             else{System.exit(0);}
+            if(identity.equals("Admin")){
+                String scode = JOptionPane.showInputDialog(null, "Please input the secruity code : ", "Register", JOptionPane.QUESTION_MESSAGE);
+                if(!scode.equals("0000")){
+                    JOptionPane.showMessageDialog(null, "Register failed! The secruity code is wrong.", "Register", JOptionPane.ERROR_MESSAGE);
+                    continue;
+                }
+            }
             
             if (account.equals("") || password.equals("") || name.equals("") || email.equals("") || phone.equals("") || identity.equals("")){
                 JOptionPane.showMessageDialog(null, "Register failed! You didn't input all information required.", "Register", JOptionPane.ERROR_MESSAGE);
@@ -86,7 +93,7 @@ public class Register {
                 }
                 */
                 Users user = new Student(account, password, name, email, phone, identity);
-                System.out.println("You have successfully registered! You will receive an email notification.");
+                JOptionPane.showMessageDialog(null, "You have successfully registered! You will receive an email notification.", "Register", JOptionPane.INFORMATION_MESSAGE);
                 users.add(user);
                 repeat = false;
 
