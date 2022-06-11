@@ -13,7 +13,10 @@ public abstract class Users {
     private String identity;//Admim or member
     private String email;
     private String phone;
-	private int fine;
+	private int fine = 0;
+	private String notice="";
+	ArrayList<Book> borrowlist = new ArrayList<Book>();
+	ArrayList<Book> borrowrecord = new ArrayList<Book>();
 
 	Scanner scan = new Scanner(System.in);
     
@@ -28,48 +31,22 @@ public abstract class Users {
 		setFine(0);
 	}
     
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getName(){
-        return name;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public String getPassword(){
-        return password;
-    }
-    public void setAccount(String account){
-        this.account = account;
-    }
-    public String getAccount(){
-        return account;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setIdentity(String identity){
-        this.identity = identity;
-    }
-    public String getIdentity(){
-        return identity;
-    }
-	public void setFine(int fine){
-		this.fine = fine;
-	}
-	public int getFine(){
-		return fine;
-	}
+    public void setName(String name){this.name = name;}
+    public String getName(){return name;}
+    public void setPassword(String password){this.password = password;}
+    public String getPassword(){return password;}
+    public void setAccount(String account){this.account = account;}
+    public String getAccount(){return account;}
+    public void setEmail(String email) {this.email = email;}
+    public String getEmail() {return email;}
+    public void setPhone(String phone) {this.phone = phone;}
+    public String getPhone() {return phone;}
+    public void setIdentity(String identity){this.identity = identity;}
+    public String getIdentity(){return identity;}
+	public void setFine(int fine){this.fine = fine;}
+	public int getFine(){return fine;}
+	public void addNotice(String notice) {this.notice += notice;}
+	public String getNotice() {return this.notice;}
 
     public void searchBook(ArrayList<Book> booklist) throws FileNotFoundException{
         
@@ -212,7 +189,7 @@ public abstract class Users {
 		+"電子信箱:"+users.get(check).getEmail()+"\n"
 		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));
 		
-		String [] option = {"編輯資料","離開"};
+		String [] option = {"編輯資料","清除罰金紀錄","離開"};
 		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
 
 		if(input == 0){
@@ -220,6 +197,9 @@ public abstract class Users {
 			viewInfo(users, check);
 		}
 		else if(input == 1){
+			resetFine(users,check);
+		}
+		else if(input == 2){
 			JOptionPane.showMessageDialog(null, "離開查看個人資訊!", "User Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
@@ -227,12 +207,17 @@ public abstract class Users {
 		}
 				
 	}
-	/* 
-	public void addFine(int dollars, ArrayList<Users> users, int check){
-		users.get(check).setFine(users.get(check).getFine()+dollars);
-		System.out.println("罰金:"+users.get(check).getFine()+" 元\n");
-	}
 
+	public void checkFine( ArrayList<Users> users, int check) {
+		int fine = 0;
+		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
+			int overduedays =users.get(check).borrowlist.get(i).getReturnDueDate().compareTo(users.get(check).borrowlist.get(i).getBorrowDate());
+			if (overduedays > 14) {fine += (overduedays-14) * users.get(check).getFinePerDay();}
+		}
+		users.get(check).setFine(fine);
+	}
+	/* 
+	
 	public void deleteUser(ArrayList<Users> users, int check) {
 		users.remove(check);
 		System.out.println("刪除成功!");
@@ -256,6 +241,10 @@ public abstract class Users {
 		ps.close();
 		System.out.println("書籍列表已列出至D:BookList.txt");
 	}
+
+	public abstract void resetFine(ArrayList<Users> users, int check);
+	public abstract int getBorrowLimit();
+	public abstract int getFinePerDay();
 	
     
 }

@@ -215,4 +215,20 @@ public class Admin extends Users{
 		System.out.println("會員列表已列出至D:MemberList.txt");
 	}
 
+	public void resetFine(ArrayList<Users> users , int check)
+    {
+    	users.get(check).checkFine(users, check);
+    	if(users.get(check).getFine() != 0) {
+    		System.out.print("請確認此會員罰金是否已繳清?\n若已繳清 請輸入\"yes\"以清除未繳罰金(若輸入任意其他字串則取消) :");
+    		String input = scan.nextLine();
+    		if (input.equals("yes")) {
+    			users.get(check).setFine(0);
+    			System.out.println("罰金已歸零!");}
+    		else {System.out.println("罰金未歸零!");}
+    	}
+    	else {System.out.println("此會員無未繳罰金!");}
+    }
+	public int getBorrowLimit() {return 0;}
+	public int getFinePerDay() {return 0;}
+
 }
