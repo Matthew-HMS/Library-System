@@ -152,7 +152,7 @@ public class Member extends Users{
 					for(int j = 0; j < lineup.size(); j++) {if (lineup.get(j).getReserveMember().equals(user)){lineup.remove(j);break;}}//取消排隊
 					System.out.print("取消預約成功!");
 				}
-				break;
+				count++; break;
     		}
     	}
     	if(hasreserve = false) {System.out.println("無法取消預約 未預約此書!");}
