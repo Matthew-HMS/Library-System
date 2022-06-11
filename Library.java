@@ -1,8 +1,9 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 import javax.swing.*;
 
 public class Library {
-    public static void main(String [] args){
+    public static void main(String [] args) throws FileNotFoundException{
 
         ArrayList<Users> users = new ArrayList<Users>();//array to store users
         ArrayList<Book> booklist = new ArrayList<Book>();//array to store book
@@ -15,7 +16,7 @@ public class Library {
         users.add(new Student("B123","0000","Owner","student@gmail.com","0912345678","Student"));
         booklist.add(new Book("001","小王子","adventure","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"A"));
         booklist.add(new Book("002","小王子2","funny","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"B"));
-        booklist.add(new Book("003","傲慢與偏見","	self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
+        booklist.add(new Book("003","傲慢與偏見","self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
         booklist.add(new Book("004","水滸傳","classic","施耐庵","南海印刷",0,"A"));
         booklist.add(new Book("005","哈利波特－消失的密室","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"C"));
         booklist.add(new Book("006","哈利波特－神秘的魔法石","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"D"));
@@ -139,4 +140,3 @@ public class Library {
         }while(input != 3);
     }
 }
-
