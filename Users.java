@@ -1,16 +1,16 @@
 import java.util.*;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-
 
 public abstract class Users {
     private String name;
     private String password;
     private String account;//ID
-    private String identity;//Admim or member
+    private String identity;//Admin or member
     private String email;
     private String phone;
 	private int fine;
+	private String notice;
+	ArrayList<Book> borrowlist = new ArrayList<Book>();
+	ArrayList<Book> borrowrecord = new ArrayList<Book>();
 
 	Scanner scan = new Scanner(System.in);
     
@@ -25,50 +25,24 @@ public abstract class Users {
 		setFine(0);
 	}
     
-    public void setName(String name){
-        this.name = name;
-    }
-    public String getName(){
-        return name;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public String getPassword(){
-        return password;
-    }
-    public void setAccount(String account){
-        this.account = account;
-    }
-    public String getAccount(){
-        return account;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setIdentity(String identity){
-        this.identity = identity;
-    }
-    public String getIdentity(){
-        return identity;
-    }
-	public void setFine(int fine){
-		this.fine = fine;
-	}
-	public int getFine(){
-		return fine;
-	}
+    public void setName(String name){this.name = name;}
+    public String getName(){return name;}
+    public void setPassword(String password){this.password = password;}
+    public String getPassword(){return password;}
+    public void setAccount(String account){this.account = account;}
+    public String getAccount(){return account;}
+    public void setEmail(String email) {this.email = email;}
+    public String getEmail() {return email;}
+    public void setPhone(String phone) {this.phone = phone;}
+    public String getPhone() {return phone;}
+    public void setIdentity(String identity){this.identity = identity;}
+    public String getIdentity(){return identity;}
+	public void setFine(int fine){this.fine = fine;}
+	public int getFine(){return fine;}
+	public void addNotice(String notice) {this.notice += notice;}
+	public String getNotice() {return this.notice;}
 
-    public void searchBook(ArrayList<Book> booklist) throws FileNotFoundException{
+    public void searchBook(ArrayList<Book> booklist){
         
 
 		System.out.println("查詢書籍\n1.書籍名稱查詢\n2.書籍ID查詢\n3.列出所有藏書\n4.返回");
@@ -126,7 +100,15 @@ public abstract class Users {
 				}
 			} 
             else if (searchWay.equals("3")) {
-                printBooklist(booklist);
+                for (int i = 0; i < booklist.size(); i++) {
+					if(booklist.get(i).getHasLended() == 0){status = "在架上";}
+					else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
+					else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
+					else{status = "未知狀態";}
+                    System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n", booklist.get(i).getName(),
+                            booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
+                            booklist.get(i).getType(), booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
+                }
             }
             else if (searchWay.equals("4")) {
                 System.out.println("您已離開查詢書籍功能");
@@ -219,7 +201,7 @@ public abstract class Users {
 				+"電話:"+users.get(check).getPhone()+"\n"
 				+"電子信箱:"+users.get(check).getEmail()+"\n"
 				+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));	
-		System.out.println("1.編輯資料\n2.離開");
+		System.out.println("1.編輯資料\n2.清除罰金紀錄\n3.離開");
 		String input = "";
 		input = scan.nextLine();
 		if(input.equals("1")){
@@ -227,6 +209,9 @@ public abstract class Users {
 			viewInfo(users, check);
 		}
 		else if(input.equals("2")){
+			resetFine(users,check);
+		}
+		else if(input.equals("3")){
 			System.out.println("離開查看個人資訊!");
 		}
 		else {
@@ -234,33 +219,22 @@ public abstract class Users {
 		}
 				
 	}
-	public void addFine(int dollars, ArrayList<Users> users, int check){
-		users.get(check).setFine(users.get(check).getFine()+dollars);
-		System.out.println("罰金:"+users.get(check).getFine()+" 元\n");
+	public void checkFine( ArrayList<Users> users, int check) {
+		int fine = 0;
+		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
+			int overduedays =users.get(check).borrowlist.get(i).getReturnDueDate().compareTo(users.get(check).borrowlist.get(i).getBorrowDate());
+			if (overduedays > 14) {fine = (overduedays-14) * users.get(i).getFinePerDay();}
+		}
+		users.get(check).setFine(fine);
 	}
 
 	public void deleteUser(ArrayList<Users> users, int check) {
 		users.remove(check);
 		System.out.println("刪除成功!");
 	}
-	public void printBooklist(ArrayList<Book> booklist) throws FileNotFoundException {
-		String status = "";
-		String print = "%-30s\t %-30s\t %-20s %-15s %-20s %-10s %-10s\n";
-		String title = "%-30s\t %-30s\t %-20s %-15s %-20s %-10s %-10s\n\n";
-		
-		PrintStream ps = new PrintStream("D:BookList.txt");
-		ps.printf(title, "Book Name :", "Author :", "Publisher :", "Book ID :", "Book Type :", "Store Address :", "Status :");
-		for (int i = 0; i < booklist.size(); i++) {
-			if(booklist.get(i).getHasLended() == 0){status = "在架上";}
-			else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
-			else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
-			else{status = "未知狀態";}
-			ps.printf(print, booklist.get(i).getName(), booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
-					booklist.get(i).getType(), booklist.get(i).getAddress(), status);
-		}
-		ps.close();
-		System.out.println("書籍列表已列出至D:BookList.txt");
-	}
-	
+
+	public abstract void resetFine(ArrayList<Users> users, int check);
+	public abstract int getBorrowLimit();
+	public abstract int getFinePerDay();
     
 }
