@@ -39,7 +39,7 @@ public class Member extends Users{
         				booklist.get(i).setBorrowDate(d);
         				user.borrowlist.add(booklist.get(i));
         				user.borrowrecord.add(booklist.get(i));
-            			System.out.println("書本借閱成功!");
+            				System.out.println("書本借閱成功!");
         			}
         			count++; hasborrowed = true;
         			break;
@@ -66,7 +66,7 @@ public class Member extends Users{
             		hasborrowed = true;
             		break;
         	}
-        	if(count == 0){System.out.print("無法借閱，無法找到此書");}
+        	if(count == 0){System.out.println("無法借閱，無法找到此書");}
     		break;
 
     	case "2":
@@ -81,13 +81,12 @@ public class Member extends Users{
                 		booklist.get(i).setHasLended(1);
                 		LocalDate d = LocalDate.now();
                 		booklist.get(i).setBorrowDate(d);
-                		Book borrowbook = (Book)user.borrowlist.get(i).clone();
+                		Book borrowbook = (Book)booklist.get(i).clone();
                 		user.borrowlist.add(borrowbook);
                 		user.borrowrecord.add(borrowbook);
                 		System.out.println("書本借閱成功!");
-                		}
-                	
-				count2 ++;break;
+                	}
+                	count2 ++; break;
         		}
         		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 1) {System.out.println("無法借閱，此書已被借出");count2++;break;}
         	}
