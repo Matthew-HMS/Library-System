@@ -137,13 +137,13 @@ public class Library {
                             member.returnBook(booklist, lineup, users.get(check));
                             break;
                         case 2:
-                            member.searchBook(booklist);
+                        	member.cancelReserve(lineup,users.get(check));
                             break;
                         case 3:
-                            member.viewInfo(users,askforresetfine,check);
+                            member.searchBook(booklist);
                             break;
                         case 4:
-                        	member.cancelReserve(lineup,users.get(check));
+                            member.viewInfo(users,askforresetfine,check);
                             break;
                         case 5:
                             check = -1;
