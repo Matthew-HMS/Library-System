@@ -43,12 +43,13 @@ public class Member extends Users {
         				count++; hasborrowed = true;
         				break;
         		}
-        		else if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 1) { indexofbook = i;count++;}
+        		else if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 1) {count++;}
         	}
         	if(count != 0 && hasborrowed == false) {
             	System.out.print("此書已全數被借閱 需預訂?\n請輸入yes (若輸入任意其他字串則取消) : ");
             	input = s.nextLine();
             	if (input.equals("yes")) { 
+                	for(int k = 0; k<booklist.size(); k++) {if(booklist.get(k).getName().equals(name) && booklist.get(k).getHasLended() == 1) { indexofbook = k;break;}}
             		LocalDate d = LocalDate.now();
             		Book reservebook = new Book();
             		reservebook = booklist.get(indexofbook);
@@ -57,7 +58,7 @@ public class Member extends Users {
             		reservebook.setHasLended(2);
             		reservebook.setReserveMember(user);
             		user.borrowlist.add(reservebook);
-            		user.borrowrecord.add(booklist.get(i));
+            		user.borrowrecord.add(booklist.get(indexofbook));
             		lineup.add(reservebook);
             		}
             		System.out.println("書本預訂成功!");
