@@ -130,7 +130,7 @@ public class Admin extends Users{
     	if (count == 0){System.out.println("書本刪除失敗! 未找到此書");}
     }
 
-	public void viewInfo(ArrayList<Users> users, int check){
+	public void viewInfo(ArrayList<Users> users, ArrayList<String> askforresetfine,int check){
 		String output = ("使用者名稱:"+users.get(check).getName()+"\n"
 		+"身分:"+users.get(check).getIdentity()+"\n"
 		+"帳號:"+users.get(check).getAccount()+"\n"
@@ -144,11 +144,10 @@ public class Admin extends Users{
 
 		if(input == 0){
 			editMember(users);
-			viewInfo(users, check);
+			viewInfo(users,askforresetfine,check);
 		}
 		else if(input == 1){
-			users.get(check).setFine(0);
-			viewInfo(users, check);
+			resetFine(users, askforresetfine);
 		}
 		else if(input == 2){
 			deleteUser(users, check);
@@ -178,7 +177,7 @@ public class Admin extends Users{
 				String memberName = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getName().equals(memberName)) {
-						viewInfo(users, i);
+						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_name
 				}//for
@@ -189,7 +188,7 @@ public class Admin extends Users{
 				String memberAccount = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getAccount().equals(memberAccount)) {
-						viewInfo(users, i);
+						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_account
 				}//for
@@ -200,7 +199,7 @@ public class Admin extends Users{
 				String memberEmail = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getEmail().equals(memberEmail)) {
-						viewInfo(users, i);
+						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_email
 				}//for
@@ -211,7 +210,7 @@ public class Admin extends Users{
 				String memberPhone = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getPhone().equals(memberPhone)) {
-						viewInfo(users, i);
+						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_phone
 				}//for

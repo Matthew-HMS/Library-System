@@ -55,7 +55,6 @@ public class Library {
             }while(check == -1);
             
             if(users.get(check).getIdentity().equals("Admin")){
-                JOptionPane.showMessageDialog(null, "您現在已登入為管理員","Admin",JOptionPane.INFORMATION_MESSAGE);
                 Admin admin = new Admin();
                 if(users.get(check).getNotice() != "") {System.out.println("提醒 : "+users.get(check).getNotice());}
                 do{
@@ -78,7 +77,7 @@ public class Library {
                             admin.searchMember(users, askforresetfine);
                             break;
                         case 5:
-                            admin.viewInfo(users, check);
+                            admin.viewInfo(users,askforresetfine,check);
                             break;
                         case 6:
                             check = -1;
