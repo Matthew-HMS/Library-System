@@ -5,6 +5,8 @@ public class Staff extends Member {
     }
     public void borrowBook(){}
     public void returnBook(){}
+    public int borrowlimit = 8;
+    public int fineperday = 200;
+    public int getBorrowLimit() {return borrowlimit;}
+    public int getFinePerDay() {return fineperday;}
 }
-    
-
