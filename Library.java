@@ -127,7 +127,8 @@ public class Library {
                     input = s.nextInt();
                     switch(input){
                         case 1:
-                            member.borrowBook(booklist, lineup, users.get(check));
+                        	if(users.get(check).getFine()!=0) {member.borrowBook(booklist, lineup, users.get(check));}
+                        	else {System.out.println("您有罰金未繳 請先繳納後始得恢復借閱功能!");}
                             break;
                         case 2:
                             member.returnBook(booklist, lineup, users.get(check));
