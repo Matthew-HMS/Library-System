@@ -1,7 +1,8 @@
 import java.time.LocalDate;
 import java.util.*;
 
-public class Member extends Users {
+public class Member extends Users{
+
 	Scanner s = new Scanner(System.in);
     public Member(){}
     public Member(String account, String password, String name, String email, String phone, String identity){
@@ -48,17 +49,17 @@ public class Member extends Users {
         	if(count != 0 && hasborrowed == false) {
             	System.out.print("此書已全數被借閱 需預訂?\n請輸入yes (若輸入任意其他字串則取消) : ");
             	input = s.nextLine();
+            	int k = 0;
             	if (input.equals("yes")) { 
-                	for(int k = 0; k<booklist.size(); k++) {if(booklist.get(k).getName().equals(name) && booklist.get(k).getHasLended() == 1) { indexofbook = k;break;}}
+                	for(k = 0; k<booklist.size(); k++) {if(booklist.get(k).getName().equals(name) == true ) {break;}}
             		LocalDate d = LocalDate.now();
-            		Book reservebook = new Book();
-            		reservebook = booklist.get(indexofbook);
+            		Book reservebook = (Book)booklist.get(k).clone();
             		reservebook.setBorrowDate(null);
             		reservebook.setReserveDate(d);
             		reservebook.setHasLended(2);
             		reservebook.setReserveMember(user);
             		user.borrowlist.add(reservebook);
-            		user.borrowrecord.add(booklist.get(indexofbook));
+            		user.borrowrecord.add(reservebook);
             		lineup.add(reservebook);
             		}
             		System.out.println("書本預訂成功!");
@@ -80,6 +81,9 @@ public class Member extends Users {
                 		booklist.get(i).setHasLended(1);
                 		LocalDate d = LocalDate.now();
                 		booklist.get(i).setBorrowDate(d);
+                		Book borrowbook = (Book)user.borrowlist.get(i).clone();
+                		user.borrowlist.add(borrowbook);
+                		user.borrowrecord.add(borrowbook);
                 		System.out.println("書本借閱成功!");
                 		count2 ++;
                 		}
@@ -102,19 +106,25 @@ public class Member extends Users {
     			count=1;
     			if(booklist.get(i).getHasLended() == 1){
     				for(int j = 0; j < user.borrowlist.size(); j++) {
-    					if(borrowlist.get(j).getId().equals(id) == true && borrowlist.get(j).getHasLended() == 1) {
+    					if(user.borrowlist.get(j).getId().equals(id) == true && user.borrowlist.get(j).getHasLended() == 1) {
     						hasborrow = true;
     						System.out.print("確認歸還?\n請輸入yes (若輸入任意其他字串則取消) : ");
     						input = s.nextLine();
     						if (input.equals("yes")) {
+    							Book returnbook = (Book)user.borrowlist.get(j).clone();
     							LocalDate d = LocalDate.now();
-    							booklist.get(i).setHasLended(0);
     							user.borrowlist.get(j).setHasLended(3);
     							user.borrowlist.get(j).setReturnDate(d);
-    							for(int k = 0; k<user.borrowlist.size(); k++) {if(user.borrowrecord.get(k).getId().equals(id) == true) {user.borrowrecord.set(k,user.borrowlist.get(j)); break;}}
+    							for(int k = 0; k<user.borrowlist.size(); k++) {if(user.borrowrecord.get(k).getId().equals(id) == true) {user.borrowrecord.set(k,returnbook); break;}}
     							user.borrowlist.remove(j);
+    							booklist.get(i).setHasLended(0);
     							System.out.println("書本歸還成功!");
-    							for(int k =0; k<lineup.size(); k++) {if(lineup.get(k).getName().equals(input)) {lineup.get(k).getReserveMember().addNotice("您預約的\""+input+"\"已歸還 可借閱\n");break;}}
+    							for(int k =0; k<lineup.size(); k++) {
+    								if(lineup.get(k).getId().equals(id) == true) {
+    									lineup.get(k).getReserveMember().addNotice("您預約的\""+lineup.get(k).getName()+"\"已歸還 可借閱\n");
+    									break;
+    									}
+    								}
                     		}
                     	break;
     					}
@@ -139,13 +149,13 @@ public class Member extends Users {
 				input = s.nextLine();
 				if (input.equals("yes")) {
 					user.borrowlist.remove(i);
-					for(int j = 0; j < lineup.size(); j++) {if (lineup.get(j).getReserveMember().equals(user)){lineup.remove(j);break;}}
+					for(int j = 0; j < lineup.size(); j++) {if (lineup.get(j).getReserveMember().equals(user)){lineup.remove(j);break;}}//取消排隊
 					System.out.print("取消預約成功!");
 				}
 				break;
     		}
-        	else if(hasreserve = false) {System.out.println("無法取消預約 未預約此書!");break;}
     	}
+    	if(hasreserve = false) {System.out.println("無法取消預約 未預約此書!");}
     	if(count == 0) {System.out.println("無法取消預約 未找到此書!");}
     }
     
