@@ -161,6 +161,36 @@ public abstract class Member extends Users{
     
 	public int getBorrowLimit() {return 0;}
 	public int getFinePerDay() {return 0;}
+	public void viewInfo(ArrayList<Users> users, ArrayList<String> askforresetfine,int check){
+		String output = ("使用者名稱:"+users.get(check).getName()+"\n"
+		+"身分:"+users.get(check).getIdentity()+"\n"
+		+"帳號:"+users.get(check).getAccount()+"\n"
+		+"密碼:"+users.get(check).getPassword()+"\n"
+		+"電話:"+users.get(check).getPhone()+"\n"
+		+"電子信箱:"+users.get(check).getEmail()+"\n"
+		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));
+		
+		String [] option = {"編輯資料","要求清除未繳罰金紀錄","刪除帳號","離開"};
+		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
+
+		if(input == 0){
+			editMember(users);
+			viewInfo(users, askforresetfine, check);
+		}
+		else if(input == 1){
+			askForResetFine(users, askforresetfine, check);
+		}
+		else if(input == 2){
+			deleteUser(users, check);
+		}
+		else if(input == 3){
+			JOptionPane.showMessageDialog(null, "離開查看個人資訊!", "User Information", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else {
+			System.exit(0);
+		}
+				
+	}
 	public void resetFine(ArrayList<Users> users , ArrayList<String> askforresetfine) {};
 	public void askForResetFine(ArrayList<Users> users, ArrayList<String> askforresetfine, int check) {
 		if(users.get(check).getFine() != 0) {
@@ -168,7 +198,7 @@ public abstract class Member extends Users{
 			for(int i =0; i < users.size(); i++) {
 				if(users.get(i).getIdentity().equals("Admin") == true) {users.get(i).addNotice("會員帳號 : "+users.get(check).getAccount()+"要求清除罰金 請確認是否已繳納!\n");}
 			}
-			{System.out.println("已要求清除罰金紀錄 請等待管理員確認!");}
+			System.out.println("已要求清除罰金紀錄 請等待管理員確認!");
 		}
 		else {System.out.println("無需繳納罰金!");}
 	}

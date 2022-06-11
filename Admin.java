@@ -189,7 +189,7 @@ public class Admin extends Users{
 				String memberAccount = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getAccount().equals(memberAccount)) {
-						viewInfo(users, askforresetfine, i);
+						viewInfo(users, i);
 						exist = true;
 					}//if_account
 				}//for
@@ -200,7 +200,7 @@ public class Admin extends Users{
 				String memberEmail = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getEmail().equals(memberEmail)) {
-						viewInfo(users, askforresetfine, i);
+						viewInfo(users, i);
 						exist = true;
 					}//if_email
 				}//for
@@ -211,7 +211,7 @@ public class Admin extends Users{
 				String memberPhone = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getPhone().equals(memberPhone)) {
-						viewInfo(users, askforresetfine, i);
+						viewInfo(users, i);
 						exist = true;
 					}//if_phone
 				}//for

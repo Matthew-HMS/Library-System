@@ -78,7 +78,7 @@ public class Library {
                             admin.searchMember(users, askforresetfine);
                             break;
                         case 5:
-                            admin.viewInfo(users, askforresetfine,check);
+                            admin.viewInfo(users, check);
                             break;
                         case 6:
                             check = -1;
