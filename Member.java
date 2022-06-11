@@ -1,16 +1,17 @@
 import java.time.LocalDate;
 import java.util.*;
+import javax.swing.*;
 
-public class Member extends Users{
+public abstract class Member extends Users{
 
 	Scanner s = new Scanner(System.in);
     public Member(){}
     public Member(String account, String password, String name, String email, String phone, String identity){
         super(account, password, name, email, phone, identity);
     }
-    public void viewInfo(ArrayList<Users> users,ArrayList<String> askforresetfine, int check){
-		super.viewInfo(users, askforresetfine ,check);
-	}
+    
+				
+	
     public void payFine(ArrayList<Users> users){
     	System.out.print("確認罰金已繳納?\n請輸入yes (若輸入任意其他字串則取消) : ");
     	String input = s.nextLine();
@@ -30,19 +31,19 @@ public class Member extends Users{
         	name = s.nextLine();
         	for( i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 0){
-        				System.out.print("確認借閱?\n請輸入yes (若輸入任意其他字串則取消) : ");
-        				input = s.nextLine();
-        				if (input.equals("yes")) { 
-        					for(int j =0; j<user.borrowlist.size(); j++) {if (user.borrowlist.get(j).getName().equals(input) && user.borrowlist.get(j).getHasLended() == 2 ) {user.borrowlist.remove(j);break;}}
-        					booklist.get(i).setHasLended(1);
-        					LocalDate d = LocalDate.now();
-        					booklist.get(i).setBorrowDate(d);
-        					user.borrowlist.add(booklist.get(i));
-        					user.borrowrecord.add(booklist.get(i));
+        			System.out.print("確認借閱?\n請輸入yes (若輸入任意其他字串則取消) : ");
+        			input = s.nextLine();
+        			if (input.equals("yes")) { 
+        				for(int j =0; j<user.borrowlist.size(); j++) {if (user.borrowlist.get(j).getName().equals(input) && user.borrowlist.get(j).getHasLended() == 2 ) {user.borrowlist.remove(j);break;}}
+        				booklist.get(i).setHasLended(1);
+        				LocalDate d = LocalDate.now();
+        				booklist.get(i).setBorrowDate(d);
+        				user.borrowlist.add(booklist.get(i));
+        				user.borrowrecord.add(booklist.get(i));
             				System.out.println("書本借閱成功!");
-        				}
-        				count++; hasborrowed = true;
-        				break;
+        			}
+        			count++; hasborrowed = true;
+        			break;
         		}
         		else if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 1) {count++;}
         	}
