@@ -126,7 +126,7 @@ public class Library {
                         case 0:
                             if(users.get(check).getFine() ==0 && (users.get(check).borrowlist.size()<users.get(check).getBorrowLimit())) {member.borrowBook(booklist, lineup, users.get(check));}
                             else if(users.get(check).getFine()!=0){System.out.println("您有罰金未繳 請先繳納後始得恢復借閱功能!");}
-                            else if(users.get(check).borrowlist.size()<users.get(check).getBorrowLimit()){System.out.println("您已超越借書上限 請先還書!");}
+                            else if(users.get(check).borrowlist.size()>=users.get(check).getBorrowLimit()){System.out.println("您已超越借書上限 請先還書!");}
                             break;
                         case 1:
                             member.returnBook(booklist, lineup, users.get(check));
