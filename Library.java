@@ -7,6 +7,7 @@ public class Library {
 
         ArrayList<Users> users = new ArrayList<Users>();//array to store users
         ArrayList<Book> booklist = new ArrayList<Book>();//array to store book
+        ArrayList<Book>lineup = new ArrayList<Book>();//array to store the book line up by someone
         Scanner s = new Scanner(System.in);
         int input = 0;
         Users user = new Student();
@@ -97,25 +98,28 @@ public class Library {
                 if(users.get(check).getIdentity().equals("Student")){
                     member = new Student();
                     System.out.println("登入身分 : 學生");
+                    System.out.println("提醒 : "+ users.get(check).getNotice());
                 }
                 else if(users.get(check).getIdentity().equals("Teacher")){
                     member = new Teacher();
                     System.out.println("登入身分 : 教師");
+                    System.out.println("提醒 : "+ users.get(check).getNotice());
                 }
                 else if(users.get(check).getIdentity().equals("Staff")){
                     member = new Staff();
                     System.out.println("登入身分 : 職員");
+                    System.out.println("提醒 : "+ users.get(check).getNotice());
                 }
                 
                 do{
-                    System.out.println("輸入\n1.借書\n2.還書\n3.查詢書籍\n4.查看、更改個人資訊(借還記錄)\n5.登出\n6.離開");
+                    System.out.println("輸入\n1.借書\n2.還書\n3.查詢書籍\n4.查看、更改個人資訊(借還記錄)\n5.取消預約書籍\n6.登出\n7.離開");
                     input = s.nextInt();
                     switch(input){
                         case 1:
-                            member.borrowBook(booklist);
+                            member.borrowBook(booklist, lineup, users.get(check));
                             break;
                         case 2:
-                            member.returnBook(booklist);
+                            member.returnBook(booklist, lineup, users.get(check));
                             break;
                         case 3:
                             member.searchBook(booklist);
@@ -124,9 +128,12 @@ public class Library {
                             member.viewInfo(users,check);
                             break;
                         case 5:
-                            check = -1;
+                        	member.cancelReserve(lineup,users.get(check));
                             break;
                         case 6:
+                            check = -1;
+                            break;
+                        case 7:
                             System.out.println("感謝您的使用");
                             System.exit(0);
                             break;
