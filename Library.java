@@ -7,8 +7,9 @@ public class Library {
 
         ArrayList<Users> users = new ArrayList<Users>();//array to store users
         ArrayList<Book> booklist = new ArrayList<Book>();//array to store book
-        ArrayList<Book>lineup = new ArrayList<Book>();//array to store the book line up by someone
-
+        ArrayList<Book> lineup = new ArrayList<Book>();//array to store the book line up by someone
+        ArrayList<String> askforresetfine = new ArrayList<String>(); 
+        
         int input = 0;
         Users user = new Student();
         Register r = new Register();
@@ -54,45 +55,46 @@ public class Library {
             }while(check == -1);
             
             if(users.get(check).getIdentity().equals("Admin")){
-                JOptionPane.showMessageDialog(null, "您現在已登入為管理員","Admin",JOptionPane.INFORMATION_MESSAGE);
+            	JOptionPane.showMessageDialog(null, "您現在已登入為管理員","Admin",JOptionPane.INFORMATION_MESSAGE);
                 Admin admin = new Admin();
+                if(users.get(check).getNotice() != "") {System.out.println("提醒 : "+users.get(check).getNotice());}
                 do{
-                    String [] option = {"新增書籍","修改書籍","刪除書籍","查詢書籍","查詢會員(借還記錄)","查看、更改個人資訊","登出","離開系統"};
+                	String [] option = {"新增書籍","修改書籍","刪除書籍","查詢書籍","查詢會員(借還記錄)","查看、更改個人資訊","登出","離開系統"};
                     input = JOptionPane.showOptionDialog(null, "歡迎回來，" + users.get(check).getName() + "\n登入身分 : 管理員" , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
                     switch(input){
-                        case 0:
-                            admin.addBook(booklist);
-                            break;
-                        case 1:
-                            admin.editBook(booklist);
-                            break;
-                        case 2:
-                            admin.deleteBook(booklist);
-                            break;
-                        case 3:
-                            admin.searchBook(booklist);
-                            break;
-                        case 4:
-                            admin.searchMember(users);
-                            break;
-                        case 5:
-                            admin.viewInfo(users,check);
-                            break;
-                        case 6:
-                            check = -1;
-                            break;
-                        case 7:
-                            int quit = JOptionPane.showConfirmDialog(null, "確定要離開嗎?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                            if(quit == 0){JOptionPane.showMessageDialog(null, "感謝您的使用","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
-                            else{break;}
-                        default:
-                            System.exit(0);
-                            break;
+                    case 0:
+                        admin.addBook(booklist);
+                        break;
+                    case 1:
+                        admin.editBook(booklist);
+                        break;
+                    case 2:
+                        admin.deleteBook(booklist);
+                        break;
+                    case 3:
+                        admin.searchBook(booklist);
+                        break;
+                    case 4:
+                        admin.searchMember(users, askforresetfine);
+                        break;
+                    case 5:
+                        admin.viewInfo(users, askforresetfine,check);
+                        break;
+                    case 6:
+                        check = -1;
+                        break;
+                    case 7:
+                        int quit = JOptionPane.showConfirmDialog(null, "確定要離開嗎?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(quit == 0){JOptionPane.showMessageDialog(null, "感謝您的使用","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
+                        else{break;}
+                    default:
+                        System.exit(0);
+                        break;
                     }
                 }while(check != -1);
             }
             else{
-
+                
                 Member member = new Student();
                 if(users.get(check).getIdentity().equals("Student")){
                     member = new Student();
@@ -101,6 +103,7 @@ public class Library {
                     else if(users.get(check).getNotice() == "" && users.get(check).getFine() != 0) {System.out.println("提醒 : 您有罰金 : "+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else {System.out.println("提醒 : 無" );}
+                    users.get(check).eraseNotice();
                 }
                 else if(users.get(check).getIdentity().equals("Teacher")){
                     member = new Teacher();
@@ -109,6 +112,7 @@ public class Library {
                     else if(users.get(check).getNotice() == "" && users.get(check).getFine() != 0) {System.out.println("提醒 : 您有罰金 : "+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else {System.out.println("提醒 : 無" );}
+                    users.get(check).eraseNotice();
                 }
                 else if(users.get(check).getIdentity().equals("Staff")){
                     member = new Staff();
@@ -117,38 +121,39 @@ public class Library {
                     else if(users.get(check).getNotice() == "" && users.get(check).getFine() != 0) {System.out.println("提醒 : 您有罰金 : "+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else {System.out.println("提醒 : 無" );}
+                    users.get(check).eraseNotice();
                 }
                 
                 do{
-                    String [] option = {"借書","還書","取消預約書籍","查詢書籍","查看、更改個人資訊","登出","離開系統"};
+                	String [] option = {"借書","還書","取消預約書籍","查詢書籍","查看、更改個人資訊","登出","離開系統"};
                     input = JOptionPane.showOptionDialog(null, "歡迎回來，" + users.get(check).getName() + "\n登入身分 : " + users.get(check).getIdentity() , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[6]);
                     switch(input){
                         case 0:
-                            if(users.get(check).getFine() ==0 && (users.get(check).borrowlist.size()<users.get(check).getBorrowLimit())) {member.borrowBook(booklist, lineup, users.get(check));}
-                            else if(users.get(check).getFine()!=0){System.out.println("您有罰金未繳 請先繳納後始得恢復借閱功能!");}
-                            else if(users.get(check).borrowlist.size()>=users.get(check).getBorrowLimit()){System.out.println("您已超越借書上限 請先還書!");}
+                        	if(users.get(check).getFine() ==0 && (users.get(check).borrowlist.size()<users.get(check).getBorrowLimit())) {member.borrowBook(booklist, lineup, users.get(check));}
+                        	else if(users.get(check).getFine()!=0){System.out.println("您有罰金未繳 請先繳納後始得恢復借閱功能!");}
+                        	else if(users.get(check).borrowlist.size()>=users.get(check).getBorrowLimit()){System.out.println("您已超越借書上限 請先還書!");}
                             break;
                         case 1:
                             member.returnBook(booklist, lineup, users.get(check));
                             break;
                         case 2:
-                            member.cancelReserve(lineup,users.get(check));
-                            break;
-                        case 3:
                             member.searchBook(booklist);
                             break;
+                        case 3:
+                            member.viewInfo(users,askforresetfine,check);
+                            break;
                         case 4:
-                            member.viewInfo(users,check);
+                        	member.cancelReserve(lineup,users.get(check));
                             break;
                         case 5:
                             check = -1;
                             break;
                         case 6:
-                            int quit = JOptionPane.showConfirmDialog(null, "確定要離開嗎?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                            if(quit == 0){JOptionPane.showMessageDialog(null, "感謝您的使用","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
-                            else{break;}
-                        default:
+                            System.out.println("感謝您的使用");
                             System.exit(0);
+                            break;
+                        default:
+                            System.out.println("輸入錯誤");
                             break;
                     }
                 }while(check != -1);
