@@ -129,8 +129,9 @@ public class Library {
                     input = s.nextInt();
                     switch(input){
                         case 1:
-                        	if(users.get(check).getFine()!=0) {member.borrowBook(booklist, lineup, users.get(check));}
-                        	else {System.out.println("您有罰金未繳 請先繳納後始得恢復借閱功能!");}
+                        	if(users.get(check).getFine() ==0 && (users.get(check).borrowlist.size()<users.get(check).getBorrowLimit())) {member.borrowBook(booklist, lineup, users.get(check));}
+                        	else if(users.get(check).getFine()!=0){System.out.println("您有罰金未繳 請先繳納後始得恢復借閱功能!");}
+                        	else if(users.get(check).borrowlist.size()<users.get(check).getBorrowLimit()){System.out.println("您已超越借書上限 請先還書!");}
                             break;
                         case 2:
                             member.returnBook(booklist, lineup, users.get(check));
