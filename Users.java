@@ -1,4 +1,7 @@
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+
 
 public abstract class Users {
     private String name;
@@ -65,7 +68,7 @@ public abstract class Users {
 		return fine;
 	}
 
-    public void searchBook(ArrayList<Book> booklist){
+    public void searchBook(ArrayList<Book> booklist) throws FileNotFoundException{
         
 
 		System.out.println("查詢書籍\n1.書籍名稱查詢\n2.書籍ID查詢\n3.列出所有藏書\n4.返回");
@@ -123,15 +126,7 @@ public abstract class Users {
 				}
 			} 
             else if (searchWay.equals("3")) {
-                for (int i = 0; i < booklist.size(); i++) {
-					if(booklist.get(i).getHasLended() == 0){status = "在架上";}
-					else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
-					else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
-					else{status = "未知狀態";}
-                    System.out.printf("書名:%s\t作者:%s\t出版社:%s\tID:%s\t圖書分類:%s\t存放區域:%s\t書籍狀態:%s\n", booklist.get(i).getName(),
-                            booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
-                            booklist.get(i).getType(), booklist.get(i).getAddress(),status);// 列印出所有相同名稱之書籍
-                }
+                printBooklist(booklist);
             }
             else if (searchWay.equals("4")) {
                 System.out.println("您已離開查詢書籍功能");
@@ -247,6 +242,24 @@ public abstract class Users {
 	public void deleteUser(ArrayList<Users> users, int check) {
 		users.remove(check);
 		System.out.println("刪除成功!");
+	}
+	public void printBooklist(ArrayList<Book> booklist) throws FileNotFoundException {
+		String status = "";
+		String print = "%-30s\t %-30s\t %-20s %-15s %-20s %-10s %-10s\n";
+		String title = "%-30s\t %-30s\t %-20s %-15s %-20s %-10s %-10s\n\n";
+		
+		PrintStream ps = new PrintStream("D:BookList.txt");
+		ps.printf(title, "Book Name :", "Author :", "Publisher :", "Book ID :", "Book Type :", "Store Address :", "Status :");
+		for (int i = 0; i < booklist.size(); i++) {
+			if(booklist.get(i).getHasLended() == 0){status = "在架上";}
+			else if(booklist.get(i).getHasLended() == 1){status = "已借出";}
+			else if(booklist.get(i).getHasLended() == 2){status = "已預約";}
+			else{status = "未知狀態";}
+			ps.printf(print, booklist.get(i).getName(), booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
+					booklist.get(i).getType(), booklist.get(i).getAddress(), status);
+		}
+		ps.close();
+		System.out.println("書籍列表已列出至D:BookList.txt");
 	}
 	
     
