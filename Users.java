@@ -7,8 +7,8 @@ public abstract class Users {
     private String identity;//Admin or member
     private String email;
     private String phone;
-	private int fine;
-	private String notice = "";
+	private int fine = 0;
+	private String notice="";
 	ArrayList<Book> borrowlist = new ArrayList<Book>();
 	ArrayList<Book> borrowrecord = new ArrayList<Book>();
 
@@ -223,7 +223,7 @@ public abstract class Users {
 		int fine = 0;
 		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
 			int overduedays =users.get(check).borrowlist.get(i).getReturnDueDate().compareTo(users.get(check).borrowlist.get(i).getBorrowDate());
-			if (overduedays > 14) {fine = (overduedays-14) * users.get(i).getFinePerDay();}
+			if (overduedays > 14) {fine += (overduedays-14) * users.get(check).getFinePerDay();}
 		}
 		users.get(check).setFine(fine);
 	}
