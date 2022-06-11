@@ -98,6 +98,7 @@ public class Library {
                 if(users.get(check).getIdentity().equals("Student")){
                     member = new Student();
                     System.out.println("登入身分 : 學生");
+                    users.get(check).checkFine(users, check);
                     if(users.get(check).getNotice() != null && users.get(check).getFine() == 0) {System.out.println("提醒 : "+ users.get(check).getNotice());}
                     else if(users.get(check).getNotice() == null && users.get(check).getFine() != 0) {System.out.println("提醒 : 您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else if(users.get(check).getNotice() != null && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
@@ -106,6 +107,7 @@ public class Library {
                 else if(users.get(check).getIdentity().equals("Teacher")){
                     member = new Teacher();
                     System.out.println("登入身分 : 教師");
+                    users.get(check).checkFine(users, check);
                     if(users.get(check).getNotice() != null) {System.out.println("提醒 : "+ users.get(check).getNotice());}
                     else if(users.get(check).getNotice() != null && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n提醒 : 您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else {System.out.println("提醒 : 無" );}
@@ -113,6 +115,7 @@ public class Library {
                 else if(users.get(check).getIdentity().equals("Staff")){
                     member = new Staff();
                     System.out.println("登入身分 : 職員");
+                    users.get(check).checkFine(users, check);
                     if(users.get(check).getNotice() != null) {System.out.println("提醒 : "+ users.get(check).getNotice());}
                     else if(users.get(check).getNotice() != null && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n提醒 : 您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else {System.out.println("提醒 : 無" );}
