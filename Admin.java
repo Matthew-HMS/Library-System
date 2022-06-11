@@ -1,11 +1,13 @@
 import java.util.*;
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
 public class Admin extends Users{
 	Scanner s = new Scanner(System.in);
-	public Admin(){}
-	public Admin(String account, String password, String name, String email, String phone, String identity){
+    public Admin(){}
+    
+    public Admin(String account, String password, String name, String email, String phone, String identity){
         super(account, password, name, email, phone, identity);
     }
     
@@ -128,8 +130,37 @@ public class Admin extends Users{
     	if (count == 0){System.out.println("書本刪除失敗! 未找到此書");}
     }
 
-    public void viewInfo(){
-    }
+	public void viewInfo(ArrayList<Users> users, int check){
+		String output = ("使用者名稱:"+users.get(check).getName()+"\n"
+		+"身分:"+users.get(check).getIdentity()+"\n"
+		+"帳號:"+users.get(check).getAccount()+"\n"
+		+"密碼:"+users.get(check).getPassword()+"\n"
+		+"電話:"+users.get(check).getPhone()+"\n"
+		+"電子信箱:"+users.get(check).getEmail()+"\n"
+		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "應繳罰款 : "+users.get(check).getFine()+" 元\n" ));
+		
+		String [] option = {"編輯資料","清除罰金紀錄","刪除帳號","離開"};
+		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
+
+		if(input == 0){
+			editMember(users);
+			viewInfo(users, check);
+		}
+		else if(input == 1){
+			users.get(check).setFine(0);
+			viewInfo(users, check);
+		}
+		else if(input == 2){
+			deleteUser(users, check);
+		}
+		else if(input == 3){
+			JOptionPane.showMessageDialog(null, "離開查看個人資訊!", "User Information", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else {
+			System.exit(0);
+		}
+				
+	}
 
     public void searchBook(){}
 	public void searchMember(ArrayList<Users> users,ArrayList<String> askforresetfine) throws FileNotFoundException {
@@ -147,7 +178,7 @@ public class Admin extends Users{
 				String memberName = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getName().equals(memberName)) {
-						viewInfo(users, askforresetfine, i);
+						viewInfo(users, i);
 						exist = true;
 					}//if_name
 				}//for
@@ -180,13 +211,13 @@ public class Admin extends Users{
 				String memberPhone = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getPhone().equals(memberPhone)) {
-						super.viewInfo(users, askforresetfine, i);
+						viewInfo(users, askforresetfine, i);
 						exist = true;
 					}//if_phone
 				}//for
 				if(!exist) {System.out.println("查無此會員!");}
 			}
-			else if(searchWay.equals("5")) {
+			else if(searchWay.equals("5")){
 				if(askforresetfine.size()>0) {
 					for(int i =0; i<askforresetfine.size(); i++) {
 						resetFine(users , askforresetfine);
@@ -240,9 +271,8 @@ public class Admin extends Users{
     		String input = scan.nextLine();
     		if (input.equals("yes")) {
     			users.get(check).setFine(0);
-    			askforresetfine.remove(j);
-    			System.out.println("罰金已歸零!");
-    		}
+				askforresetfine.remove(j);
+    			System.out.println("罰金已歸零!");}
     		else {System.out.println("罰金未歸零!");}
     	}
     	else {System.out.println("此會員無未繳罰金!");}

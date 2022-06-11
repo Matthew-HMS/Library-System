@@ -5,6 +5,7 @@ public class Student extends Member{
     }
     public void borrowBook(){}
     public void returnBook(){}
+
     public int borrowlimit = 5;
     public int fineperday = 10;
     public int getBorrowLimit() {return borrowlimit;}
