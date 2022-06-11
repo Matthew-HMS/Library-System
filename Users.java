@@ -198,14 +198,17 @@ public abstract class Users {
     	if( count == 0){JOptionPane.showMessageDialog(null, "會員修改失敗! 未找到此會員");}
     }
     
-
 	public void checkFine( ArrayList<Users> users, int check) {
 		int fine = 0;
+		LocalDate d = LocalDate.now();
 		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
-			int overduedays =users.get(check).borrowlist.get(i).getReturnDueDate().compareTo(users.get(check).borrowlist.get(i).getBorrowDate());
-			if (overduedays > 14) {fine += (overduedays-14) * users.get(check).getFinePerDay();}
+			int borrowdays =0;
+			LocalDate borrowdate = users.get(check).borrowlist.get(i).getBorrowDate();
+			System.out.println(d.equals(users.get(check).borrowlist.get(i).getBorrowDate()));
+			while(d.equals(borrowdate) == false) {borrowdate = borrowdate.plusDays(1);borrowdays++;}
+			if (borrowdays > 14) {fine += (borrowdays-14) * users.get(check).getFinePerDay();}
+			users.get(check).setFine(fine);
 		}
-		users.get(check).setFine(fine);
 	}
 
 	
