@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 
 public class Admin extends Users{
 	Scanner s = new Scanner(System.in);
@@ -131,11 +133,11 @@ public class Admin extends Users{
     }
 
     public void searchBook(){}
-	public void searchMember(ArrayList<Users> users) {
+	public void searchMember(ArrayList<Users> users) throws FileNotFoundException {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開");
+		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開\n6.列出所有會員");
 		System.out.println("請輸入查詢方法:");
 		String searchWay = scan.nextLine();
 		boolean exist = false;
@@ -188,6 +190,9 @@ public class Admin extends Users{
 			else if(searchWay.equals("5")) {
 				System.out.println("你已離開查詢會員功能");
 			}
+			else if(searchWay.equals("6")){
+				printMember(users);
+			}
 			else {
 				searchWay = "-1";
 				System.out.println("請輸入正確選項");
@@ -195,6 +200,19 @@ public class Admin extends Users{
 		}while(searchWay.equals("-1"));
 		
 		
+	}
+
+	public void printMember(ArrayList<Users> users) throws FileNotFoundException {
+		String print = "%-20s %-20s %-20s %-20s %-20s %-20s\n";
+		String title = "%-20s %-20s %-20s %-20s %-20s %-20s\n\n";
+		
+		PrintStream ps = new PrintStream("D:MemberList.txt");
+		ps.printf(title, "Name", "Identity", "Account", "Password", "Phone", "Email");
+		for(int i = 0; i < users.size(); i++){
+			ps.printf(print, users.get(i).getName(), users.get(i).getIdentity(), users.get(i).getAccount(), users.get(i).getPassword(), users.get(i).getPhone(), users.get(i).getEmail());
+		}
+		ps.close();
+		System.out.println("會員列表已列出至D:MemberList.txt");
 	}
 
 }
