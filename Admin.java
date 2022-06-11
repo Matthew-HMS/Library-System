@@ -1,6 +1,4 @@
 import java.util.*;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 
 public class Admin extends Users{
 	Scanner s = new Scanner(System.in);
@@ -41,18 +39,17 @@ public class Admin extends Users{
     public void editBook(ArrayList<Book> booklist) {
     	System.out.print("請輸入欲更改資料之書本ID : ");
         String id = s.nextLine();
-    	int input = 0;
+        String input = "";
     	int count = 0;
     	for (int i = 0; i < booklist.size(); i++) {
     		if(booklist.get(i).getId().equals(id)) {
     			count = 1;
-    			while(input != 6) {
+    			while(input != "6") {
     				System.out.print("要更改什麼?\n1.ID\n2.書名\n3.分類\n4.借閱狀態\n5.圖書館存放區域\n6.離開\n請輸入 : ");
-    				String inputS = s.nextLine();
-    				input = Integer.parseInt(inputS);
+    				input = s.nextLine();
     				switch(input){
     				
-    				case 1:
+    				case "1":
     					System.out.print("請輸入ID : ");
     					id = s.nextLine();
     					boolean idExist = false;
@@ -64,19 +61,19 @@ public class Admin extends Users{
     					else {System.out.println("修改ID失敗! 此ID已存在");}
     					break;
     				
-    				case 2:
+    				case "2":
     					System.out.print("請輸入書名 : ");
     					booklist.get(i).setName(s.nextLine());
     					System.out.println("修改書名完成!");
     					break;
     				
-    				case 3:
+    				case "3":
     					System.out.print("請輸入分類 : ");
     					booklist.get(i).setType(s.nextLine());
     					System.out.println("修改分類完成!");
     					break;
     				
-    				case 4:
+    				case "4":
     					System.out.print("請輸入借閱狀態\n0.在架上\n1.已借出\n2.已預定\n請輸入 : ");
     					String hasLendedS = s.nextLine();
     					int hasLended = Integer.parseInt(hasLendedS);
@@ -87,14 +84,14 @@ public class Admin extends Users{
     					else {System.out.println("輸入錯誤 修改借閱狀態失敗!");}
     					break;
         
-    				case 5:
+    				case "5":
     					System.out.print("請輸入存放區域 : ");
     					booklist.get(i).setAddress(s.nextLine());
     					System.out.println("修改存放區域完成!");
     					break;
     					
     				default :
-    					input = 6;
+    					input = "6";
     					System.out.println("離開修改系統!");
     					break;
     				}
@@ -133,11 +130,11 @@ public class Admin extends Users{
     }
 
     public void searchBook(){}
-	public void searchMember(ArrayList<Users> users) throws FileNotFoundException {
+    public void searchMember(ArrayList<Users> users) {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開\n6.列出所有會員");
+		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開");
 		System.out.println("請輸入查詢方法:");
 		String searchWay = scan.nextLine();
 		boolean exist = false;
@@ -190,29 +187,26 @@ public class Admin extends Users{
 			else if(searchWay.equals("5")) {
 				System.out.println("你已離開查詢會員功能");
 			}
-			else if(searchWay.equals("6")){
-				printMember(users);
-			}
 			else {
 				searchWay = "-1";
 				System.out.println("請輸入正確選項");
 			}
 		}while(searchWay.equals("-1"));
-		
-		
-	}
 
-	public void printMember(ArrayList<Users> users) throws FileNotFoundException {
-		String print = "%-20s %-20s %-20s %-20s %-20s %-20s\n";
-		String title = "%-20s %-20s %-20s %-20s %-20s %-20s\n\n";
-		
-		PrintStream ps = new PrintStream("D:MemberList.txt");
-		ps.printf(title, "Name", "Identity", "Account", "Password", "Phone", "Email");
-		for(int i = 0; i < users.size(); i++){
-			ps.printf(print, users.get(i).getName(), users.get(i).getIdentity(), users.get(i).getAccount(), users.get(i).getPassword(), users.get(i).getPhone(), users.get(i).getEmail());
-		}
-		ps.close();
-		System.out.println("會員列表已列出至D:MemberList.txt");
 	}
-
+    public void resetFine(ArrayList<Users> users , int check)
+    {
+    	users.get(check).checkFine(users, check);
+    	if(users.get(check).getFine() != 0) {
+    		System.out.print("請確認此會員罰金是否已繳清?\n若已繳清 請輸入\"yes\"以清除未繳罰金(若輸入任意其他字串則取消) :");
+    		String input = scan.nextLine();
+    		if (input.equals("yes")) {
+    			users.get(check).setFine(0);
+    			System.out.println("罰金已歸零!");}
+    		else {System.out.println("罰金未歸零!");}
+    	}
+    	else {System.out.println("此會員無未繳罰金!");}
+    }
+	public int getBorrowLimit() {return 0;}
+	public int getFinePerDay() {return 0;}
 }
