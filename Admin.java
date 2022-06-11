@@ -4,9 +4,8 @@ import java.io.PrintStream;
 
 public class Admin extends Users{
 	Scanner s = new Scanner(System.in);
-    public Admin(){}
-    
-    public Admin(String account, String password, String name, String email, String phone, String identity){
+	public Admin(){}
+	public Admin(String account, String password, String name, String email, String phone, String identity){
         super(account, password, name, email, phone, identity);
     }
     
@@ -133,11 +132,11 @@ public class Admin extends Users{
     }
 
     public void searchBook(){}
-	public void searchMember(ArrayList<Users> users) throws FileNotFoundException {
+	public void searchMember(ArrayList<Users> users,ArrayList<String> askforresetfine) throws FileNotFoundException {
 		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.離開\n6.列出所有會員");
+		System.out.println("查詢會員\n1.會員名字查詢\n2.會員帳號查詢\n3.會員信箱查詢\n4.會員電話查詢\n5.確認已繳納之會員罰金\n6.離開\n7.列出所有會員");
 		System.out.println("請輸入查詢方法:");
 		String searchWay = scan.nextLine();
 		boolean exist = false;
@@ -148,7 +147,7 @@ public class Admin extends Users{
 				String memberName = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getName().equals(memberName)) {
-						viewInfo(users, i);
+						viewInfo(users, askforresetfine, i);
 						exist = true;
 					}//if_name
 				}//for
@@ -159,7 +158,7 @@ public class Admin extends Users{
 				String memberAccount = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getAccount().equals(memberAccount)) {
-						viewInfo(users, i);
+						viewInfo(users, askforresetfine, i);
 						exist = true;
 					}//if_account
 				}//for
@@ -170,7 +169,7 @@ public class Admin extends Users{
 				String memberEmail = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getEmail().equals(memberEmail)) {
-						viewInfo(users, i);
+						viewInfo(users, askforresetfine, i);
 						exist = true;
 					}//if_email
 				}//for
@@ -181,16 +180,29 @@ public class Admin extends Users{
 				String memberPhone = scan.nextLine();
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getPhone().equals(memberPhone)) {
-						super.viewInfo(users, i);
+						super.viewInfo(users, askforresetfine, i);
 						exist = true;
 					}//if_phone
 				}//for
 				if(!exist) {System.out.println("查無此會員!");}
 			}
 			else if(searchWay.equals("5")) {
+				if(askforresetfine.size()>0) {
+					for(int i =0; i<askforresetfine.size(); i++) {
+						resetFine(users , askforresetfine);
+					}
+					for(int i =0; i < users.size(); i++) {
+						if(users.get(i).getIdentity().equals("Admin") == true) {
+							users.get(i).eraseNotice();
+						}
+					}
+				}
+				else{System.out.println("無會員提出清除罰金紀錄要求!");}
+			}
+			else if(searchWay.equals("6")) {
 				System.out.println("你已離開查詢會員功能");
 			}
-			else if(searchWay.equals("6")){
+			else if(searchWay.equals("7")){
 				printMember(users);
 			}
 			else {
@@ -215,20 +227,29 @@ public class Admin extends Users{
 		System.out.println("會員列表已列出至D:MemberList.txt");
 	}
 
-	public void resetFine(ArrayList<Users> users , int check)
+	public void resetFine(ArrayList<Users> users , ArrayList<String> askforresetfine)
     {
+		int check = 0; int j = 0;
+		for(int i = 0; i < users.size(); i++) {
+			for(j = 0; j<askforresetfine.size(); j++)
+			if (users.get(i).getAccount().equals(askforresetfine.get(j))) {check = i; break;}
+		}
     	users.get(check).checkFine(users, check);
     	if(users.get(check).getFine() != 0) {
     		System.out.print("請確認此會員罰金是否已繳清?\n若已繳清 請輸入\"yes\"以清除未繳罰金(若輸入任意其他字串則取消) :");
     		String input = scan.nextLine();
     		if (input.equals("yes")) {
     			users.get(check).setFine(0);
-    			System.out.println("罰金已歸零!");}
+    			askforresetfine.remove(j);
+    			System.out.println("罰金已歸零!");
+    		}
     		else {System.out.println("罰金未歸零!");}
     	}
     	else {System.out.println("此會員無未繳罰金!");}
     }
 	public int getBorrowLimit() {return 0;}
 	public int getFinePerDay() {return 0;}
+	public void askForResetFine(ArrayList<Users> users, ArrayList<String> askforresetfine, int check) {
+	}
 
 }
