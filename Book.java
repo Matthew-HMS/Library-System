@@ -9,8 +9,10 @@ public class Book {
 	private int hasLended; // 已借出數
 	private String address; // 
 	private LocalDate date;
+	private LocalDate returnduedate;
 	private LocalDate returndate;
-	private LocalDate reserveduedate;
+	private LocalDate reservedate;
+	private Users reservemember;
 	
 	public Book(){}
 	public Book(String id, String name, String type, String author, String pub, int hasLended,String address) {
@@ -48,20 +50,36 @@ public class Book {
 	public int getHasLended() {return hasLended;}
 	public void setHasLended(int hasLended) {this.hasLended = hasLended;}
 	
-	public LocalDate getDate() {return date;}
-	public void setBorrowDate(LocalDate d) {this.date = d;	this.returndate = d.plusWeeks(2L);}
-	public void setReserveDate(LocalDate d) {this.date = d;	this.reserveduedate = d.plusWeeks(1L);}
+	public LocalDate getBorrowDate() {return date;}
+	public LocalDate getReturnDueDate() {return returnduedate;}
+	public void setBorrowDate(LocalDate d) {
+		if(d != null) {
+		this.date = d;
+		this.returnduedate = d.plusWeeks(2L);
+		}
+	}
+	public LocalDate getReturnDate() {return returndate;}
+	public void setReturnDate(LocalDate d) {this.returndate = d;} 
+	
+	public LocalDate getReserveDate() {return reservedate;}
+	public void setReserveDate(LocalDate d) {this.reservedate = d;}
+	
+	public Users getReserveMember() {return reservemember;}
+	public void setReserveMember(Users user) {this.reservemember = user;}
 	
 	public String toString() {
 		if (this.hasLended == 0) {
 				return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
 				+ " 出版社:" + pub + " 借閱狀態: 在架上 館藏區:" + address + "]";
 		}
-		else if(this.hasLended == 1) {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 須歸還日期:" + returndate + "]";
+		else if (this.hasLended == 1){return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 須歸還日期:" + returnduedate + "]";
+		}
+		else if(this.hasLended == 2) {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已預訂 館藏區:" + address + " 預訂日期:" + reservedate+ "]";
 		}
 		else {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub  + " 借閱狀態: 已預訂 館藏區:" + address + " 開始預訂日期:" + date + " 預訂借閱期限:" + reserveduedate + "]";
+				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 已歸還日期:" + returndate + "]";
 		}
 	}
 }
