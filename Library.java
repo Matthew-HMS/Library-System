@@ -98,17 +98,21 @@ public class Library {
                 if(users.get(check).getIdentity().equals("Student")){
                     member = new Student();
                     System.out.println("登入身分 : 學生");
-                    System.out.println("提醒 : "+ users.get(check).getNotice());
+                    if(users.get(check).getNotice()!= null) {System.out.println("提醒 : "+ users.get(check).getNotice());}
+                    else {System.out.println("提醒 : 無" );}
                 }
                 else if(users.get(check).getIdentity().equals("Teacher")){
                     member = new Teacher();
                     System.out.println("登入身分 : 教師");
-                    System.out.println("提醒 : "+ users.get(check).getNotice());
+                    if(users.get(check).getNotice()!= null) {System.out.println("提醒 : "+ users.get(check).getNotice());}
+                    else {System.out.println("提醒 : 無" );}
                 }
                 else if(users.get(check).getIdentity().equals("Staff")){
                     member = new Staff();
                     System.out.println("登入身分 : 職員");
-                    System.out.println("提醒 : "+ users.get(check).getNotice());
+                    if(users.get(check).getNotice()!= null) {System.out.println("提醒 : "+ users.get(check).getNotice());}
+                    else {System.out.println("提醒 : 無" );}
+                    
                 }
                 
                 do{
