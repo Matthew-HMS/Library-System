@@ -6,7 +6,7 @@ public class Register {
     
     Scanner s = new Scanner(System.in);
     Random r = new Random();
-    SendMail mail = new SendMail();
+    //SendMail mail = new SendMail();
 
     public void register(ArrayList<Users> users){
         boolean repeat = true;
