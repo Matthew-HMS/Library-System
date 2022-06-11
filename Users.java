@@ -8,7 +8,7 @@ public abstract class Users {
     private String email;
     private String phone;
 	private int fine;
-	private String notice;
+	private String notice = "";
 	ArrayList<Book> borrowlist = new ArrayList<Book>();
 	ArrayList<Book> borrowrecord = new ArrayList<Book>();
 
