@@ -17,7 +17,7 @@ public class Library {
         users.add(new Student("B123","0000","Owner","student@gmail.com","0912345678","Student"));
         booklist.add(new Book("001","小王子","adventure","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"A"));
         booklist.add(new Book("002","小王子2","funny","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"B"));
-        booklist.add(new Book("003","傲慢與偏見","self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
+        booklist.add(new Book("003","傲慢與偏見","	self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
         booklist.add(new Book("004","水滸傳","classic","施耐庵","南海印刷",0,"A"));
         booklist.add(new Book("005","哈利波特－消失的密室","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"C"));
         booklist.add(new Book("006","哈利波特－神秘的魔法石","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"D"));
@@ -98,9 +98,9 @@ public class Library {
                 if(users.get(check).getIdentity().equals("Student")){
                     member = new Student();
                     System.out.println("登入身分 : 學生");
-                    if(!users.get(check).getNotice().equals(null) && users.get(check).getFine() == 0) {System.out.println("提醒 : "+ users.get(check).getNotice());}
-                    else if(users.get(check).getNotice().equals(null) && users.get(check).getFine() != 0) {System.out.println("提醒 : 您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
-                    else if(!users.get(check).getNotice().equals(null) && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
+                    if(users.get(check).getNotice() != null && users.get(check).getFine() == 0) {System.out.println("提醒 : "+ users.get(check).getNotice());}
+                    else if(users.get(check).getNotice() == null && users.get(check).getFine() != 0) {System.out.println("提醒 : 您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
+                    else if(users.get(check).getNotice() != null && users.get(check).getFine() != 0) {System.out.println("提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!");}
                     else {System.out.println("提醒 : 無" );}
                 }
                 else if(users.get(check).getIdentity().equals("Teacher")){
