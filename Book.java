@@ -62,10 +62,9 @@ public class Book implements Cloneable{
 	public LocalDate getBorrowDate() {return date;}
 	public LocalDate getReturnDueDate() {return returnduedate;}
 	public void setBorrowDate(LocalDate d) {
-		if(d != null) {
 		this.date = d;
-		this.returnduedate = d.plusWeeks(2L);
-		}
+		if(d != null) {this.returnduedate = d.plusWeeks(2L);}
+		else{this.returnduedate = null;}
 	}
 	public LocalDate getReturnDate() {return returndate;}
 	public void setReturnDate(LocalDate d) {this.returndate = d;} 
@@ -92,4 +91,3 @@ public class Book implements Cloneable{
 		}
 	}
 }
-
