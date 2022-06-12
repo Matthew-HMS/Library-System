@@ -78,17 +78,17 @@ public class Book implements Cloneable{
 	
 	public String toString() {
 		if (this.hasLended == 0) {
-				return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub + " 借閱狀態: 在架上 館藏區:" + address + "]";
+				return "ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub + " 借閱狀態: 在架上 館藏區:" + address + "\n";
 		}
-		else if (this.hasLended == 1){return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 須歸還日期:" + returnduedate + "]";
+		else if (this.hasLended == 1){return "ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 須歸還日期:" + returnduedate + "\n";
 		}
-		else if(this.hasLended == 2) {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub  + " 借閱狀態: 已預訂 館藏區:" + address + " 預訂日期:" + reservedate+ "]";
+		else if(this.hasLended == 2) {return "ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已預訂 館藏區:" + address + " 預訂日期:" + reservedate+ "\n";
 		}
-		else {return "Books [ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 已歸還日期:" + returndate + "]";
+		else {return "ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
+				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 已歸還日期:" + returndate + "\n";
 		}
 	}
 }
