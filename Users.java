@@ -2,6 +2,8 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
+import org.apache.commons.collections4.functors.NullIsFalsePredicate;
+
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.time.LocalDate;
@@ -50,7 +52,7 @@ public abstract class Users {
 	public void eraseNotice() {this.notice = "";}
 	public String getNotice() {return this.notice;}
 
-    public void searchBook(ArrayList<Book> booklist) throws FileNotFoundException{
+    public void searchBook(ArrayList<Book> booklist) throws Exception{
         
 		String [] options = {"書籍名稱查詢","書籍ID查詢","作者名稱查詢","列出所有藏書","返回"};
 		int searchWay = JOptionPane.showOptionDialog(null, "請選擇查詢方法 :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
@@ -134,7 +136,7 @@ public abstract class Users {
             	}
 			}
             else if (searchWay == 3) {
-                printBooklist(booklist);
+                Excel.ExportExcel(booklist);
             }
             else if (searchWay == 4) {
                 JOptionPane.showMessageDialog(null, "您已離開查詢書籍功能", "Search Book", JOptionPane.INFORMATION_MESSAGE);
@@ -206,7 +208,6 @@ public abstract class Users {
 		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
 			int borrowdays =0;
 			LocalDate borrowdate = users.get(check).borrowlist.get(i).getBorrowDate();
-			System.out.println(d.equals(users.get(check).borrowlist.get(i).getBorrowDate()));
 			while(d.equals(borrowdate) == false) {borrowdate = borrowdate.plusDays(1);borrowdays++;}
 			if (borrowdays > 14) {fine += (borrowdays-14) * users.get(check).getFinePerDay();}
 			users.get(check).setFine(fine);
@@ -251,7 +252,7 @@ public abstract class Users {
 					booklist.get(i).getType(), booklist.get(i).getAddress(), status);
 		}
 		ps.close();
-		System.out.println("書籍列表已列出至D:BookList.txt");
+
 	}
 
 	public abstract int getBorrowLimit();
