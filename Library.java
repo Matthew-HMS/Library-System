@@ -33,7 +33,6 @@ public class Library {
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
             do{
-            	Excel.ExportExcel(booklist);
             	Logger log = LogManager.getLogger(Excel.class.getName());
                 String [] option = {"登入"," 註冊","查詢書籍","離開系統"};
                 input = JOptionPane.showOptionDialog(null, "歡迎來到央央圖書館借還書系統","Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[3]);
