@@ -106,11 +106,12 @@ public abstract class Member extends Users{
     						if (input.equals("yes")) {
     							Book returnbook = (Book)user.borrowlist.get(j).clone();
     							LocalDate d = LocalDate.now();
-    							user.borrowlist.get(j).setHasLended(3);
-    							user.borrowlist.get(j).setReturnDate(d);
+    							returnbook.setHasLended(3);
+    							returnbook.setReturnDate(d);
     							for(int k = 0; k<user.borrowlist.size(); k++) {if(user.borrowrecord.get(k).getId().equals(id) == true) {user.borrowrecord.set(k,returnbook); break;}}
     							user.borrowlist.remove(j);
     							booklist.get(i).setHasLended(0);
+    							booklist.get(i).setBorrowDate(null);
     							JOptionPane.showMessageDialog(null, "歸還成功", "Return book", JOptionPane.INFORMATION_MESSAGE);
     							for(int k =0; k<lineup.size(); k++) {
     								if(lineup.get(k).getId().equals(id) == true) {
