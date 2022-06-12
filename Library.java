@@ -15,7 +15,7 @@ public class Library {
         Register r = new Register();
 
         users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
-        users.add(new Student("B123","0000","Owner","student@gmail.com","0912345678","Student"));
+        users.add(new Student("B123","1111","Owner","student@gmail.com","0912345678","Student"));
         booklist.add(new Book("001","小王子","adventure","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"A"));
         booklist.add(new Book("002","小王子2","funny","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"B"));
         booklist.add(new Book("003","傲慢與偏見","self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
@@ -94,21 +94,16 @@ public class Library {
             }
             else{
 
-                if(check == -1){break;}
                 Member member = new Student();
 
                 if(users.get(check).getIdentity().equals("Student")){
                     member = new Student();
-                    
-                    
                 }
                 else if(users.get(check).getIdentity().equals("Teacher")){
                     member = new Teacher();
-                    
                 }
                 else if(users.get(check).getIdentity().equals("Staff")){
                     member = new Staff();
-                   
                 }
 
                 users.get(check).checkFine(users, check);
@@ -117,8 +112,8 @@ public class Library {
                 else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {JOptionPane.showMessageDialog(null, "提醒 : "+ users.get(check).getNotice()+"\n您有罰金"+Integer.toString(users.get(check).getFine())+"元未繳 如未繳清罰金將無法借閱書籍!","Central Library", JOptionPane.ERROR_MESSAGE);}
             
                 do{
-                    String [] option = {"借書","還書","取消預約書籍","查詢書籍","查看、更改個人資訊","登出","離開系統"};
-                    input = JOptionPane.showOptionDialog(null, "歡迎回來，" + users.get(check).getName() + "\n登入身分 : " + users.get(check).getIdentity() , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[6]);
+                    String [] option = {"借書","還書","取消預約書籍","查詢書籍","查看、更改個人資訊","刪除帳號","登出","離開系統"};
+                    input = JOptionPane.showOptionDialog(null, "歡迎回來，" + users.get(check).getName() + "\n登入身分 : " + users.get(check).getIdentity() , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
                     switch(input){
                         case 0:
                             if(users.get(check).getFine() ==0 && (users.get(check).borrowlist.size()<users.get(check).getBorrowLimit())) {member.borrowBook(booklist, lineup, users.get(check));}
@@ -138,9 +133,11 @@ public class Library {
                             member.viewInfo(users,askforresetfine,check);
                             break;
                         case 5:
+                            member.deleteUser(users, check);
+                        case 6:
                             check = -1;
                             break;
-                        case 6:
+                        case 7:
                             int quit = JOptionPane.showConfirmDialog(null, "確定要離開嗎?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                             if(quit == 0){JOptionPane.showMessageDialog(null, "感謝您的使用","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
                             else{break;}

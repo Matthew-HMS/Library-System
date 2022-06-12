@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.time.LocalDate;
 
 
 public abstract class Users {
@@ -198,6 +199,7 @@ public abstract class Users {
     	if( count == 0){JOptionPane.showMessageDialog(null, "會員修改失敗! 未找到此會員");}
     }
     
+
 	public void checkFine( ArrayList<Users> users, int check) {
 		int fine = 0;
 		LocalDate d = LocalDate.now();
