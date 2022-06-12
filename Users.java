@@ -2,6 +2,8 @@ import java.util.*;
 
 import javax.swing.JOptionPane;
 
+import org.apache.commons.collections4.functors.NullIsFalsePredicate;
+
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.time.LocalDate;
@@ -50,16 +52,20 @@ public abstract class Users {
 	public void eraseNotice() {this.notice = "";}
 	public String getNotice() {return this.notice;}
 
-    public void searchBook(ArrayList<Book> booklist) throws FileNotFoundException{
+    public void searchBook(ArrayList<Book> booklist) throws Exception{
         
 		String [] options = {"書籍名稱查詢","書籍ID查詢","作者名稱查詢","列出所有藏書","返回"};
 		int searchWay = JOptionPane.showOptionDialog(null, "請選擇查詢方法 :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
 		String status = "";
 		int count = 0;
+
 		do {
 			if (searchWay == 0) {
+
 				String bookName = JOptionPane.showInputDialog(null, "請輸入查詢書籍之名稱 :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				bookName = bookName.toLowerCase();
+				
+				
 				// 圖書館有這本書
 				String output = "";
 				count = 0;
@@ -130,7 +136,7 @@ public abstract class Users {
             	}
 			}
             else if (searchWay == 3) {
-                printBooklist(booklist);
+                Excel.ExportExcel(booklist);
             }
             else if (searchWay == 4) {
                 JOptionPane.showMessageDialog(null, "您已離開查詢書籍功能", "Search Book", JOptionPane.INFORMATION_MESSAGE);
@@ -246,7 +252,7 @@ public abstract class Users {
 					booklist.get(i).getType(), booklist.get(i).getAddress(), status);
 		}
 		ps.close();
-		System.out.println("書籍列表已列出至D:BookList.txt");
+
 	}
 
 	public abstract int getBorrowLimit();

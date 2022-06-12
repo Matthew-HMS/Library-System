@@ -1,16 +1,19 @@
 import java.io.*;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import org.apache.poi.ss.usermodel.*;
 
 public class Excel {
 	/**
 	 * 原始Excel模板地址
 	 */
-	private static String path = "C:/Users/黃柏翰/Desktop/Example.xlsx";
+	private static String path = "D:/Example.xlsx";
 	/**
 	 * 匯出的Excel模板地址
 	 */
-	private static String export = "C:/Users/黃柏翰/Desktop/藏書清單.xlsx";
+	private static String export = "D:/藏書清單.xlsx";
 	
 	public static  void ExportExcel(ArrayList<Book> booklist) throws Exception {
 		//讀入檔案流
@@ -50,6 +53,6 @@ public class Excel {
 		//輸出檔案
 		FileOutputStream out = new FileOutputStream(export);
         wb.write(out);
-        System.out.println("藏書清單Excel檔已輸出 : "+export);
+        JOptionPane.showMessageDialog(null, "藏書清單Excel檔已輸出 : "+export);
 	}
 }
