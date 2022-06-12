@@ -21,11 +21,11 @@ public class Library {
         LocalDate d = LocalDate.now();
         
         users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
-        users.add(new Student("B123","1111","Owner","student@gmail.com","0912345678","Student"));
-        users.add(new Student("C123","0000","Owner","teacher@gmail.com","0912312312","Teacher"));
-        users.add(new Student("D123","0000","Owner","staff@gmail.com","0945645645","Staff"));
-        users.add(new Student("E123","0000","Owner","student2@gmail.com","0978978978","Student"));
-        users.add(new Student("F123","0000","Owner","student3@gmail.com","0936525844","Student"));
+        users.add(new Student("B123","1111","王小名","student@gmail.com","0912345678","Student"));
+        users.add(new Student("C123","0000","河夢咻","teacher@gmail.com","0912312312","Teacher"));
+        users.add(new Student("D123","0000","磺伯汗","staff@gmail.com","0945645645","Staff"));
+        users.add(new Student("E123","0000","簧罐針","student2@gmail.com","0978978978","Student"));
+        users.add(new Student("F123","0000","夜辛皿","student3@gmail.com","0936525844","Student"));
         booklist.add(new Book("001","小王子","冒險","安托萬·迪","尖端出版",0,"A"));
         booklist.add(new Book("002","小王子2","有趣","安托萬·迪","尖端出版",0,"B"));
         booklist.add(new Book("003","傲慢與偏見","知識","珍","Whitehall",0,"A"));
