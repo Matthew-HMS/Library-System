@@ -279,13 +279,13 @@ public class Admin extends Users{
 			for(j = 0; j<askforresetfine.size(); j++)
 			if (users.get(i).getAccount().equals(askforresetfine.get(j))) {check = i; break;}
 		}
-    	users.get(check).checkFine(users, check);
     	if(users.get(check).getFine() != 0) {
-    		String input = JOptionPane.showInputDialog(null, "請確認此會員罰金是否已繳清?\n若已繳清 請輸入\"yes\"以清除未繳罰金(若輸入任意其他字串則取消) :", "reset Fine", JOptionPane.QUESTION_MESSAGE);
+    		String input = JOptionPane.showInputDialog(null, "請確認會員 : "+ users.get(check).getAccount() + " 是否已歸還書籍、罰金是否已繳清?\n若已歸還與繳清 請輸入\"yes\"以清除未繳罰金(若輸入任意其他字串則取消) :", "reset Fine", JOptionPane.QUESTION_MESSAGE);
     		if (input.equals("yes")) {
     			users.get(check).setFine(0);
 				askforresetfine.remove(j);
-    			JOptionPane.showMessageDialog(null, "罰金已歸零!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
+    			JOptionPane.showMessageDialog(null, "罰金已歸零!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);
+    		}
     		else {JOptionPane.showMessageDialog(null, "罰金未歸零!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
     	}
     	else {JOptionPane.showMessageDialog(null, "此會員無未繳罰金!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
