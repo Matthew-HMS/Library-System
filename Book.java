@@ -87,7 +87,7 @@ public class Book implements Cloneable{
 				+ " 出版社:" + pub  + " 借閱狀態: 已預訂 館藏區:" + address + " 預訂日期:" + reservedate+ "\n";
 		}
 		else {return "ID:" + id + " 名稱:" + name + " 種類:" + type + " 作者:" + author
-				+ " 出版社:" + pub  + " 借閱狀態: 已借閱 館藏區:" + address + " 借閱日期:" + date+ " 已歸還日期:" + returndate + "\n";
+				+ " 出版社:" + pub  + " 借閱狀態: 已歸還 館藏區:" + address + " 借閱日期:" + date+ " 已歸還日期:" + returndate + "\n";
 		}
 	}
 }
