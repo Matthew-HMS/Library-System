@@ -246,7 +246,7 @@ public class Admin extends Users{
 				else{JOptionPane.showMessageDialog(null, "無會員提出清除罰金紀錄要求!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}
 			else if(searchWay == 5){
-				printMember.printMember(users);
+				printMember(users);
 			}
 			else if(searchWay == 6) {
 				JOptionPane.showMessageDialog(null, "你已離開查詢會員功能", "search Member", JOptionPane.INFORMATION_MESSAGE);
