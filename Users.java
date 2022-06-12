@@ -56,14 +56,10 @@ public abstract class Users {
 		int searchWay = JOptionPane.showOptionDialog(null, "請選擇查詢方法 :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
 		String status = "";
 		int count = 0;
-
 		do {
 			if (searchWay == 0) {
-
 				String bookName = JOptionPane.showInputDialog(null, "請輸入查詢書籍之名稱 :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				bookName = bookName.toLowerCase();
-				
-				
 				// 圖書館有這本書
 				String output = "";
 				count = 0;
@@ -206,7 +202,6 @@ public abstract class Users {
 		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
 			int borrowdays =0;
 			LocalDate borrowdate = users.get(check).borrowlist.get(i).getBorrowDate();
-			System.out.println(d.equals(users.get(check).borrowlist.get(i).getBorrowDate()));
 			while(d.equals(borrowdate) == false) {borrowdate = borrowdate.plusDays(1);borrowdays++;}
 			if (borrowdays > 14) {fine += (borrowdays-14) * users.get(check).getFinePerDay();}
 			users.get(check).setFine(fine);
