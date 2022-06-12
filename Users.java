@@ -1,13 +1,10 @@
 import java.util.*;
-
 import javax.swing.JOptionPane;
-
-import org.apache.commons.collections4.functors.NullIsFalsePredicate;
-
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.time.LocalDate;
 
+import org.apache.commons.collections4.functors.NullIsFalsePredicate;
 
 public abstract class Users {
     private String name;
@@ -47,6 +44,7 @@ public abstract class Users {
     public void setIdentity(String identity){this.identity = identity;}
     public String getIdentity(){return identity;}
 	public void setFine(int fine){this.fine = fine;}
+	public void addFine(int fine){this.fine += fine;}
 	public int getFine(){return fine;}
 	public void addNotice(String notice) {this.notice += notice;}
 	public void eraseNotice() {this.notice = "";}
@@ -58,14 +56,10 @@ public abstract class Users {
 		int searchWay = JOptionPane.showOptionDialog(null, "請選擇查詢方法 :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
 		String status = "";
 		int count = 0;
-
 		do {
 			if (searchWay == 0) {
-
 				String bookName = JOptionPane.showInputDialog(null, "請輸入查詢書籍之名稱 :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				bookName = bookName.toLowerCase();
-				
-				
 				// 圖書館有這本書
 				String output = "";
 				count = 0;
@@ -202,7 +196,7 @@ public abstract class Users {
     }
     
 
-	public void checkFine( ArrayList<Users> users, int check) {
+	public void checkFine(ArrayList<Users> users, int check) {
 		int fine = 0;
 		LocalDate d = LocalDate.now();
 		for(int i = 0; i< users.get(check).borrowlist.size(); i++ ) {
@@ -210,7 +204,7 @@ public abstract class Users {
 			LocalDate borrowdate = users.get(check).borrowlist.get(i).getBorrowDate();
 			while(d.equals(borrowdate) == false) {borrowdate = borrowdate.plusDays(1);borrowdays++;}
 			if (borrowdays > 14) {fine += (borrowdays-14) * users.get(check).getFinePerDay();}
-			users.get(check).setFine(fine);
+			users.get(check).addFine(fine);
 		}
 	}
 
@@ -252,7 +246,6 @@ public abstract class Users {
 					booklist.get(i).getType(), booklist.get(i).getAddress(), status);
 		}
 		ps.close();
-
 	}
 
 	public abstract int getBorrowLimit();
