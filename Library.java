@@ -1,3 +1,5 @@
+package Try2;
+
 import java.io.FileNotFoundException;
 import java.util.*;
 import javax.swing.*;
@@ -15,17 +17,34 @@ public class Library {
         Register r = new Register();
 
         users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
+        users.add(new Student("C123","0000","Owner","teacher@gmail.com","0912312312","Teacher"));
+        users.add(new Student("D123","0000","Owner","staff@gmail.com","0945645645","Staff"));
         users.add(new Student("B123","0000","Owner","student@gmail.com","0912345678","Student"));
-        booklist.add(new Book("001","小王子","adventure","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"A"));
-        booklist.add(new Book("002","小王子2","funny","安托萬·迪·聖-修伯里"," Reynal & Hitchcock",0,"B"));
-        booklist.add(new Book("003","傲慢與偏見","self-knowledge","珍·奥斯汀","Whitehall",0,"A"));
-        booklist.add(new Book("004","水滸傳","classic","施耐庵","南海印刷",0,"A"));
-        booklist.add(new Book("005","哈利波特－消失的密室","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"C"));
-        booklist.add(new Book("006","哈利波特－神秘的魔法石","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"D"));
-        booklist.add(new Book("007","哈利波特－阿茲卡班的逃犯","adventure","J·K·羅琳","布盧姆茨伯里出版社",0,"B"));
-        booklist.add(new Book("008","魔戒","mystery","J·R·R·托爾金","聯經出版公司",0,"A"));
-        booklist.add(new Book("009","達文西密碼","scary","丹·布朗","時報出版",0,"B"));
-        booklist.add(new Book("010","福爾摩斯","detective","亞瑟．柯南．道爾","遠流",0,"A"));
+        users.add(new Student("E123","0000","Owner","student2@gmail.com","0978978978","Student"));
+        users.add(new Student("F123","0000","Owner","student3@gmail.com","0936525844","Student"));
+        
+        booklist.add(new Book("001","小王子","冒險","安托萬·迪","尖端出版",0,"A"));
+        booklist.add(new Book("002","小王子2","有趣","安托萬·迪","尖端出版",0,"B"));
+        booklist.add(new Book("003","傲慢與偏見","知識","珍","Whitehall",0,"A"));
+        booklist.add(new Book("004","水滸傳","經典文學","施耐庵","南海印刷",0,"A"));
+        booklist.add(new Book("005","哈利波特－消失的密室","冒險","J·K·羅琳","布盧姆茨伯里出版社",0,"C"));
+        booklist.add(new Book("006","哈利波特－神秘的魔法石","冒險","J·K·羅琳","布盧姆茨伯里出版社",0,"D"));
+        booklist.add(new Book("007","哈利波特－阿茲卡班的逃犯","冒險","J·K·羅琳","布盧姆茨伯里出版社",0,"B"));
+        booklist.add(new Book("008","魔戒","懸疑","J·R·R·托爾金","聯經出版公司",0,"A"));
+        booklist.add(new Book("009","達文西密碼","恐怖","丹·布朗","時報出版",0,"B"));
+        booklist.add(new Book("011","福爾摩斯","懸疑","柯南．道爾","遠流",0,"A"));
+        booklist.add(new Book("012","原子習慣","知識","詹姆斯","方智",0,"C"));
+        booklist.add(new Book("013","被討厭的勇氣","知識","岸見一郎","遠流",0,"A"));
+        booklist.add(new Book("014","小紅帽","經典文學","格林","海南印刷",0,"B"));
+        booklist.add(new Book("015","沙丘I","科幻","法蘭克","大家出版",0,"D"));
+        booklist.add(new Book("016","沙丘II","科幻","法蘭克","大家出版",0,"D"));
+        booklist.add(new Book("017","白色巨塔","心理","侯文詠","皇冠",0,"A"));
+        booklist.add(new Book("018","心靈雞湯","心理","戴利","遠流",0,"C"));
+        booklist.add(new Book("019","富爸爸有錢有理","知識","羅勃特","高寶",0,"A"));
+        booklist.add(new Book("020","協槓青年","知識","柯南","遠流",0,"B"));
+        
+        
+        
         
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
