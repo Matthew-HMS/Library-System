@@ -12,26 +12,26 @@ public abstract class Member extends Users{
 				
 	
     public void payFine(ArrayList<Users> users){
-    	String input = JOptionPane.showInputDialog(null, "ç¢ºèªç½°é‡‘å·²ç¹³ç´?\nè«‹è¼¸å…¥yes (è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "Pay fine", JOptionPane.QUESTION_MESSAGE);
-		if (input.equals("yes")) {JOptionPane.showMessageDialog(null, "è«‹ç­‰å€™ç®¡ç†å“¡ç¢ºèª ç¢ºèªå®Œç•¢å¾Œå°‡å¯æ¢å¾©å€Ÿé–±åŠŸèƒ½", "Pay fine", JOptionPane.INFORMATION_MESSAGE);}
+    	String input = JOptionPane.showInputDialog(null, "½T»{»@ª÷¤wÃº¯Ç?\n½Ğ¿é¤Jyes (­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "Pay fine", JOptionPane.QUESTION_MESSAGE);
+		if (input.equals("yes")) {JOptionPane.showMessageDialog(null, "½Ğµ¥­ÔºŞ²z­û½T»{ ½T»{§¹²¦«á±N¥i«ì´_­É¾\¥\¯à", "Pay fine", JOptionPane.INFORMATION_MESSAGE);}
     }
     public void borrowBook(ArrayList<Book> booklist, ArrayList<Book>lineup, Users user) {
     	
-		String [] option = {"æ›¸å","ID"};
-    	int searchWay = JOptionPane.showOptionDialog(null, "è«‹é¸æ“‡ä½¿ç”¨æ›¸åæˆ–IDå€Ÿé–±", "Borrow book", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, null);
+		String [] option = {"®Ñ¦W","ID"};
+    	int searchWay = JOptionPane.showOptionDialog(null, "½Ğ¿ï¾Ü¨Ï¥Î®Ñ¦W©ÎID­É¾\", "Borrow book", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, null);
     	String id = "";
     	String name = "";
     	String input = "" ;
     	switch (searchWay) {
     	
     	case 0:
-			name = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²å€Ÿé–±ä¹‹æ›¸å : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
+			name = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı­É¾\¤§®Ñ¦W : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
         	int count = 0; int i = 0; int indexofbook = 0; boolean hasborrowed = false;
 
         	for( i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getName().equals(name) && booklist.get(i).getHasLended() == 0){
 
-        			input = JOptionPane.showInputDialog(null, "ç¢ºèªå€Ÿé–±?\nè«‹è¼¸å…¥yes (è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
+        			input = JOptionPane.showInputDialog(null, "½T»{­É¾\?\n½Ğ¿é¤Jyes (­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
         			if (input.equals("yes")) { 
         				for(int j =0; j<user.borrowlist.size(); j++) {if (user.borrowlist.get(j).getName().equals(input) && user.borrowlist.get(j).getHasLended() == 2 ) {user.borrowlist.remove(j);break;}}
         				booklist.get(i).setHasLended(1);
@@ -39,7 +39,7 @@ public abstract class Member extends Users{
         				booklist.get(i).setBorrowDate(d);
         				user.borrowlist.add(booklist.get(i));
         				user.borrowrecord.add(booklist.get(i));
-            			JOptionPane.showMessageDialog(null, "å€Ÿé–±æˆåŠŸ", "Borrow book", JOptionPane.INFORMATION_MESSAGE);
+            			JOptionPane.showMessageDialog(null, "­É¾\¦¨¥\", "Borrow book", JOptionPane.INFORMATION_MESSAGE);
         			}
         			count++; hasborrowed = true;
         			break;
@@ -48,7 +48,7 @@ public abstract class Member extends Users{
         	}
         	if(count != 0 && hasborrowed == false) {
 
-            	input = JOptionPane.showInputDialog(null, "æ­¤æ›¸å·²å…¨æ•¸è¢«å€Ÿé–± éœ€é è¨‚?\nè«‹è¼¸å…¥yes (è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
+            	input = JOptionPane.showInputDialog(null, "¦¹®Ñ¤w¥ş¼Æ³Q­É¾\ »İ¹w­q?\n½Ğ¿é¤Jyes (­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
             	int k = 0;
             	if (input.equals("yes")) { 
                 	for(k = 0; k<booklist.size(); k++) {if(booklist.get(k).getName().equals(name) == true ) {break;}}
@@ -62,20 +62,20 @@ public abstract class Member extends Users{
             		user.borrowrecord.add(reservebook);
             		lineup.add(reservebook);
             		}
-            		JOptionPane.showMessageDialog(null, "æ›¸æœ¬é è¨‚æˆåŠŸ!", "Borrow book", JOptionPane.INFORMATION_MESSAGE);
+            		JOptionPane.showMessageDialog(null, "®Ñ¥»¹w­q¦¨¥\!", "Borrow book", JOptionPane.INFORMATION_MESSAGE);
             		hasborrowed = true;
             		break;
         	}
-        	if(count == 0){JOptionPane.showMessageDialog(null, "ç„¡æ³•å€Ÿé–±ï¼Œç„¡æ³•æ‰¾åˆ°æ­¤æ›¸","Borrow book", JOptionPane.ERROR_MESSAGE);}
+        	if(count == 0){JOptionPane.showMessageDialog(null, "µLªk­É¾\¡AµLªk§ä¨ì¦¹®Ñ","Borrow book", JOptionPane.ERROR_MESSAGE);}
     		break;
 
     	case 1:
-			id = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²å€Ÿé–±æ›¸æœ¬ä¹‹ID : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
+			id = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı­É¾\®Ñ¥»¤§ID : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
 
         	int count2 = 0;
         	for(i = 0; i < booklist.size() ; i++){
         		if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 0){
-        			input = JOptionPane.showInputDialog(null, "ç¢ºèªå€Ÿé–±?\nè«‹è¼¸å…¥yes (è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
+        			input = JOptionPane.showInputDialog(null, "½T»{­É¾\?\n½Ğ¿é¤Jyes (­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "Borrow book", JOptionPane.QUESTION_MESSAGE);
 
                 	if (input.equals("yes")) {
                 		booklist.get(i).setHasLended(1);
@@ -84,13 +84,13 @@ public abstract class Member extends Users{
                 		Book borrowbook = (Book)booklist.get(i).clone();
                 		user.borrowlist.add(borrowbook);
                 		user.borrowrecord.add(borrowbook);
-                		JOptionPane.showMessageDialog(null, "å€Ÿé–±æˆåŠŸ", "Borrow book", JOptionPane.INFORMATION_MESSAGE);
+                		JOptionPane.showMessageDialog(null, "­É¾\¦¨¥\", "Borrow book", JOptionPane.INFORMATION_MESSAGE);
                 	}
                 	count2 ++; break;
         		}
-        		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 1) {JOptionPane.showMessageDialog(null, "ç„¡æ³•å€Ÿé–±ï¼Œæ­¤æ›¸å·²è¢«å€Ÿå‡º","Borrow book",JOptionPane.ERROR_MESSAGE);count2++;break;}
+        		else if(booklist.get(i).getId().equals(id) && booklist.get(i).getHasLended() == 1) {JOptionPane.showMessageDialog(null, "µLªk­É¾\¡A¦¹®Ñ¤w³Q­É¥X","Borrow book",JOptionPane.ERROR_MESSAGE);count2++;break;}
         	}
-    		if(count2 == 0) {JOptionPane.showMessageDialog(null, "ç„¡æ³•å€Ÿé–±ï¼Œç„¡æ³•æ‰¾åˆ°æ­¤æ›¸","Borrow book", JOptionPane.ERROR_MESSAGE);}
+    		if(count2 == 0) {JOptionPane.showMessageDialog(null, "µLªk­É¾\¡AµLªk§ä¨ì¦¹®Ñ","Borrow book", JOptionPane.ERROR_MESSAGE);}
     		break;
     	}
     }
@@ -98,7 +98,7 @@ public abstract class Member extends Users{
     	String id = ""; String input = "";
     	boolean hasborrow = false;
 
-    	id = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²æ­¸é‚„æ›¸æœ¬ä¹‹ID : ", "Return book", JOptionPane.QUESTION_MESSAGE);
+    	id = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ıÂkÁÙ®Ñ¥»¤§ID : ", "Return book", JOptionPane.QUESTION_MESSAGE);
     	int count = 0;
     	for(int i = 0; i < booklist.size(); i++) {
     		if(booklist.get(i).getId().equals(id) == true) {
@@ -107,22 +107,22 @@ public abstract class Member extends Users{
     				for(int j = 0; j < user.borrowlist.size(); j++) {
     					if(user.borrowlist.get(j).getId().equals(id) == true && user.borrowlist.get(j).getHasLended() == 1) {
     						hasborrow = true;
-    						input = JOptionPane.showInputDialog(null, "ç¢ºèªæ­¸é‚„?\nè«‹è¼¸å…¥yes (è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "Return book", JOptionPane.QUESTION_MESSAGE);
+    						input = JOptionPane.showInputDialog(null, "½T»{ÂkÁÙ?\n½Ğ¿é¤Jyes (­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "Return book", JOptionPane.QUESTION_MESSAGE);
 
     						if (input.equals("yes")) {
     							Book returnbook = (Book)user.borrowlist.get(j).clone();
     							LocalDate d = LocalDate.now();
-    							user.borrowlist.get(j).setHasLended(3);
-    							user.borrowlist.get(j).setReturnDate(d);
+    							returnbook.setHasLended(3);
+    							returnbook.setReturnDate(d);
     							for(int k = 0; k<user.borrowlist.size(); k++) {if(user.borrowrecord.get(k).getId().equals(id) == true) {user.borrowrecord.set(k,returnbook); break;}}
-    							//user.borrowrecord.add(booklist.get(j));
 								user.borrowlist.remove(j);
 								
     							booklist.get(i).setHasLended(0);
-    							JOptionPane.showMessageDialog(null, "æ­¸é‚„æˆåŠŸ", "Return book", JOptionPane.INFORMATION_MESSAGE);
+    							booklist.get(i).setBorrowDate(null);
+    							JOptionPane.showMessageDialog(null, "ÂkÁÙ¦¨¥\", "Return book", JOptionPane.INFORMATION_MESSAGE);
     							for(int k =0; k<lineup.size(); k++) {
     								if(lineup.get(k).getId().equals(id) == true) {
-    									lineup.get(k).getReserveMember().addNotice("æ‚¨é ç´„çš„\""+lineup.get(k).getName()+"\"å·²æ­¸é‚„ å¯å€Ÿé–±\n");
+    									lineup.get(k).getReserveMember().addNotice("±z¹w¬ùªº\""+lineup.get(k).getName()+"\"¤wÂkÁÙ ¥i­É¾\\n");
     									break;
     									}
     								}
@@ -130,49 +130,52 @@ public abstract class Member extends Users{
                     	break;
     					}
     				}
-    			if(hasborrow == false) {JOptionPane.showMessageDialog(null, "ç„¡æ³•æ­¸é‚„ æœªå€Ÿé–±æ­¤æ›¸!","Return book", JOptionPane.ERROR_MESSAGE); break;}
+    			if(hasborrow == false) {JOptionPane.showMessageDialog(null, "µLªkÂkÁÙ ¥¼­É¾\¦¹®Ñ!","Return book", JOptionPane.ERROR_MESSAGE); break;}
     			}
-    			else {JOptionPane.showMessageDialog(null, "ç„¡æ³•æ­¸é‚„ æ­¤æ›¸æœªè¢«å€Ÿé–±!","Return book", JOptionPane.ERROR_MESSAGE);break;}
+    			else {JOptionPane.showMessageDialog(null, "µLªkÂkÁÙ ¦¹®Ñ¥¼³Q­É¾\!","Return book", JOptionPane.ERROR_MESSAGE);break;}
     		}
     	}
-    	if(count == 0) {JOptionPane.showMessageDialog(null, "ç„¡æ³•æ­¸é‚„ æœªæ‰¾åˆ°æ­¤æ›¸!","Return book", JOptionPane.ERROR_MESSAGE);}
+    	if(count == 0) {JOptionPane.showMessageDialog(null, "µLªkÂkÁÙ ¥¼§ä¨ì¦¹®Ñ!","Return book", JOptionPane.ERROR_MESSAGE);}
     }
     
     public void cancelReserve(ArrayList<Book> lineup, Users user) {
     	String input = ""; boolean hasreserve = false; int count = 0;
 
-    	input = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²å–æ¶ˆé ç´„ä¹‹æ›¸å : ", "Cancel reserve", JOptionPane.QUESTION_MESSAGE);
+    	input = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı¨ú®ø¹w¬ù¤§®Ñ¦W : ", "Cancel reserve", JOptionPane.QUESTION_MESSAGE);
     	for(int i = 0; i < user.borrowlist.size() ; i++) {
     		if(user.borrowlist.get(i).getName().equals(input) == true) {count ++;}
     		if(user.borrowlist.get(i).getName().equals(input) == true && user.borrowlist.get(i).getHasLended() == 2) {
     			hasreserve = true;
-    			input = JOptionPane.showInputDialog(null, "ç¢ºèªå–æ¶ˆé ç´„?\nè«‹è¼¸å…¥yes (è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "Cancel reserve", JOptionPane.QUESTION_MESSAGE);
+    			input = JOptionPane.showInputDialog(null, "½T»{¨ú®ø¹w¬ù?\n½Ğ¿é¤Jyes (­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "Cancel reserve", JOptionPane.QUESTION_MESSAGE);
 
 				if (input.equals("yes")) {
 					user.borrowlist.remove(i);
-					for(int j = 0; j < lineup.size(); j++) {if (lineup.get(j).getReserveMember().equals(user)){lineup.remove(j);break;}}//å–æ¶ˆæ’éšŠ
-					JOptionPane.showMessageDialog(null, "å–æ¶ˆé ç´„æˆåŠŸ!", "Cancel reserve", JOptionPane.INFORMATION_MESSAGE);
+					for(int j = 0; j < lineup.size(); j++) {if (lineup.get(j).getReserveMember().equals(user)){lineup.remove(j);break;}}//¨ú®ø±Æ¶¤
+					JOptionPane.showMessageDialog(null, "¨ú®ø¹w¬ù¦¨¥\!", "Cancel reserve", JOptionPane.INFORMATION_MESSAGE);
 				}
 				count++; break;
     		}
     	}
-    	if(hasreserve = false) {JOptionPane.showMessageDialog(null, "ç„¡æ³•å–æ¶ˆé ç´„ æœªé ç´„æ­¤æ›¸!", "Cancel reserve", JOptionPane.ERROR_MESSAGE);}
-    	if(count == 0) {JOptionPane.showMessageDialog(null, "ç„¡æ³•å–æ¶ˆé ç´„ æœªæ‰¾åˆ°æ­¤æ›¸!", "Cancel reserve", JOptionPane.ERROR_MESSAGE);}
+    	if(hasreserve = false) {JOptionPane.showMessageDialog(null, "µLªk¨ú®ø¹w¬ù ¥¼¹w¬ù¦¹®Ñ!", "Cancel reserve", JOptionPane.ERROR_MESSAGE);}
+    	if(count == 0) {JOptionPane.showMessageDialog(null, "µLªk¨ú®ø¹w¬ù ¥¼§ä¨ì¦¹®Ñ!", "Cancel reserve", JOptionPane.ERROR_MESSAGE);}
     }
     
 	public int getBorrowLimit() {return 0;}
 	public int getFinePerDay() {return 0;}
 	public void viewInfo(ArrayList<Users> users, ArrayList<String> askforresetfine,int check){
-		String output = ("ä½¿ç”¨è€…åç¨±:"+users.get(check).getName()+"\n"
-		+"èº«åˆ† : "+users.get(check).getIdentity()+"\n"
-		+"å¸³è™Ÿ : "+users.get(check).getAccount()+"\n"
-		+"å¯†ç¢¼ : "+users.get(check).getPassword()+"\n"
-		+"é›»è©± : "+users.get(check).getPhone()+"\n"
-		+"é›»å­ä¿¡ç®± : "+users.get(check).getEmail()+"\n"
-		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "æ‡‰ç¹³ç½°æ¬¾ : "+users.get(check).getFine()+" å…ƒ\n" )
-		+"å€Ÿé–±ç´€éŒ„ : "+users.get(check).borrowrecord.toString()+"\n");
+		String output = ("¨Ï¥ÎªÌ¦WºÙ:"+users.get(check).getName()+"\n"
+		+"¨­¤À : "+users.get(check).getIdentity()+"\n"
+		+"±b¸¹ : "+users.get(check).getAccount()+"\n"
+		+"±K½X : "+users.get(check).getPassword()+"\n"
+		+"¹q¸Ü : "+users.get(check).getPhone()+"\n"
+		+"¹q¤l«H½c : "+users.get(check).getEmail()+"\n"
+		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "À³Ãº»@´Ú : "+users.get(check).getFine()+" ¤¸\n" )
+		+"­É¾\¬ö¿ı : "+"\n");
+		for(int i = 0; i< users.get(check).borrowrecord.size(); i++) {
+			output += users.get(check).borrowrecord.get(i).toString();
+		}
 
-		String [] option = {"ç·¨è¼¯è³‡æ–™","è¦æ±‚æ¸…é™¤æœªç¹³ç½°é‡‘ç´€éŒ„","é›¢é–‹"};
+		String [] option = {"½s¿è¸ê®Æ","­n¨D²M°£¥¼Ãº»@ª÷¬ö¿ı","Â÷¶}"};
 		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
 
 		if(input == 0){
@@ -183,7 +186,7 @@ public abstract class Member extends Users{
 			askForResetFine(users, askforresetfine, check);
 		}
 		else if(input == 2){
-			JOptionPane.showMessageDialog(null, "é›¢é–‹æŸ¥çœ‹å€‹äººè³‡è¨Š!", "User Information", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Â÷¶}¬d¬İ­Ó¤H¸ê°T!", "User Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
 			System.exit(0);
@@ -192,13 +195,18 @@ public abstract class Member extends Users{
 	}
 	public void resetFine(ArrayList<Users> users , ArrayList<String> askforresetfine) {};
 	public void askForResetFine(ArrayList<Users> users, ArrayList<String> askforresetfine, int check) {
-		if(users.get(check).getFine() != 0) {
-			askforresetfine.add(users.get(check).getAccount());
-			for(int i =0; i < users.size(); i++) {
-				if(users.get(i).getIdentity().equals("Admin") == true) {users.get(i).addNotice("æœƒå“¡å¸³è™Ÿ : "+users.get(check).getAccount()+"è¦æ±‚æ¸…é™¤ç½°é‡‘ è«‹ç¢ºèªæ˜¯å¦å·²ç¹³ç´!\n");}
+		String option [] = {"¬O","§_"};
+		int input = JOptionPane.showOptionDialog(null, "½Ğ½T»{¬O§_¤wÂkÁÙ®ÑÄy¡A¨ÃÃº²M»@ª÷"  , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[1]);
+		if(input == 0){
+			if(users.get(check).getFine() != 0) {
+				String account = users.get(check).getAccount();
+				askforresetfine.add(account);
+				for(int i =0; i < users.size(); i++) {
+					if(users.get(i).getIdentity().equals("Admin") == true) {users.get(i).addNotice("·|­û±b¸¹ : "+account+"­n¨D²M°£»@ª÷ ½Ğ½T»{¬O§_¤wÃº¯Ç!\n");}
+				}
+				JOptionPane.showMessageDialog(null, "¤w­n¨D²M°£»@ª÷¬ö¿ı ½Ğµ¥«İºŞ²z­û½T»{!", "User Information", JOptionPane.INFORMATION_MESSAGE);
 			}
-			JOptionPane.showMessageDialog(null, "å·²è¦æ±‚æ¸…é™¤ç½°é‡‘ç´€éŒ„ è«‹ç­‰å¾…ç®¡ç†å“¡ç¢ºèª!", "User Information", JOptionPane.INFORMATION_MESSAGE);
+			else {JOptionPane.showMessageDialog(null, "µL»İÃº¯Ç»@ª÷!", "User Information", JOptionPane.INFORMATION_MESSAGE);}
 		}
-		else {JOptionPane.showMessageDialog(null, "ç„¡éœ€ç¹³ç´ç½°é‡‘!", "User Information", JOptionPane.INFORMATION_MESSAGE);}
 	}
 }
