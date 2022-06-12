@@ -181,7 +181,7 @@ public class Admin extends Users{
 				
 	}
 
-	public void searchMember(ArrayList<Users> users,ArrayList<String> askforresetfine) throws FileNotFoundException {
+	public void searchMember(ArrayList<Users> users,ArrayList<String> askforresetfine) throws Exception {
 		
 		String [] option = {"會員名字查詢","會員帳號查詢","會員信箱查詢","會員電話查詢","確認已繳納之會員罰金","列出所有會員","離開"};
 		int searchWay = JOptionPane.showOptionDialog(null, "請選擇查詢方法", "search Member", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
@@ -246,7 +246,7 @@ public class Admin extends Users{
 				else{JOptionPane.showMessageDialog(null, "無會員提出清除罰金紀錄要求!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}
 			else if(searchWay == 5){
-				printMember(users);
+				printMember.printMember(users);
 			}
 			else if(searchWay == 6) {
 				JOptionPane.showMessageDialog(null, "你已離開查詢會員功能", "search Member", JOptionPane.INFORMATION_MESSAGE);
