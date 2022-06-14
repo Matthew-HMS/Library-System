@@ -11,11 +11,11 @@ public class Book implements Cloneable{
 		return book;
 	}
 	private String id;
-	private String name;  // æ›¸åï¼Œä¸èƒ½é‡å¤
+	private String name;  // ®Ñ¦W¡A¤£¯à­«Î`
 	private String type;
 	private String author;
-	private String pub; // å‡ºç‰ˆç¤¾
-	private int hasLended; // å·²å€Ÿå‡ºæ•¸
+	private String pub; // ¥Xª©ªÀ
+	private int hasLended; // ¤w­É¥X¼Æ
 	private String address; // 
 	private LocalDate date;
 	private LocalDate returndate;
@@ -62,10 +62,11 @@ public class Book implements Cloneable{
 	public LocalDate getBorrowDate() {return date;}
 	public LocalDate getReturnDueDate() {return returnduedate;}
 	public void setBorrowDate(LocalDate d) {
-		if(d != null) {
+		
 		this.date = d;
-		this.returnduedate = d.plusWeeks(2L);
-		}
+		if(d != null) {this.returnduedate = d.plusWeeks(2L);}
+		else{this.returnduedate = null;}
+		
 	}
 	public LocalDate getReturnDate() {return returndate;}
 	public void setReturnDate(LocalDate d) {this.returndate = d;} 
@@ -78,17 +79,17 @@ public class Book implements Cloneable{
 	
 	public String toString() {
 		if (this.hasLended == 0) {
-				return "ID:" + id + " åç¨±:" + name + " ç¨®é¡:" + type + " ä½œè€…:" + author
-				+ " å‡ºç‰ˆç¤¾:" + pub + " å€Ÿé–±ç‹€æ…‹: åœ¨æ¶ä¸Š é¤¨è—å€:" + address + "\n";
+				return "ID:" + id + " ¦WºÙ:" + name + " ºØÃş:" + type + " §@ªÌ:" + author
+				+ " ¥Xª©ªÀ:" + pub + " ­É¾\ª¬ºA: ¦b¬[¤W À]ÂÃ°Ï:" + address + "\n";
 		}
-		else if (this.hasLended == 1){return "ID:" + id + " åç¨±:" + name + " ç¨®é¡:" + type + " ä½œè€…:" + author
-				+ " å‡ºç‰ˆç¤¾:" + pub  + " å€Ÿé–±ç‹€æ…‹: å·²å€Ÿé–± é¤¨è—å€:" + address + " å€Ÿé–±æ—¥æœŸ:" + date+ " é ˆæ­¸é‚„æ—¥æœŸ:" + returnduedate + "\n";
+		else if (this.hasLended == 1){return "ID:" + id + " ¦WºÙ:" + name + " ºØÃş:" + type + " §@ªÌ:" + author
+				+ " ¥Xª©ªÀ:" + pub  + " ­É¾\ª¬ºA: ¤w­É¾\ À]ÂÃ°Ï:" + address + " ­É¾\¤é´Á:" + date+ " ¶·ÂkÁÙ¤é´Á:" + returnduedate + "\n";
 		}
-		else if(this.hasLended == 2) {return "ID:" + id + " åç¨±:" + name + " ç¨®é¡:" + type + " ä½œè€…:" + author
-				+ " å‡ºç‰ˆç¤¾:" + pub  + " å€Ÿé–±ç‹€æ…‹: å·²é è¨‚ é¤¨è—å€:" + address + " é è¨‚æ—¥æœŸ:" + reservedate+ "\n";
+		else if(this.hasLended == 2) {return "ID:" + id + " ¦WºÙ:" + name + " ºØÃş:" + type + " §@ªÌ:" + author
+				+ " ¥Xª©ªÀ:" + pub  + " ­É¾\ª¬ºA: ¤w¹w­q À]ÂÃ°Ï:" + address + " ¹w­q¤é´Á:" + reservedate+ "\n";
 		}
-		else {return "ID:" + id + " åç¨±:" + name + " ç¨®é¡:" + type + " ä½œè€…:" + author
-				+ " å‡ºç‰ˆç¤¾:" + pub  + " å€Ÿé–±ç‹€æ…‹: å·²å€Ÿé–± é¤¨è—å€:" + address + " å€Ÿé–±æ—¥æœŸ:" + date+ " å·²æ­¸é‚„æ—¥æœŸ:" + returndate + "\n";
+		else {return "ID:" + id + " ¦WºÙ:" + name + " ºØÃş:" + type + " §@ªÌ:" + author
+				+ " ¥Xª©ªÀ:" + pub  + " ­É¾\ª¬ºA: ¤wÂkÁÙ À]ÂÃ°Ï:" + address + " ­É¾\¤é´Á:" + date+ " ¤wÂkÁÙ¤é´Á:" + returndate + "\n";
 		}
 	}
 }

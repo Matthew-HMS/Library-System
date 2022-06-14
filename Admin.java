@@ -13,126 +13,126 @@ public class Admin extends Users{
     
     public void addBook (ArrayList<Book> booklist){
         
-        String id = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥ID : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        String id = JOptionPane.showInputDialog(null, "½Ğ¿é¤JID : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
         boolean idExist = false;
         for (int i = 0; i < booklist.size(); i++) {if (booklist.get(i).getId().equals(id)) {idExist = true;}}
         
         if(idExist == false) {
-        String name = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ›¸å  : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
-        String type = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥åœ–æ›¸åˆ†é¡ : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
-        String author = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥ä½œè€… : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
-        String pub = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥å‡ºç‰ˆç¤¾ : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        String name = JOptionPane.showInputDialog(null, "½Ğ¿é¤J®Ñ¦W  : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        String type = JOptionPane.showInputDialog(null, "½Ğ¿é¤J¹Ï®Ñ¤ÀÃş : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        String author = JOptionPane.showInputDialog(null, "½Ğ¿é¤J§@ªÌ : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        String pub = JOptionPane.showInputDialog(null, "½Ğ¿é¤J¥Xª©ªÀ : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
         
         int hasLended = 0;
-        String address = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥å­˜æ”¾å€åŸŸ : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        String address = JOptionPane.showInputDialog(null, "½Ğ¿é¤J¦s©ñ°Ï°ì : ", "add Book", JOptionPane.INFORMATION_MESSAGE);
         
         Book book = new Book(id, name, type, author, pub, hasLended, address);
         booklist.add(book);
-        JOptionPane.showMessageDialog(null,"æ›¸æœ¬åŠ å…¥æˆåŠŸ!", "add Book", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"®Ñ¥»¥[¤J¦¨¥\!", "add Book", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
-			JOptionPane.showMessageDialog(null,"æ›¸æœ¬åŠ å…¥å¤±æ•—!æ›¸æœ¬IDå·²å­˜åœ¨", "add Book", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null,"®Ñ¥»¥[¤J¥¢±Ñ!®Ñ¥»ID¤w¦s¦b", "add Book", JOptionPane.INFORMATION_MESSAGE);
 		}
         
-    }//æ·»åŠ æ›¸æœ¬åˆ°é™£åˆ—ä¸­
+    }//²K¥[®Ñ¥»¨ì°}¦C¤¤
         
     public void editBook(ArrayList<Book> booklist) {
-    	String id = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²æ›´æ”¹è³‡æ–™ä¹‹æ›¸æœ¬ID : ", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    	String id = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı§ó§ï¸ê®Æ¤§®Ñ¥»ID : ", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     	int input = 0;
     	int count = 0;
     	for (int i = 0; i < booklist.size(); i++) {
     		if(booklist.get(i).getId().equals(id)) {
     			count = 1;
     			while(input != 5) {
-					String option [] = {"ID","æ›¸å", "åœ–æ›¸åˆ†é¡", "å€Ÿé–±ç‹€æ…‹", "å­˜æ”¾å€åŸŸ", "è¿”å›"};
-    				input = JOptionPane.showOptionDialog(null,"è¦æ›´æ”¹ä»€éº¼?", "edit Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[5]);
+					String option [] = {"ID","®Ñ¦W", "¹Ï®Ñ¤ÀÃş", "­É¾\ª¬ºA", "¦s©ñ°Ï°ì", "ªğ¦^"};
+    				input = JOptionPane.showOptionDialog(null,"­n§ó§ï¤°»ò?", "edit Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[5]);
     				switch(input){
     				
     				case 0:
 
-    					id = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ–°ID : ", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    					id = JOptionPane.showInputDialog(null, "½Ğ¿é¤J·sID : ", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					boolean idExist = false;
     					for (int j = 0; j < booklist.size(); j++) {if (booklist.get(j).getId().equals(id)) {idExist = true;}}
     					if(idExist == false) {
     						booklist.get(i).setId(id);
-    						JOptionPane.showMessageDialog(null, "ä¿®æ”¹IDå®Œæˆ!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    						JOptionPane.showMessageDialog(null, "­×§ïID§¹¦¨!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					}
-    					else {JOptionPane.showMessageDialog(null, "ä¿®æ”¹IDå¤±æ•—! æ­¤IDå·²å­˜åœ¨", "edit Book", JOptionPane.INFORMATION_MESSAGE);}
+    					else {JOptionPane.showMessageDialog(null, "­×§ïID¥¢±Ñ! ¦¹ID¤w¦s¦b", "edit Book", JOptionPane.INFORMATION_MESSAGE);}
     					break;
     				
     				case 1:
     					
-    					booklist.get(i).setName(JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ–°æ›¸å : ", "edit Book", JOptionPane.INFORMATION_MESSAGE));
-    					JOptionPane.showMessageDialog(null, "ä¿®æ”¹æ›¸åå®Œæˆ!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    					booklist.get(i).setName(JOptionPane.showInputDialog(null, "½Ğ¿é¤J·s®Ñ¦W : ", "edit Book", JOptionPane.INFORMATION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "­×§ï®Ñ¦W§¹¦¨!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				
     				case 2:
-						booklist.get(i).setName(JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ–°åˆ†é¡ : ", "edit Book", JOptionPane.INFORMATION_MESSAGE));
-    					JOptionPane.showMessageDialog(null, "ä¿®æ”¹åˆ†é¡å®Œæˆ!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+						booklist.get(i).setName(JOptionPane.showInputDialog(null, "½Ğ¿é¤J·s¤ÀÃş : ", "edit Book", JOptionPane.INFORMATION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "­×§ï¤ÀÃş§¹¦¨!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				
     				case 3:
-						String option2 [] = {"åœ¨æ¶ä¸Š", "å·²å€Ÿå‡º","å·²é å®š"};
-    					int hasLended = JOptionPane.showOptionDialog(null, "è«‹é¸æ“‡å€Ÿé–±ç‹€æ…‹", "edit Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option2, option2[0]);
+						String option2 [] = {"¦b¬[¤W", "¤w­É¥X","¤w¹w©w"};
+    					int hasLended = JOptionPane.showOptionDialog(null, "½Ğ¿ï¾Ü­É¾\ª¬ºA", "edit Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option2, option2[0]);
     					if(hasLended >=0 &&hasLended <=2) {
     						booklist.get(i).setHasLended(hasLended);
-    						JOptionPane.showMessageDialog(null, "ä¿®æ”¹å€Ÿé–±ç‹€æ…‹å®Œæˆ!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    						JOptionPane.showMessageDialog(null, "­×§ï­É¾\ª¬ºA§¹¦¨!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					}
     					else {System.exit(0);}
     					break;
         
     				case 4:
 
-    					booklist.get(i).setAddress(JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ–°å­˜æ”¾å€åŸŸ : ", "edit Book", JOptionPane.INFORMATION_MESSAGE));
-    					JOptionPane.showMessageDialog(null, "ä¿®æ”¹å­˜æ”¾å€åŸŸå®Œæˆ!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    					booklist.get(i).setAddress(JOptionPane.showInputDialog(null, "½Ğ¿é¤J·s¦s©ñ°Ï°ì : ", "edit Book", JOptionPane.INFORMATION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "­×§ï¦s©ñ°Ï°ì§¹¦¨!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					break;
     					
     				default :
     					input = 5;
-    					JOptionPane.showMessageDialog(null, "é›¢é–‹ä¿®æ”¹ç³»çµ±!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
+    					JOptionPane.showMessageDialog(null, "Â÷¶}­×§ï¨t²Î!", "edit Book", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				}
     			}
     			break;
     		}
     	}
-    	if( count == 0){JOptionPane.showMessageDialog(null, "æ›¸æœ¬ä¿®æ”¹å¤±æ•—! æœªæ‰¾åˆ°æ­¤æ›¸", "edit Book", JOptionPane.ERROR_MESSAGE);}
+    	if( count == 0){JOptionPane.showMessageDialog(null, "®Ñ¥»­×§ï¥¢±Ñ! ¥¼§ä¨ì¦¹®Ñ", "edit Book", JOptionPane.ERROR_MESSAGE);}
     }
 
     public void deleteBook(ArrayList<Book> booklist){
-		String id = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²åˆªé™¤ä¹‹æ›¸æœ¬ID : ", "delete Book", JOptionPane.INFORMATION_MESSAGE);
+		String id = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı§R°£¤§®Ñ¥»ID : ", "delete Book", JOptionPane.INFORMATION_MESSAGE);
 
     	String input = "";
     	int count = 0;
     	for (int i = 0 ; i < booklist.size() ; i++) {
     		if(booklist.get(i).getId().equals(id)) {
     			count = 1;
-    			input = JOptionPane.showInputDialog(null, "ç¢ºèªåˆªé™¤?\nè«‹è¼¸å…¥\"yes\"(è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) : ", "delete Book", JOptionPane.INFORMATION_MESSAGE);
+    			input = JOptionPane.showInputDialog(null, "½T»{§R°£?\n½Ğ¿é¤J\"yes\"(­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) : ", "delete Book", JOptionPane.INFORMATION_MESSAGE);
 
     			switch(input){
 				case "yes":
 					booklist.remove(i);
-					JOptionPane.showMessageDialog(null, "æ›¸æœ¬åˆªé™¤æˆåŠŸ!", "delete Book", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "®Ñ¥»§R°£¦¨¥\!", "delete Book", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				default:
-					JOptionPane.showMessageDialog(null, "å–æ¶ˆåˆªé™¤æ›¸æœ¬!", "delete Book", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "¨ú®ø§R°£®Ñ¥»!", "delete Book", JOptionPane.INFORMATION_MESSAGE);
 					break;
     			}break;
 			}
     	}
-    	if (count == 0){JOptionPane.showMessageDialog(null, "æ›¸æœ¬åˆªé™¤å¤±æ•—! æœªæ‰¾åˆ°æ­¤æ›¸", "delete Book", JOptionPane.ERROR_MESSAGE);}
+    	if (count == 0){JOptionPane.showMessageDialog(null, "®Ñ¥»§R°£¥¢±Ñ! ¥¼§ä¨ì¦¹®Ñ", "delete Book", JOptionPane.ERROR_MESSAGE);}
     }
 
 	public void viewInfoAdmin(ArrayList<Users> users, ArrayList<String> askforresetfine,int check){
-		String output = ("ç®¡ç†å“¡è³‡è¨Š\n"+"ä½¿ç”¨è€…åç¨±:"+users.get(check).getName()+"\n"
-		+"èº«åˆ† : "+users.get(check).getIdentity()+"\n"
-		+"å¸³è™Ÿ : "+users.get(check).getAccount()+"\n"
-		+"å¯†ç¢¼ : "+users.get(check).getPassword()+"\n"
-		+"é›»è©± : "+users.get(check).getPhone()+"\n"
-		+"é›»å­ä¿¡ç®± : "+users.get(check).getEmail()+"\n"
-		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "æ‡‰ç¹³ç½°æ¬¾ : "+users.get(check).getFine()+" å…ƒ\n" ));
+		String output = ("ºŞ²z­û¸ê°T\n"+"¨Ï¥ÎªÌ¦WºÙ:"+users.get(check).getName()+"\n"
+		+"¨­¤À : "+users.get(check).getIdentity()+"\n"
+		+"±b¸¹ : "+users.get(check).getAccount()+"\n"
+		+"±K½X : "+users.get(check).getPassword()+"\n"
+		+"¹q¸Ü : "+users.get(check).getPhone()+"\n"
+		+"¹q¤l«H½c : "+users.get(check).getEmail()+"\n"
+		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "À³Ãº»@´Ú : "+users.get(check).getFine()+" ¤¸\n" ));
 	
-		String [] option = {"ç·¨è¼¯è³‡æ–™","åˆªé™¤å¸³è™Ÿ","é›¢é–‹"};
+		String [] option = {"½s¿è¸ê®Æ","§R°£±b¸¹","Â÷¶}"};
 		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
 	
 		if(input == 0){
@@ -143,7 +143,7 @@ public class Admin extends Users{
 			deleteUser(users, check);
 		}
 		else if(input == 2){
-			JOptionPane.showMessageDialog(null, "é›¢é–‹æŸ¥çœ‹å€‹äººè³‡è¨Š!", "User Information", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Â÷¶}¬d¬İ­Ó¤H¸ê°T!", "User Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
 			System.exit(0);
@@ -151,15 +151,15 @@ public class Admin extends Users{
 	}
 
 	public void viewInfo(ArrayList<Users> users, ArrayList<String> askforresetfine,int check){
-		String output = ("ä½¿ç”¨è€…åç¨±:"+users.get(check).getName()+"\n"
-		+"èº«åˆ† : "+users.get(check).getIdentity()+"\n"
-		+"å¸³è™Ÿ : "+users.get(check).getAccount()+"\n"
-		+"å¯†ç¢¼ : "+users.get(check).getPassword()+"\n"
-		+"é›»è©± : "+users.get(check).getPhone()+"\n"
-		+"é›»å­ä¿¡ç®± : "+users.get(check).getEmail()+"\n"
-		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "æ‡‰ç¹³ç½°æ¬¾ : "+users.get(check).getFine()+" å…ƒ\n" ));
+		String output = ("¨Ï¥ÎªÌ¦WºÙ:"+users.get(check).getName()+"\n"
+		+"¨­¤À : "+users.get(check).getIdentity()+"\n"
+		+"±b¸¹ : "+users.get(check).getAccount()+"\n"
+		+"±K½X : "+users.get(check).getPassword()+"\n"
+		+"¹q¸Ü : "+users.get(check).getPhone()+"\n"
+		+"¹q¤l«H½c : "+users.get(check).getEmail()+"\n"
+		+((users.get(check).getIdentity().equals("Admin")) ?  "" : "À³Ãº»@´Ú : "+users.get(check).getFine()+" ¤¸\n" ));
 		
-		String [] option = {"ç·¨è¼¯è³‡æ–™","æ¸…é™¤ç½°é‡‘ç´€éŒ„","åˆªé™¤å¸³è™Ÿ","é›¢é–‹"};
+		String [] option = {"½s¿è¸ê®Æ","²M°£»@ª÷¬ö¿ı","§R°£±b¸¹","Â÷¶}"};
 		int input = JOptionPane.showOptionDialog(null, output, "User Information", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
 
 		if(input == 0){
@@ -173,7 +173,7 @@ public class Admin extends Users{
 			deleteUser(users, check);
 		}
 		else if(input == 3){
-			JOptionPane.showMessageDialog(null, "é›¢é–‹æŸ¥çœ‹å€‹äººè³‡è¨Š!", "User Information", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Â÷¶}¬d¬İ­Ó¤H¸ê°T!", "User Information", JOptionPane.INFORMATION_MESSAGE);
 		}
 		else {
 			System.exit(0);
@@ -183,35 +183,35 @@ public class Admin extends Users{
 
 	public void searchMember(ArrayList<Users> users,ArrayList<String> askforresetfine) throws Exception {
 		
-		String [] option = {"æœƒå“¡åå­—æŸ¥è©¢","æœƒå“¡å¸³è™ŸæŸ¥è©¢","æœƒå“¡ä¿¡ç®±æŸ¥è©¢","æœƒå“¡é›»è©±æŸ¥è©¢","ç¢ºèªå·²ç¹³ç´ä¹‹æœƒå“¡ç½°é‡‘","åˆ—å‡ºæ‰€æœ‰æœƒå“¡","é›¢é–‹"};
-		int searchWay = JOptionPane.showOptionDialog(null, "è«‹é¸æ“‡æŸ¥è©¢æ–¹æ³•", "search Member", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
+		String [] option = {"·|­û¦W¦r¬d¸ß","·|­û±b¸¹¬d¸ß","·|­û«H½c¬d¸ß","·|­û¹q¸Ü¬d¸ß","½T»{¤wÃº¯Ç¤§·|­û»@ª÷","¦C¥X©Ò¦³·|­û","Â÷¶}"};
+		int searchWay = JOptionPane.showOptionDialog(null, "½Ğ¿ï¾Ü¬d¸ß¤èªk", "search Member", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[1]);
 		boolean exist = false;
 		do {
 			
 			if(searchWay == 0) {
 
-				String memberName = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²æŸ¥è©¢æœƒå“¡çš„åå­—:", "search Member", JOptionPane.QUESTION_MESSAGE);
+				String memberName = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı¬d¸ß·|­ûªº¦W¦r:", "search Member", JOptionPane.QUESTION_MESSAGE);
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getName().equals(memberName)) {
 						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_name
 				}//for
-				if(!exist) {JOptionPane.showMessageDialog(null, "æŸ¥ç„¡æ­¤æœƒå“¡!", "search Member", JOptionPane.ERROR_MESSAGE);}
+				if(!exist) {JOptionPane.showMessageDialog(null, "¬dµL¦¹·|­û!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}//if_search1
 			else if(searchWay == 1) {
 				
-				String memberAccount = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²æŸ¥è©¢æœƒå“¡çš„å¸³è™Ÿ:", "search Member", JOptionPane.QUESTION_MESSAGE);
+				String memberAccount = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı¬d¸ß·|­ûªº±b¸¹:", "search Member", JOptionPane.QUESTION_MESSAGE);
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getAccount().equals(memberAccount)) {
 						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_account
 				}//for
-				if(!exist) {JOptionPane.showMessageDialog(null, "æŸ¥ç„¡æ­¤æœƒå“¡!", "search Member", JOptionPane.ERROR_MESSAGE);}
+				if(!exist) {JOptionPane.showMessageDialog(null, "¬dµL¦¹·|­û!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}
 			else if(searchWay == 2) {
-				String memberEmail = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²æŸ¥è©¢æœƒå“¡çš„ä¿¡ç®±:", "search Member", JOptionPane.QUESTION_MESSAGE);
+				String memberEmail = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı¬d¸ß·|­ûªº«H½c:", "search Member", JOptionPane.QUESTION_MESSAGE);
 
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getEmail().equals(memberEmail)) {
@@ -219,18 +219,18 @@ public class Admin extends Users{
 						exist = true;
 					}//if_email
 				}//for
-				if(!exist) {JOptionPane.showMessageDialog(null, "æŸ¥ç„¡æ­¤æœƒå“¡!", "search Member", JOptionPane.ERROR_MESSAGE);}
+				if(!exist) {JOptionPane.showMessageDialog(null, "¬dµL¦¹·|­û!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}
 			else if(searchWay == 3) {
 
-				String memberPhone = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æŸ¥è©¢æœƒå“¡çš„é›»è©±:", "search Member", JOptionPane.QUESTION_MESSAGE);
+				String memberPhone = JOptionPane.showInputDialog(null, "½Ğ¿é¤J¬d¸ß·|­ûªº¹q¸Ü:", "search Member", JOptionPane.QUESTION_MESSAGE);
 				for(int i = 0; i < users.size();i++) {
 					if(users.get(i).getPhone().equals(memberPhone)) {
 						viewInfo(users,askforresetfine,i);
 						exist = true;
 					}//if_phone
 				}//for
-				if(!exist) {JOptionPane.showMessageDialog(null, "æŸ¥ç„¡æ­¤æœƒå“¡!", "search Member", JOptionPane.ERROR_MESSAGE);}
+				if(!exist) {JOptionPane.showMessageDialog(null, "¬dµL¦¹·|­û!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}
 			else if(searchWay == 4) {
 				if(askforresetfine.size()>0) {
@@ -243,13 +243,13 @@ public class Admin extends Users{
 						}
 					}
 				}
-				else{JOptionPane.showMessageDialog(null, "ç„¡æœƒå“¡æå‡ºæ¸…é™¤ç½°é‡‘ç´€éŒ„è¦æ±‚!", "search Member", JOptionPane.ERROR_MESSAGE);}
+				else{JOptionPane.showMessageDialog(null, "µL·|­û´£¥X²M°£»@ª÷¬ö¿ı­n¨D!", "search Member", JOptionPane.ERROR_MESSAGE);}
 			}
 			else if(searchWay == 5){
 				printMember.printMember(users);
 			}
 			else if(searchWay == 6) {
-				JOptionPane.showMessageDialog(null, "ä½ å·²é›¢é–‹æŸ¥è©¢æœƒå“¡åŠŸèƒ½", "search Member", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "§A¤wÂ÷¶}¬d¸ß·|­û¥\¯à", "search Member", JOptionPane.INFORMATION_MESSAGE);
 			}
 			else {
 				System.exit(0);
@@ -269,7 +269,7 @@ public class Admin extends Users{
 			ps.printf(print, users.get(i).getName(), users.get(i).getIdentity(), users.get(i).getAccount(), users.get(i).getPassword(), users.get(i).getPhone(), users.get(i).getEmail());
 		}
 		ps.close();
-		JOptionPane.showMessageDialog(null, "æœƒå“¡åˆ—è¡¨å·²åˆ—å‡ºè‡³D:MemberList.txt", "print Member", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "·|­û¦Cªí¤w¦C¥X¦ÜD:MemberList.txt", "print Member", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public void resetFine(ArrayList<Users> users , ArrayList<String> askforresetfine)
@@ -279,16 +279,16 @@ public class Admin extends Users{
 			for(j = 0; j<askforresetfine.size(); j++)
 			if (users.get(i).getAccount().equals(askforresetfine.get(j))) {check = i; break;}
 		}
-    	users.get(check).checkFine(users, check);
+
     	if(users.get(check).getFine() != 0) {
-    		String input = JOptionPane.showInputDialog(null, "è«‹ç¢ºèªæ­¤æœƒå“¡ç½°é‡‘æ˜¯å¦å·²ç¹³æ¸…?\nè‹¥å·²ç¹³æ¸… è«‹è¼¸å…¥\"yes\"ä»¥æ¸…é™¤æœªç¹³ç½°é‡‘(è‹¥è¼¸å…¥ä»»æ„å…¶ä»–å­—ä¸²å‰‡å–æ¶ˆ) :", "reset Fine", JOptionPane.QUESTION_MESSAGE);
+    		String input = JOptionPane.showInputDialog(null, "½Ğ½T»{·|­û : "+ users.get(check).getAccount() + " ¬O§_¤wÂkÁÙ®ÑÄy¡B»@ª÷¬O§_¤wÃº²M?\n­Y¤wÂkÁÙ»PÃº²M ½Ğ¿é¤J\"yes\"¥H²M°£¥¼Ãº»@ª÷(­Y¿é¤J¥ô·N¨ä¥L¦r¦ê«h¨ú®ø) :", "reset Fine", JOptionPane.QUESTION_MESSAGE);
     		if (input.equals("yes")) {
     			users.get(check).setFine(0);
 				askforresetfine.remove(j);
-    			JOptionPane.showMessageDialog(null, "ç½°é‡‘å·²æ­¸é›¶!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
-    		else {JOptionPane.showMessageDialog(null, "ç½°é‡‘æœªæ­¸é›¶!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
+    			JOptionPane.showMessageDialog(null, "»@ª÷¤wÂk¹s!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
+    		else {JOptionPane.showMessageDialog(null, "»@ª÷¥¼Âk¹s!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
     	}
-    	else {JOptionPane.showMessageDialog(null, "æ­¤æœƒå“¡ç„¡æœªç¹³ç½°é‡‘!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
+    	else {JOptionPane.showMessageDialog(null, "¦¹·|­ûµL¥¼Ãº»@ª÷!", "reset Fine", JOptionPane.INFORMATION_MESSAGE);}
     }
 	public int getBorrowLimit() {return 0;}
 	public int getFinePerDay() {return 0;}
