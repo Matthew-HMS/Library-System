@@ -7,11 +7,11 @@ public class printMember {
 	/**
 	 * 原始Excel模板地址
 	 */
-	private static String path = "D:Example.xlsx";
+	private static String path = "C:/央央圖書館/Example.xlsx";
 	/**
 	 * 匯出的Excel模板地址
 	 */
-	private static String export = "D:所有會員資料.xlsx";
+	private static String export = "C:/央央圖書館/所有會員資料.xlsx";
 	
 	public static void printMember(ArrayList<Users> userslist) throws Exception {
 		//讀入檔案流
