@@ -1,37 +1,34 @@
 import java.io.*;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
 import org.apache.poi.ss.usermodel.*;
-
 
 public class printMember {
 	/**
-	 * ­ì©lExcel¼ÒªO¦a§}
+	 * åŸå§‹Excelæ¨¡æ¿åœ°å€
 	 */
 	private static String path = "D:Example.xlsx";
 	/**
-	 * ¶×¥XªºExcel¼ÒªO¦a§}
+	 * åŒ¯å‡ºçš„Excelæ¨¡æ¿åœ°å€
 	 */
-	private static String export = "D:©Ò¦³·|­û¸ê®Æ.xlsx";
+	private static String export = "D:æ‰€æœ‰æœƒå“¡è³‡æ–™.xlsx";
 	
 	public static void printMember(ArrayList<Users> userslist) throws Exception {
-		//Åª¤JÀÉ®×¬y
+		//è®€å…¥æª”æ¡ˆæµ
 		InputStream inputStream = new FileInputStream(new File(path));
-		//«Ø¥ßExcelª«¥ó
+		//å»ºç«‹Excelç‰©ä»¶
 		Workbook wb = WorkbookFactory.create(inputStream);
-		//¤@¯ëExcel³£·|¦³¤@­Ó¹w³]ªºsheet¡A©Ò¥Hª½±µÀò¨ú²Ä¤@­Ósheet
+		//ä¸€èˆ¬Exceléƒ½æœƒæœ‰ä¸€å€‹é è¨­çš„sheetï¼Œæ‰€ä»¥ç›´æ¥ç²å–ç¬¬ä¸€å€‹sheet
 		Sheet sheet = wb.getSheetAt(0);
-		//«Ø¥ß²Ä¤@¦æ
+		//å»ºç«‹ç¬¬ä¸€è¡Œ
 		Row row = sheet.createRow(0);
-		//³]©wA1ªº­È
-		row.createCell(0).setCellValue("¨Ï¥ÎªÌ¦WºÙ");
-		row.createCell(1).setCellValue("¨­¤À");
-		row.createCell(2).setCellValue("±b¸¹");
-		row.createCell(3).setCellValue("±K½X");
-		row.createCell(4).setCellValue("¹q¸Ü");
-		row.createCell(5).setCellValue("¹q¤l«H½c");
+		//è¨­å®šA1çš„å€¼
+		row.createCell(0).setCellValue("ä½¿ç”¨è€…åç¨±");
+		row.createCell(1).setCellValue("èº«åˆ†");
+		row.createCell(2).setCellValue("å¸³è™Ÿ");
+		row.createCell(3).setCellValue("å¯†ç¢¼");
+		row.createCell(4).setCellValue("é›»è©±");
+		row.createCell(5).setCellValue("é›»å­ä¿¡ç®±");
 		//row.createCell(6).setCellValue("");
 		for(int i = 1; i <= userslist.size(); i++) {
 			String status ="";
@@ -45,9 +42,9 @@ public class printMember {
 			row.createCell(5).setCellValue(userslist.get(j).getEmail());
 			
 		}
-		//¿é¥XÀÉ®×
+		//è¼¸å‡ºæª”æ¡ˆ
 		FileOutputStream out = new FileOutputStream(export);
         wb.write(out);
-        JOptionPane.showMessageDialog(null, "©Ò¦³·|­û¸ê®ÆExcelÀÉ¤w¿é¥X : "+export, "°T®§", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "æ‰€æœ‰æœƒå“¡è³‡æ–™Excelæª”å·²è¼¸å‡º : "+export, "è¨Šæ¯", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
