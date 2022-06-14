@@ -1,37 +1,39 @@
 import java.io.*;
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
 import org.apache.poi.ss.usermodel.*;
+import java.time.LocalDate;
 
 public class Excel {
 	/**
-	 * ­ì©lExcel¼ÒªO¦a§}
+	 * åŸå§‹Excelæ¨¡æ¿åœ°å€
 	 */
-	private static String path = "D:/Example.xlsx";
+	private static String path = "C:/å¤®å¤®åœ–æ›¸é¤¨/Example.xlsx";
 	/**
-	 * ¶×¥XªºExcel¼ÒªO¦a§}
+	 * åŒ¯å‡ºçš„Excelæ¨¡æ¿åœ°å€
 	 */
-	private static String export = "D:/ÂÃ®Ñ²M³æ.xlsx";
+	private static String export = "C:/å¤®å¤®åœ–æ›¸é¤¨/è—æ›¸æ¸…å–®.xlsx";
 	
 	public static  void ExportExcel(ArrayList<Book> booklist) throws Exception {
-		//Åª¤JÀÉ®×¬y
+		  File folder = new File("C:/å¤®å¤®åœ–æ›¸é¤¨");   /*è·¯å¾‘è·Ÿæª”å*/
+		  folder.mkdir();
+
+		//è®€å…¥æª”æ¡ˆæµ
 		InputStream inputStream = new FileInputStream(new File(path));
-		//«Ø¥ßExcelª«¥ó
+		//å»ºç«‹Excelç‰©ä»¶
 		Workbook wb = WorkbookFactory.create(inputStream);
-		//¤@¯ëExcel³£·|¦³¤@­Ó¹w³]ªºsheet¡A©Ò¥Hª½±µÀò¨ú²Ä¤@­Ósheet
+		//ä¸€èˆ¬Exceléƒ½æœƒæœ‰ä¸€å€‹é è¨­çš„sheetï¼Œæ‰€ä»¥ç›´æ¥ç²å–ç¬¬ä¸€å€‹sheet
 		Sheet sheet = wb.getSheetAt(0);
-		//«Ø¥ß²Ä¤@¦æ
+		//å»ºç«‹ç¬¬ä¸€è¡Œ
 		Row row = sheet.createRow(0);
-		//³]©wA1ªº­È
-		row.createCell(0).setCellValue("®Ñ¦W");
-		row.createCell(1).setCellValue("§@ªÌ");
-		row.createCell(2).setCellValue("¥Xª©ªÀ");
+		//è¨­å®šA1çš„å€¼
+		row.createCell(0).setCellValue("æ›¸å");
+		row.createCell(1).setCellValue("ä½œè€…");
+		row.createCell(2).setCellValue("å‡ºç‰ˆç¤¾");
 		row.createCell(3).setCellValue("ID");
-		row.createCell(4).setCellValue("ºØÃş");
-		row.createCell(5).setCellValue("ÂÃ®Ñ°Ï");
-		row.createCell(6).setCellValue("®ÑÄyª¬ºA");
+		row.createCell(4).setCellValue("ç¨®é¡");
+		row.createCell(5).setCellValue("è—æ›¸å€");
+		row.createCell(6).setCellValue("æ›¸ç±ç‹€æ…‹");
 		for(int i = 1; i <= booklist.size(); i++) {
 			String status ="";
 			int j = i - 1;
@@ -44,15 +46,16 @@ public class Excel {
 			row.createCell(5).setCellValue(booklist.get(j).getAddress());
 			switch(booklist.get(j).getHasLended()) {
 			
-			case 0 : status = "¦b¬[¤W";break;
+			case 0 : status = "åœ¨æ¶ä¸Š";break;
 			
-			case 1 : status = "¤w­É¥X";break;
+			case 1 : status = "å·²å€Ÿå‡º";break;
 			}
 			row.createCell(6).setCellValue(status);
 		}
-		//¿é¥XÀÉ®×
+		//è¼¸å‡ºæª”æ¡ˆ
 		FileOutputStream out = new FileOutputStream(export);
         wb.write(out);
-        JOptionPane.showMessageDialog(null, "ÂÃ®Ñ²M³æExcelÀÉ¤w¿é¥X : "+export);
+        JOptionPane.showMessageDialog(null, "è—æ›¸æ¸…å–®Excelæª”å·²è¼¸å‡º : "+export);
 	}
+	
 }
