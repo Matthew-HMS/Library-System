@@ -1,9 +1,6 @@
 import java.util.*;
-
 import javax.swing.JOptionPane;
-
 import org.apache.commons.collections4.functors.NullIsFalsePredicate;
-
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.time.LocalDate;
@@ -20,8 +17,6 @@ public abstract class Users {
 	private String notice="";
 	ArrayList<Book> borrowlist = new ArrayList<Book>();
 	ArrayList<Book> borrowrecord = new ArrayList<Book>();
-
-	Scanner scan = new Scanner(System.in);
     
     public Users(){}
     public Users(String account, String password, String name, String email, String phone, String identity){
@@ -55,151 +50,151 @@ public abstract class Users {
 
     public void searchBook(ArrayList<Book> booklist) throws Exception{
         
-		String [] options = {"®ÑÄy¦WºÙ¬d¸ß","®ÑÄyID¬d¸ß","§@ªÌ¦WºÙ¬d¸ß","¦C¥X©Ò¦³ÂÃ®Ñ","ªğ¦^"};
-		int searchWay = JOptionPane.showOptionDialog(null, "½Ğ¿ï¾Ü¬d¸ß¤èªk :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
+		String [] options = {"æ›¸ç±åç¨±æŸ¥è©¢","æ›¸ç±IDæŸ¥è©¢","ä½œè€…åç¨±æŸ¥è©¢","åˆ—å‡ºæ‰€æœ‰è—æ›¸","è¿”å›"};
+		int searchWay = JOptionPane.showOptionDialog(null, "è«‹é¸æ“‡æŸ¥è©¢æ–¹æ³• :", "Search Book", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[3]);
 		String status = "";
 		int count = 0;
 
 		do {
 			if (searchWay == 0) {
 
-				String bookName = JOptionPane.showInputDialog(null, "½Ğ¿é¤J¬d¸ß®ÑÄy¤§¦WºÙ :", "Search Book", JOptionPane.QUESTION_MESSAGE);
+				String bookName = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æŸ¥è©¢æ›¸ç±ä¹‹åç¨± :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				bookName = bookName.toLowerCase();
 				
 				
-				// ¹Ï®ÑÀ]¦³³o¥»®Ñ
+				// åœ–æ›¸é¤¨æœ‰é€™æœ¬æ›¸
 				String output = "";
 				count = 0;
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getName().toLowerCase().contains(bookName)) {
-						if(booklist.get(i).getHasLended() == 0){status = "¦b¬[¤W";}
-						else if(booklist.get(i).getHasLended() == 1){status = "¤w­É¥X";}
-						else if(booklist.get(i).getHasLended() == 2){status = "¤w¹w¬ù";}
-						else{status = "¥¼ª¾ª¬ºA";}
-						output += ("®Ñ¦W :  " + booklist.get(i).getName() + "\t§@ªÌ:" + booklist.get(i).getAuthor() +"\t¥Xª©ªÀ:" 
-							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\t¹Ï®Ñ¤ÀÃş:" + booklist.get(i).getType() + "\t¦s©ñ°Ï°ì:" 
-							+ booklist.get(i).getAddress() + "\t®ÑÄyª¬ºA:" + status + "\n");
+						if(booklist.get(i).getHasLended() == 0){status = "åœ¨æ¶ä¸Š";}
+						else if(booklist.get(i).getHasLended() == 1){status = "å·²å€Ÿå‡º";}
+						else if(booklist.get(i).getHasLended() == 2){status = "å·²é ç´„";}
+						else{status = "æœªçŸ¥ç‹€æ…‹";}
+						output += ("æ›¸å :  " + booklist.get(i).getName() + "\tä½œè€…:" + booklist.get(i).getAuthor() +"\tå‡ºç‰ˆç¤¾:" 
+							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\tåœ–æ›¸åˆ†é¡:" + booklist.get(i).getType() + "\tå­˜æ”¾å€åŸŸ:" 
+							+ booklist.get(i).getAddress() + "\tæ›¸ç±ç‹€æ…‹:" + status + "\n");
 					}
-					// ¹Ï®ÑÀ]¨S¦³³o¥»®Ñ
+					// åœ–æ›¸é¤¨æ²’æœ‰é€™æœ¬æ›¸
 					else {count++;}
 				} // for_i
 				
                	if (count == booklist.size()) {
-                    JOptionPane.showMessageDialog(null, "¤Q¤À©êºp¡A¥»À]¨S¦³±z©Ò¬d¸ß¤§®ÑÄy", "Search Book", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "ååˆ†æŠ±æ­‰ï¼Œæœ¬é¤¨æ²’æœ‰æ‚¨æ‰€æŸ¥è©¢ä¹‹æ›¸ç±", "Search Book", JOptionPane.ERROR_MESSAGE);
                 }
 				else{
-                   	JOptionPane.showMessageDialog(null, output + "¥H¤W¬O§Aªº·j´Mµ²ªG", "Search Book", JOptionPane.INFORMATION_MESSAGE);
+                   	JOptionPane.showMessageDialog(null, output + "ä»¥ä¸Šæ˜¯ä½ çš„æœå°‹çµæœ", "Search Book", JOptionPane.INFORMATION_MESSAGE);
             	}
 			} // end if_1
 
 			else if (searchWay == 1) {
 				count = 0;
-				String bookId = JOptionPane.showInputDialog(null, "½Ğ¿é¤J¬d¸ß®ÑÄy¤§ID :", "Search Book", JOptionPane.QUESTION_MESSAGE);
+				String bookId = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æŸ¥è©¢æ›¸ç±ä¹‹ID :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getId().equals(bookId)) {
-						// ¿é¥X®Ñ¥»¸ê®Æ
-						if(booklist.get(i).getHasLended() == 0){status = "¦b¬[¤W";}
-						else if(booklist.get(i).getHasLended() == 1){status = "¤w­É¥X";}
-						else if(booklist.get(i).getHasLended() == 2){status = "¤w¹w¬ù";}
-						else{status = "¥¼ª¾ª¬ºA";}
-						JOptionPane.showMessageDialog(null,"®Ñ¦W :" + booklist.get(i).getName() + "\t§@ªÌ:" + booklist.get(i).getAuthor() +"\t¥Xª©ªÀ:" 
-							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\t¹Ï®Ñ¤ÀÃş:" + booklist.get(i).getType() + "\t¦s©ñ°Ï°ì:" 
-							+ booklist.get(i).getAddress() + "\t®ÑÄyª¬ºA:" + status + "\n" + "¥H¤W¬O§Aªº·j´Mµ²ªG");
+						// è¼¸å‡ºæ›¸æœ¬è³‡æ–™
+						if(booklist.get(i).getHasLended() == 0){status = "åœ¨æ¶ä¸Š";}
+						else if(booklist.get(i).getHasLended() == 1){status = "å·²å€Ÿå‡º";}
+						else if(booklist.get(i).getHasLended() == 2){status = "å·²é ç´„";}
+						else{status = "æœªçŸ¥ç‹€æ…‹";}
+						JOptionPane.showMessageDialog(null,"æ›¸å :" + booklist.get(i).getName() + "\tä½œè€…:" + booklist.get(i).getAuthor() +"\tå‡ºç‰ˆç¤¾:" 
+							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\tåœ–æ›¸åˆ†é¡:" + booklist.get(i).getType() + "\tå­˜æ”¾å€åŸŸ:" 
+							+ booklist.get(i).getAddress() + "\tæ›¸ç±ç‹€æ…‹:" + status + "\n" + "ä»¥ä¸Šæ˜¯ä½ çš„æœå°‹çµæœ");
 						break;
 					}
 				}
 				if (count == booklist.size()) {
-                    JOptionPane.showMessageDialog(null, "¤Q¤À©êºp¡A¥»À]¨S¦³±z©Ò¬d¸ß¤§®ÑÄy", "Search Book", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "ååˆ†æŠ±æ­‰ï¼Œæœ¬é¤¨æ²’æœ‰æ‚¨æ‰€æŸ¥è©¢ä¹‹æ›¸ç±", "Search Book", JOptionPane.ERROR_MESSAGE);
                 }
 			} 
 			else if (searchWay == 2) {
 				count = 0;
 				String output = "";
-				String author = JOptionPane.showInputDialog(null, "½Ğ¿é¤J§@ªÌ¦WºÙ¬d¸ß :", "Search Book", JOptionPane.QUESTION_MESSAGE);
+				String author = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥ä½œè€…åç¨±æŸ¥è©¢ :", "Search Book", JOptionPane.QUESTION_MESSAGE);
 				for (int i = 0; i < booklist.size(); i++) {
 					if (booklist.get(i).getAuthor().equals(author)) {
-						// ¿é¥X®Ñ¥»¸ê®Æ
-						if(booklist.get(i).getHasLended() == 0){status = "¦b¬[¤W";}
-						else if(booklist.get(i).getHasLended() == 1){status = "¤w­É¥X";}
-						else if(booklist.get(i).getHasLended() == 2){status = "¤w¹w¬ù";}
-						else{status = "¥¼ª¾ª¬ºA";}
-						output += ("®Ñ¦W :" + booklist.get(i).getName() + "\t§@ªÌ:" + booklist.get(i).getAuthor() +"\t¥Xª©ªÀ:" 
-							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\t¹Ï®Ñ¤ÀÃş:" + booklist.get(i).getType() + "\t¦s©ñ°Ï°ì:" 
-							+ booklist.get(i).getAddress() + "\t®ÑÄyª¬ºA:" + status + "\n");
+						// è¼¸å‡ºæ›¸æœ¬è³‡æ–™
+						if(booklist.get(i).getHasLended() == 0){status = "åœ¨æ¶ä¸Š";}
+						else if(booklist.get(i).getHasLended() == 1){status = "å·²å€Ÿå‡º";}
+						else if(booklist.get(i).getHasLended() == 2){status = "å·²é ç´„";}
+						else{status = "æœªçŸ¥ç‹€æ…‹";}
+						output += ("æ›¸å :" + booklist.get(i).getName() + "\tä½œè€…:" + booklist.get(i).getAuthor() +"\tå‡ºç‰ˆç¤¾:" 
+							+ booklist.get(i).getPub() + "\tID:" + booklist.get(i).getId() + "\tåœ–æ›¸åˆ†é¡:" + booklist.get(i).getType() + "\tå­˜æ”¾å€åŸŸ:" 
+							+ booklist.get(i).getAddress() + "\tæ›¸ç±ç‹€æ…‹:" + status + "\n");
 					}
 					else {count++;}
 				}
 				if (count == booklist.size()) {
-                    JOptionPane.showMessageDialog(null, "¤Q¤À©êºp¡A¥»À]¨S¦³±z©Ò¬d¸ß¤§®ÑÄy", "Search Book", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "ååˆ†æŠ±æ­‰ï¼Œæœ¬é¤¨æ²’æœ‰æ‚¨æ‰€æŸ¥è©¢ä¹‹æ›¸ç±", "Search Book", JOptionPane.ERROR_MESSAGE);
                 }
 				else{
-                   	JOptionPane.showMessageDialog(null, output + "¥H¤W¬O§Aªº·j´Mµ²ªG", "Search Book", JOptionPane.INFORMATION_MESSAGE);
+                   	JOptionPane.showMessageDialog(null, output + "ä»¥ä¸Šæ˜¯ä½ çš„æœå°‹çµæœ", "Search Book", JOptionPane.INFORMATION_MESSAGE);
             	}
 			}
             else if (searchWay == 3) {
                 Excel.ExportExcel(booklist);
             }
             else if (searchWay == 4) {
-                JOptionPane.showMessageDialog(null, "±z¤wÂ÷¶}¬d¸ß®ÑÄy¥\¯à", "Search Book", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "æ‚¨å·²é›¢é–‹æŸ¥è©¢æ›¸ç±åŠŸèƒ½", "Search Book", JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
 			else {
-				JOptionPane.showMessageDialog(null, "½Ğ¿é¤J¥¿½T¿ï¶µ", "Search Book", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "è«‹è¼¸å…¥æ­£ç¢ºé¸é …", "Search Book", JOptionPane.ERROR_MESSAGE);
 				searchWay = -1;
 			}
 		} while (searchWay == -1);
     }
 
 	public void editMember(ArrayList<Users> users) {
-        String account = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±ı§ó§ïMember±b¸¹ :", "Edit Member", JOptionPane.QUESTION_MESSAGE);
+        String account = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ¬²æ›´æ”¹Memberå¸³è™Ÿ :", "Edit Member", JOptionPane.QUESTION_MESSAGE);
     	int input = 0;
     	int count = 0;
     	for (int i = 0; i < users.size(); i++) {
     		if(users.get(i).getAccount().equals(account)) {
     			count = 1;
     			while(input != 4) {
-					String [] option = {"Password","Name","Email","Phone","Â÷¶}"};
-					input = JOptionPane.showOptionDialog(null, "­n§ó§ï¤°»ò?", "Edit Member", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[4]);
+					String [] option = {"Password","Name","Email","Phone","é›¢é–‹"};
+					input = JOptionPane.showOptionDialog(null, "è¦æ›´æ”¹ä»€éº¼?", "Edit Member", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, option, option[4]);
     				switch(input){	
     				
 					case 0:
     					
-						String oldPassword = JOptionPane.showInputDialog(null, "½Ğ¿é¤JÂÂ±K½X : ", "Edit Member", JOptionPane.QUESTION_MESSAGE);
+						String oldPassword = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥èˆŠå¯†ç¢¼ : ", "Edit Member", JOptionPane.QUESTION_MESSAGE);
 						if(users.get(i).getPassword().equals(oldPassword)) {
-							users.get(i).setPassword(JOptionPane.showInputDialog(null, "½Ğ¿é¤J·s±K½X : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
-    						JOptionPane.showMessageDialog(null, "­×§ï±K½X§¹¦¨!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
+							users.get(i).setPassword(JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥æ–°å¯†ç¢¼ : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    						JOptionPane.showMessageDialog(null, "ä¿®æ”¹å¯†ç¢¼å®Œæˆ!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     						break;
 						}
 						else {
-							JOptionPane.showMessageDialog(null, "­×§ï±K½X¥¢±Ñ! ÂÂ±K½X¿ù»~", "Edit Member", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "ä¿®æ”¹å¯†ç¢¼å¤±æ•—! èˆŠå¯†ç¢¼éŒ¯èª¤", "Edit Member", JOptionPane.ERROR_MESSAGE);
 							break;
 						}
     				
 					case 1:
-    					users.get(i).setName(JOptionPane.showInputDialog(null, "½Ğ¿é¤J¦WºÙ : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
-    					JOptionPane.showMessageDialog(null, "­×§ï¦WºÙ§¹¦¨!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
+    					users.get(i).setName(JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥åç¨± : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "ä¿®æ”¹åç¨±å®Œæˆ!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				    				    			
     				case 2:
-    					users.get(i).setEmail(JOptionPane.showInputDialog(null, "½Ğ¿é¤Jemail : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
-    					JOptionPane.showMessageDialog(null, "­×§ïemail§¹¦¨!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
+    					users.get(i).setEmail(JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥email : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "ä¿®æ”¹emailå®Œæˆ!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
         
     				case 3:
-    					users.get(i).setPhone(JOptionPane.showInputDialog(null, "½Ğ¿é¹q¸Ü : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
-    					JOptionPane.showMessageDialog(null, "­×§ï¹q¸Ü§¹¦¨!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
+    					users.get(i).setPhone(JOptionPane.showInputDialog(null, "è«‹è¼¸é›»è©± : ", "Edit Member", JOptionPane.QUESTION_MESSAGE));
+    					JOptionPane.showMessageDialog(null, "ä¿®æ”¹é›»è©±å®Œæˆ!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
     					
     				default :
     					input = 4;
-    					JOptionPane.showMessageDialog(null, "Â÷¶}­×§ï¨t²Î!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
+    					JOptionPane.showMessageDialog(null, "é›¢é–‹ä¿®æ”¹ç³»çµ±!", "Edit Member", JOptionPane.INFORMATION_MESSAGE);
     					break;
     				}
     			}
     			break;
     		}
     	}
-    	if( count == 0){JOptionPane.showMessageDialog(null, "·|­û­×§ï¥¢±Ñ! ¥¼§ä¨ì¦¹·|­û");}
+    	if( count == 0){JOptionPane.showMessageDialog(null, "æœƒå“¡ä¿®æ”¹å¤±æ•—! æœªæ‰¾åˆ°æ­¤æœƒå“¡");}
     }
     
 
@@ -218,20 +213,20 @@ public abstract class Users {
 	
 	public void deleteUser(ArrayList<Users> users, int check) {
 
-		String delword = JOptionPane.showInputDialog(null, "½Ğ¿é¤J±K½X :", "Delete User", JOptionPane.QUESTION_MESSAGE);
+		String delword = JOptionPane.showInputDialog(null, "è«‹è¼¸å…¥å¯†ç¢¼ :", "Delete User", JOptionPane.QUESTION_MESSAGE);
 		if(delword.equals(users.get(check).getPassword())){
-			int delete = JOptionPane.showConfirmDialog(null, "½T»{§R°£¦¹±b¸¹?", "Delete User", JOptionPane.YES_NO_OPTION);
+			int delete = JOptionPane.showConfirmDialog(null, "ç¢ºèªåˆªé™¤æ­¤å¸³è™Ÿ?", "Delete User", JOptionPane.YES_NO_OPTION);
 			if(delete == 0){
 				users.remove(check);
-				JOptionPane.showMessageDialog(null, "§R°£¦¨¥\!");
+				JOptionPane.showMessageDialog(null, "åˆªé™¤æˆåŠŸ!");
 				check = -1;
 			}
 			else if(delete == 1){
-				JOptionPane.showMessageDialog(null, "§R°£¥¢±Ñ!");
+				JOptionPane.showMessageDialog(null, "åˆªé™¤å¤±æ•—!");
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "§R°£±b¸¹¥¢±Ñ! ±K½X¿ù»~", "Delete User", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "åˆªé™¤å¸³è™Ÿå¤±æ•—! å¯†ç¢¼éŒ¯èª¤", "Delete User", JOptionPane.ERROR_MESSAGE);
 		}
 		
 		
@@ -245,10 +240,10 @@ public abstract class Users {
 		PrintStream ps = new PrintStream("D:BookList.txt");
 		ps.printf(title, "Book Name :", "Author :", "Publisher :", "Book ID :", "Book Type :", "Store Address :", "Status :");
 		for (int i = 0; i < booklist.size(); i++) {
-			if(booklist.get(i).getHasLended() == 0){status = "¦b¬[¤W";}
-			else if(booklist.get(i).getHasLended() == 1){status = "¤w­É¥X";}
-			else if(booklist.get(i).getHasLended() == 2){status = "¤w¹w¬ù";}
-			else{status = "¥¼ª¾ª¬ºA";}
+			if(booklist.get(i).getHasLended() == 0){status = "åœ¨æ¶ä¸Š";}
+			else if(booklist.get(i).getHasLended() == 1){status = "å·²å€Ÿå‡º";}
+			else if(booklist.get(i).getHasLended() == 2){status = "å·²é ç´„";}
+			else{status = "æœªçŸ¥ç‹€æ…‹";}
 			ps.printf(print, booklist.get(i).getName(), booklist.get(i).getAuthor(), booklist.get(i).getPub(), booklist.get(i).getId(),
 					booklist.get(i).getType(), booklist.get(i).getAddress(), status);
 		}
