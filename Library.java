@@ -21,30 +21,30 @@ public class Library {
         LocalDate d = LocalDate.now();
         
         users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
-        users.add(new Student("B123","1111","¤ı¤p¦W","student@gmail.com","0912345678","Student"));
-        users.add(new Student("C123","0000","ªe¹Ú«¦","teacher@gmail.com","0912312312","Teacher"));
-        users.add(new Student("D123","0000","ÁD§B¦½","staff@gmail.com","0945645645","Staff"));
-        users.add(new Student("E123","0000","Â®Åø°w","student2@gmail.com","0978978978","Student"));
-        users.add(new Student("F123","0000","©]¨¯¥×","student3@gmail.com","0936525844","Student"));
-        booklist.add(new Book("001","¤p¤ı¤l","«_ÀI","¦w¦«¸U¡P­}","¦yºİ¥Xª©",0,"A"));
-        booklist.add(new Book("002","¤p¤ı¤l2","¦³½ì","¦w¦«¸U¡P­}","¦yºİ¥Xª©",0,"B"));
-        booklist.add(new Book("003","¶ÆºC»P°¾¨£","ª¾ÃÑ","¬Ã","Whitehall",0,"A"));
-        booklist.add(new Book("004","¤ôâq¶Ç","¸g¨å¤å¾Ç","¬I­@±g","«n®ü¦L¨ê",0,"A"));
-        booklist.add(new Book("005","«¢§Qªi¯S¡Ğ®ø¥¢ªº±K«Ç","«_ÀI","J¡PK¡PÃ¹µY","¥¬¿c©i¯ı§B¨½¥Xª©ªÀ",0,"C"));
-        booklist.add(new Book("006","«¢§Qªi¯S¡Ğ¯«¯µªºÅ]ªk¥Û","«_ÀI","J¡PK¡PÃ¹µY","¥¬¿c©i¯ı§B¨½¥Xª©ªÀ",0,"D"));
-        booklist.add(new Book("007","«¢§Qªi¯S¡Ğªü¯÷¥d¯Zªº°k¥Ç","«_ÀI","J¡PK¡PÃ¹µY","¥¬¿c©i¯ı§B¨½¥Xª©ªÀ",0,"B"));
-        booklist.add(new Book("008","Å]§Ù","ÄaºÃ","J¡PR¡PR¡P¦«º¸ª÷","Áp¸g¥Xª©¤½¥q",0,"A"));
-        booklist.add(new Book("009","¹F¤å¦è±K½X","®£©Æ","¤¦¡P¥¬®Ô","®É³ø¥Xª©",0,"B"));
-        booklist.add(new Book("011","ºÖº¸¼¯´µ","ÄaºÃ","¬_«n¡D¹Dº¸","»·¬y",0,"A"));
-        booklist.add(new Book("012","­ì¤l²ßºD","ª¾ÃÑ","¸â©i´µ","¤è´¼",0,"C"));
-        booklist.add(new Book("013","³Q°Q¹½ªº«i®ğ","ª¾ÃÑ","©¤¨£¤@­¦","»·¬y",0,"A"));
-        booklist.add(new Book("014","¤p¬õ´U","¸g¨å¤å¾Ç","®æªL","®ü«n¦L¨ê",0,"B"));
-        booklist.add(new Book("015","¨F¥CI","¬ì¤Û","ªkÄõ§J","¤j®a¥Xª©",0,"D"));
-        booklist.add(new Book("016","¨F¥CII","¬ì¤Û","ªkÄõ§J","¤j®a¥Xª©",0,"D"));
-        booklist.add(new Book("017","¥Õ¦â¥¨¶ğ","¤ß²z","«J¤åµú","¬Ó«a",0,"A"));
-        booklist.add(new Book("018","¤ßÆFÂû´ö","¤ß²z","À¹§Q","»·¬y",0,"C"));
-        booklist.add(new Book("019","´Iª¨ª¨¦³¿ú¦³²z","ª¾ÃÑ","Ã¹«k¯S","°ªÄ_",0,"A"));
-        booklist.add(new Book("020","¨óºb«C¦~","ª¾ÃÑ","¬_«n","»·¬y",0,"B"));
+        users.add(new Student("B123","1111","ç‹å°å","student@gmail.com","0912345678","Student"));
+        users.add(new Student("C123","0000","æ²³å¤¢å’»","teacher@gmail.com","0912312312","Teacher"));
+        users.add(new Student("D123","0000","ç£ºä¼¯æ±—","staff@gmail.com","0945645645","Staff"));
+        users.add(new Student("E123","0000","ç°§ç½é‡","student2@gmail.com","0978978978","Student"));
+        users.add(new Student("F123","0000","å¤œè¾›çš¿","student3@gmail.com","0936525844","Student"));
+        booklist.add(new Book("001","å°ç‹å­","å†’éšª","å®‰æ‰˜è¬Â·è¿ª","å°–ç«¯å‡ºç‰ˆ",0,"A"));
+        booklist.add(new Book("002","å°ç‹å­2","æœ‰è¶£","å®‰æ‰˜è¬Â·è¿ª","å°–ç«¯å‡ºç‰ˆ",0,"B"));
+        booklist.add(new Book("003","å‚²æ…¢èˆ‡åè¦‹","çŸ¥è­˜","ç","Whitehall",0,"A"));
+        booklist.add(new Book("004","æ°´æ»¸å‚³","ç¶“å…¸æ–‡å­¸","æ–½è€åºµ","å—æµ·å°åˆ·",0,"A"));
+        booklist.add(new Book("005","å“ˆåˆ©æ³¢ç‰¹ï¼æ¶ˆå¤±çš„å¯†å®¤","å†’éšª","JÂ·KÂ·ç¾…ç³","å¸ƒç›§å§†èŒ¨ä¼¯é‡Œå‡ºç‰ˆç¤¾",0,"C"));
+        booklist.add(new Book("006","å“ˆåˆ©æ³¢ç‰¹ï¼ç¥ç§˜çš„é­”æ³•çŸ³","å†’éšª","JÂ·KÂ·ç¾…ç³","å¸ƒç›§å§†èŒ¨ä¼¯é‡Œå‡ºç‰ˆç¤¾",0,"D"));
+        booklist.add(new Book("007","å“ˆåˆ©æ³¢ç‰¹ï¼é˜¿èŒ²å¡ç­çš„é€ƒçŠ¯","å†’éšª","JÂ·KÂ·ç¾…ç³","å¸ƒç›§å§†èŒ¨ä¼¯é‡Œå‡ºç‰ˆç¤¾",0,"B"));
+        booklist.add(new Book("008","é­”æˆ’","æ‡¸ç–‘","JÂ·RÂ·RÂ·æ‰˜çˆ¾é‡‘","è¯ç¶“å‡ºç‰ˆå…¬å¸",0,"A"));
+        booklist.add(new Book("009","é”æ–‡è¥¿å¯†ç¢¼","ææ€–","ä¸¹Â·å¸ƒæœ—","æ™‚å ±å‡ºç‰ˆ",0,"B"));
+        booklist.add(new Book("011","ç¦çˆ¾æ‘©æ–¯","æ‡¸ç–‘","æŸ¯å—ï¼é“çˆ¾","é æµ",0,"A"));
+        booklist.add(new Book("012","åŸå­ç¿’æ…£","çŸ¥è­˜","è©¹å§†æ–¯","æ–¹æ™º",0,"C"));
+        booklist.add(new Book("013","è¢«è¨å­çš„å‹‡æ°£","çŸ¥è­˜","å²¸è¦‹ä¸€éƒ","é æµ",0,"A"));
+        booklist.add(new Book("014","å°ç´…å¸½","ç¶“å…¸æ–‡å­¸","æ ¼æ—","æµ·å—å°åˆ·",0,"B"));
+        booklist.add(new Book("015","æ²™ä¸˜I","ç§‘å¹»","æ³•è˜­å…‹","å¤§å®¶å‡ºç‰ˆ",0,"D"));
+        booklist.add(new Book("016","æ²™ä¸˜II","ç§‘å¹»","æ³•è˜­å…‹","å¤§å®¶å‡ºç‰ˆ",0,"D"));
+        booklist.add(new Book("017","ç™½è‰²å·¨å¡”","å¿ƒç†","ä¾¯æ–‡è© ","çš‡å† ",0,"A"));
+        booklist.add(new Book("018","å¿ƒéˆé›æ¹¯","å¿ƒç†","æˆ´åˆ©","é æµ",0,"C"));
+        booklist.add(new Book("019","å¯Œçˆ¸çˆ¸æœ‰éŒ¢æœ‰ç†","çŸ¥è­˜","ç¾…å‹ƒç‰¹","é«˜å¯¶",0,"A"));
+        booklist.add(new Book("020","å”æ§“é’å¹´","çŸ¥è­˜","æŸ¯å—","é æµ",0,"B"));
         
         int check = -1;//check = -1 means user is not login, check != 0 means user is login
         do{
@@ -53,14 +53,14 @@ public class Library {
                     for(int j = 0; j< users.get(i).borrowlist.size(); j++) {
                         int borrowdays =0;
                         LocalDate borrowdate = users.get(i).borrowlist.get(j).getBorrowDate();
-                        String text = "<h2> Hello, "+ users.get(i).getName() +" </h2><h2>¦¹¶l¥ó³qª¾±z­É¾\ªº®ÑÄy§Y±N¨ì´Á </h2>±zªº­É¾\®ÑÄy¬° : <br>"+ users.get(i).borrowlist.get(j)  + "<br><br><br>Click <a href=\"https://www.lib.ncu.edu.tw/\">here</a> for more information about Central Library.<br> Click <a href=\"mailto:matthew.in.ncu@g.ncu.edu.tw\">here</a> if you want to contact us." ;
+                        String text = "<h2> Hello, "+ users.get(i).getName() +" </h2><h2>æ­¤éƒµä»¶é€šçŸ¥æ‚¨å€Ÿé–±çš„æ›¸ç±å³å°‡åˆ°æœŸ </h2>æ‚¨çš„å€Ÿé–±æ›¸ç±ç‚º : <br>"+ users.get(i).borrowlist.get(j)  + "<br><br><br>Click <a href=\"https://www.lib.ncu.edu.tw/\">here</a> for more information about Central Library.<br> Click <a href=\"mailto:matthew.in.ncu@g.ncu.edu.tw\">here</a> if you want to contact us." ;
                         while(d.equals(borrowdate) == false) {borrowdate = borrowdate.plusDays(1);borrowdays++;}
                         if (borrowdays == 11) { mail.send(users.get(i).getEmail(), "Your book haven't returned!", text);}
                     }
                 }
             	Logger log = LogManager.getLogger(Excel.class.getName());
-                String [] option = {"µn¤J"," µù¥U","¬d¸ß®ÑÄy","Â÷¶}¨t²Î"};
-                input = JOptionPane.showOptionDialog(null, "Åwªï¨Ó¨ì¥¡¥¡¹Ï®ÑÀ]­ÉÁÙ®Ñ¨t²Î","Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[3]);
+                String [] option = {"ç™»å…¥"," è¨»å†Š","æŸ¥è©¢æ›¸ç±","é›¢é–‹ç³»çµ±"};
+                input = JOptionPane.showOptionDialog(null, "æ­¡è¿ä¾†åˆ°å¤®å¤®åœ–æ›¸é¤¨å€Ÿé‚„æ›¸ç³»çµ±","Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[3]);
                 switch(input){
                     case 0:
                         check = r.login(users);
@@ -72,8 +72,8 @@ public class Library {
                         user.searchBook(booklist);
                         break;
                     case 3:
-                        int quit = JOptionPane.showConfirmDialog(null, "½T©w­nÂ÷¶}¶Ü?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                        if(quit == 0){JOptionPane.showMessageDialog(null, "·PÁÂ±zªº¨Ï¥Î","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
+                        int quit = JOptionPane.showConfirmDialog(null, "ç¢ºå®šè¦é›¢é–‹å—?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if(quit == 0){JOptionPane.showMessageDialog(null, "æ„Ÿè¬æ‚¨çš„ä½¿ç”¨","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
                         else{break;}
                     default:
                         System.exit(0);
@@ -83,10 +83,10 @@ public class Library {
             
             if(users.get(check).getIdentity().equals("Admin")){
                 Admin admin = new Admin();
-                if(users.get(check).getNotice() != "") {JOptionPane.showMessageDialog(null, "´£¿ô : "+users.get(check).getNotice());}
+                if(users.get(check).getNotice() != "") {JOptionPane.showMessageDialog(null, "æé†’ : "+users.get(check).getNotice());}
                 do{
-                    String [] option = {"·s¼W®ÑÄy","­×§ï®ÑÄy","§R°£®ÑÄy","¬d¸ß®ÑÄy","¬d¸ß·|­û(­ÉÁÙ°O¿ı)","¬d¬İ¡B§ó§ï­Ó¤H¸ê°T","µn¥X","Â÷¶}¨t²Î"};
-                    input = JOptionPane.showOptionDialog(null, "Åwªï¦^¨Ó¡A" + users.get(check).getName() + "\nµn¤J¨­¤À : ºŞ²z­û" , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
+                    String [] option = {"æ–°å¢æ›¸ç±","ä¿®æ”¹æ›¸ç±","åˆªé™¤æ›¸ç±","æŸ¥è©¢æ›¸ç±","æŸ¥è©¢æœƒå“¡(å€Ÿé‚„è¨˜éŒ„)","æŸ¥çœ‹ã€æ›´æ”¹å€‹äººè³‡è¨Š","ç™»å‡º","é›¢é–‹ç³»çµ±"};
+                    input = JOptionPane.showOptionDialog(null, "æ­¡è¿å›ä¾†ï¼Œ" + users.get(check).getName() + "\nç™»å…¥èº«åˆ† : ç®¡ç†å“¡" , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
                     switch(input){
                         case 0:
                             admin.addBook(booklist);
@@ -110,8 +110,8 @@ public class Library {
                             check = -1;
                             break;
                         case 7:
-                            int quit = JOptionPane.showConfirmDialog(null, "½T©w­nÂ÷¶}¶Ü?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                            if(quit == 0){JOptionPane.showMessageDialog(null, "·PÁÂ±zªº¨Ï¥Î","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
+                            int quit = JOptionPane.showConfirmDialog(null, "ç¢ºå®šè¦é›¢é–‹å—?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            if(quit == 0){JOptionPane.showMessageDialog(null, "æ„Ÿè¬æ‚¨çš„ä½¿ç”¨","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
                             else{break;}
                         default:
                             System.exit(0);
@@ -138,18 +138,18 @@ public class Library {
                 }
 
                 users.get(check).checkFine(users, check);
-                if(users.get(check).getNotice() != "" && users.get(check).getFine() == 0) {JOptionPane.showMessageDialog(null, "´£¿ô : "+ users.get(check).getNotice(), "Central Library", JOptionPane.INFORMATION_MESSAGE);}
-                else if(users.get(check).getNotice() == "" && users.get(check).getFine() != 0) {JOptionPane.showMessageDialog(null, "´£¿ô : ±z¦³®ÑÄy¹O´Á¥¼ÂkÁÙ »İÃº¯Ç»@ª÷ : "+Integer.toString(users.get(check).getFine())+"¤¸ ¦p¥¼Ãº²M»@ª÷±NµLªk­É¾\®ÑÄy!", "Central Library", JOptionPane.ERROR_MESSAGE);}
-                else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {JOptionPane.showMessageDialog(null, "´£¿ô : "+ users.get(check).getNotice()+"\n±z¦³®ÑÄy¹O´Á¥¼ÂkÁÙ »İÃº¯Ç»@ª÷ : "+Integer.toString(users.get(check).getFine())+"¤¸ ¦p¥¼Ãº²M»@ª÷±NµLªk­É¾\®ÑÄy!","Central Library", JOptionPane.ERROR_MESSAGE);}
+                if(users.get(check).getNotice() != "" && users.get(check).getFine() == 0) {JOptionPane.showMessageDialog(null, "æé†’ : "+ users.get(check).getNotice(), "Central Library", JOptionPane.INFORMATION_MESSAGE);}
+                else if(users.get(check).getNotice() == "" && users.get(check).getFine() != 0) {JOptionPane.showMessageDialog(null, "æé†’ : æ‚¨æœ‰æ›¸ç±é€¾æœŸæœªæ­¸é‚„ éœ€ç¹³ç´ç½°é‡‘ : "+Integer.toString(users.get(check).getFine())+"å…ƒ å¦‚æœªç¹³æ¸…ç½°é‡‘å°‡ç„¡æ³•å€Ÿé–±æ›¸ç±!", "Central Library", JOptionPane.ERROR_MESSAGE);}
+                else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {JOptionPane.showMessageDialog(null, "æé†’ : "+ users.get(check).getNotice()+"\næ‚¨æœ‰æ›¸ç±é€¾æœŸæœªæ­¸é‚„ éœ€ç¹³ç´ç½°é‡‘ : "+Integer.toString(users.get(check).getFine())+"å…ƒ å¦‚æœªç¹³æ¸…ç½°é‡‘å°‡ç„¡æ³•å€Ÿé–±æ›¸ç±!","Central Library", JOptionPane.ERROR_MESSAGE);}
                 do{
-                    String [] option = {"­É®Ñ","ÁÙ®Ñ","¨ú®ø¹w¬ù®ÑÄy","¬d¸ß®ÑÄy","¬d¬İ¡B§ó§ï­Ó¤H¸ê°T","§R°£±b¸¹","µn¥X","Â÷¶}¨t²Î"};
-                    users.get(check).checkFine(users, check);
-                    input = JOptionPane.showOptionDialog(null, "Åwªï¦^¨Ó¡A " + users.get(check).getName() + "\n¤µ¤é¤é´Á : "+ LocalDate.now() +"\nµn¤J¨­¤À : " + users.get(check).getIdentity() , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
+                    String [] option = {"å€Ÿæ›¸","é‚„æ›¸","å–æ¶ˆé ç´„æ›¸ç±","æŸ¥è©¢æ›¸ç±","æŸ¥çœ‹ã€æ›´æ”¹å€‹äººè³‡è¨Š","åˆªé™¤å¸³è™Ÿ","ç™»å‡º","é›¢é–‹ç³»çµ±"};
+
+                    input = JOptionPane.showOptionDialog(null, "æ­¡è¿å›ä¾†ï¼Œ " + users.get(check).getName() + "\nä»Šæ—¥æ—¥æœŸ : "+ LocalDate.now() +"\nç™»å…¥èº«åˆ† : " + users.get(check).getIdentity() , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
                     switch(input){
                         case 0:
                             if(users.get(check).getFine() ==0 && (users.get(check).borrowlist.size()<users.get(check).getBorrowLimit())) {member.borrowBook(booklist, lineup, users.get(check));}
-                            else if(users.get(check).getFine()!=0){JOptionPane.showMessageDialog(null, "±z¦³»@ª÷¥¼Ãº ½Ğ¥ıÃº¯Ç«á©l±o«ì´_­É¾\¥\¯à!");}
-                            else if(users.get(check).borrowlist.size()>=users.get(check).getBorrowLimit()){JOptionPane.showMessageDialog(null, "±z¤w¶W¶V­É®Ñ¤W­­ ½Ğ¥ıÁÙ®Ñ!");}
+                            else if(users.get(check).getFine()!=0){JOptionPane.showMessageDialog(null, "æ‚¨æœ‰ç½°é‡‘æœªç¹³ è«‹å…ˆç¹³ç´å¾Œå§‹å¾—æ¢å¾©å€Ÿé–±åŠŸèƒ½!");}
+                            else if(users.get(check).borrowlist.size()>=users.get(check).getBorrowLimit()){JOptionPane.showMessageDialog(null, "æ‚¨å·²è¶…è¶Šå€Ÿæ›¸ä¸Šé™ è«‹å…ˆé‚„æ›¸!");}
                             break;
                         case 1:
                             member.returnBook(booklist, lineup, users.get(check));
@@ -169,8 +169,8 @@ public class Library {
                             check = -1;
                             break;
                         case 7:
-                            int quit = JOptionPane.showConfirmDialog(null, "½T©w­nÂ÷¶}¶Ü?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                            if(quit == 0){JOptionPane.showMessageDialog(null, "·PÁÂ±zªº¨Ï¥Î","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
+                            int quit = JOptionPane.showConfirmDialog(null, "ç¢ºå®šè¦é›¢é–‹å—?","Central Library", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            if(quit == 0){JOptionPane.showMessageDialog(null, "æ„Ÿè¬æ‚¨çš„ä½¿ç”¨","Exit",JOptionPane.INFORMATION_MESSAGE);System.exit(0);}
                             else{break;}
                         default:
                             System.exit(0);
