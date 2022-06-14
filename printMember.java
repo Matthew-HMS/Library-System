@@ -8,30 +8,30 @@ import org.apache.poi.ss.usermodel.*;
 
 public class printMember {
 	/**
-	 * åŸå§‹Excelæ¨¡æ¿åœ°å€
+	 * ­ì©lExcel¼ÒªO¦a§}
 	 */
 	private static String path = "D:Example.xlsx";
 	/**
-	 * åŒ¯å‡ºçš„Excelæ¨¡æ¿åœ°å€
+	 * ¶×¥XªºExcel¼ÒªO¦a§}
 	 */
-	private static String export = "D:æ‰€æœ‰æœƒå“¡è³‡æ–™.xlsx";
+	private static String export = "D:©Ò¦³·|­û¸ê®Æ.xlsx";
 	
 	public static void printMember(ArrayList<Users> userslist) throws Exception {
-		//è®€å…¥æª”æ¡ˆæµ
+		//Åª¤JÀÉ®×¬y
 		InputStream inputStream = new FileInputStream(new File(path));
-		//å»ºç«‹Excelç‰©ä»¶
+		//«Ø¥ßExcelª«¥ó
 		Workbook wb = WorkbookFactory.create(inputStream);
-		//ä¸€èˆ¬Exceléƒ½æœƒæœ‰ä¸€å€‹é è¨­çš„sheetï¼Œæ‰€ä»¥ç›´æ¥ç²å–ç¬¬ä¸€å€‹sheet
+		//¤@¯ëExcel³£·|¦³¤@­Ó¹w³]ªºsheet¡A©Ò¥Hª½±µÀò¨ú²Ä¤@­Ósheet
 		Sheet sheet = wb.getSheetAt(0);
-		//å»ºç«‹ç¬¬ä¸€è¡Œ
+		//«Ø¥ß²Ä¤@¦æ
 		Row row = sheet.createRow(0);
-		//è¨­å®šA1çš„å€¼
-		row.createCell(0).setCellValue("ä½¿ç”¨è€…åç¨±");
-		row.createCell(1).setCellValue("èº«åˆ†");
-		row.createCell(2).setCellValue("å¸³è™Ÿ");
-		row.createCell(3).setCellValue("å¯†ç¢¼");
-		row.createCell(4).setCellValue("é›»è©±");
-		row.createCell(5).setCellValue("é›»å­ä¿¡ç®±");
+		//³]©wA1ªº­È
+		row.createCell(0).setCellValue("¨Ï¥ÎªÌ¦WºÙ");
+		row.createCell(1).setCellValue("¨­¤À");
+		row.createCell(2).setCellValue("±b¸¹");
+		row.createCell(3).setCellValue("±K½X");
+		row.createCell(4).setCellValue("¹q¸Ü");
+		row.createCell(5).setCellValue("¹q¤l«H½c");
 		//row.createCell(6).setCellValue("");
 		for(int i = 1; i <= userslist.size(); i++) {
 			String status ="";
@@ -45,9 +45,9 @@ public class printMember {
 			row.createCell(5).setCellValue(userslist.get(j).getEmail());
 			
 		}
-		//è¼¸å‡ºæª”æ¡ˆ
+		//¿é¥XÀÉ®×
 		FileOutputStream out = new FileOutputStream(export);
         wb.write(out);
-        JOptionPane.showMessageDialog(null, "æ‰€æœ‰æœƒå“¡è³‡æ–™Excelæª”å·²è¼¸å‡º : "+export, "è¨Šæ¯", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "©Ò¦³·|­û¸ê®ÆExcelÀÉ¤w¿é¥X : "+export, "°T®§", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

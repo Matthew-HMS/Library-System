@@ -6,7 +6,7 @@ public class Register {
     
     Scanner s = new Scanner(System.in);
     Random r = new Random();
-    //SendMail mail = new SendMail();
+    SendMail mail = new SendMail();
 
     public void register(ArrayList<Users> users){
         boolean repeat = true;
@@ -61,7 +61,7 @@ public class Register {
             }
             else {
 
-                /* 
+                
                 boolean confirm = false;
                 int [] code = new int[6];
                 for(int i = 0; i < 6; i++){
@@ -91,11 +91,11 @@ public class Register {
                     JOptionPane.showMessageDialog(null, "Register failed! Your verification code is incorrect.", "Register", JOptionPane.ERROR_MESSAGE);
                     repeat = false;
                 }
-                */
-                Users user = new Student(account, password, name, email, phone, identity);
-                JOptionPane.showMessageDialog(null, "You have successfully registered! You will receive an email notification.", "Register", JOptionPane.INFORMATION_MESSAGE);
-                users.add(user);
-                repeat = false;
+                
+                //Users user = new Student(account, password, name, email, phone, identity);
+                //JOptionPane.showMessageDialog(null, "You have successfully registered! You will receive an email notification.", "Register", JOptionPane.INFORMATION_MESSAGE);
+                //users.add(user);
+                //repeat = false;
 
         }
         }while(repeat);
