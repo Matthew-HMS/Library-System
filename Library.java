@@ -17,9 +17,7 @@ public class Library {
         Users user = new Student();
         Register r = new Register();
         SendMail mail = new SendMail();
-
         LocalDate d = LocalDate.now();
-        
         users.add(new Student("L123","0000","Owner","test@gmail.com","0987654321","Admin"));
         users.add(new Student("B123","1111","王小名","student@gmail.com","0912345678","Student"));
         users.add(new Student("C123","0000","河夢咻","teacher@gmail.com","0912312312","Teacher"));
@@ -143,7 +141,6 @@ public class Library {
                 else if(users.get(check).getNotice() != "" && users.get(check).getFine() != 0) {JOptionPane.showMessageDialog(null, "提醒 : "+ users.get(check).getNotice()+"\n您有書籍逾期未歸還 需繳納罰金 : "+Integer.toString(users.get(check).getFine())+"元 如未繳清罰金將無法借閱書籍!","Central Library", JOptionPane.ERROR_MESSAGE);}
                 do{
                     String [] option = {"借書","還書","取消預約書籍","查詢書籍","查看、更改個人資訊","刪除帳號","登出","離開系統"};
-
                     input = JOptionPane.showOptionDialog(null, "歡迎回來， " + users.get(check).getName() + "\n今日日期 : "+ LocalDate.now() +"\n登入身分 : " + users.get(check).getIdentity() , "Central Library", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, option, option[7]);
                     switch(input){
                         case 0:
